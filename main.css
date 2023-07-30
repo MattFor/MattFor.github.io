@@ -19,7 +19,7 @@ body.dark-mode {
 
 /* Header styling */
 header {
-    background-color: #4a90e2; /* Changed the color here */
+    background-color: #4a90e2;
     color: #fff;
     padding: 20px;
     text-align: center;
@@ -32,22 +32,22 @@ header {
 .header-content {
     display: flex;
     align-items: center;
-    justify-content: center; /* Center the content */
+    justify-content: center;
     width: 50%;
 }
 
 .header-gif {
-    max-width: 50%;
+    max-width: 40%;
     padding-right: 20px;
     margin-right: 20px;
 }
 
 .header-content h1 {
-    color: #fff; /* Make the text visible */
+    color: #fff;
 }
 
 .header-content p {
-    color: #fff; /* Make the text visible */
+    color: #fff;
 }
 
 /* Theme switcher styling */
@@ -112,6 +112,11 @@ footer {
     flex-wrap: wrap;
 }
 
+.widget-frame {
+    max-width: 100%;
+    height: auto; /* Responsive height */
+}
+
 .support-section,
 .topgg-section {
     width: 45%;
@@ -122,6 +127,7 @@ footer {
 
 .topgg-image {
     max-width: 100%;
+    height: auto; /* Responsive height */
 }
 
 /* Media queries for responsiveness */
