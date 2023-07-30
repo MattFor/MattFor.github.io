@@ -23,14 +23,19 @@ h1, h2, h3 {
     text-align: center;
 }
 
-ul {
-    padding-left: 20px;
-    list-style-type: disc;
+ul, p {
     text-align: center;
 }
 
-p {
-    text-align: center;
+ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+/* Link and Image styling */
+a, a img, img {
+    outline: none;
+    border: 0;
 }
 
 /* Header styling */
@@ -53,6 +58,7 @@ p {
     width: auto;
     max-width: 15%;
     height: 100px;
+    object-fit: cover;
     padding-left: 20px;
     border-radius: 10px;
 }
@@ -86,6 +92,15 @@ main {
     justify-content: space-between;
 }
 
+.section, .patreon-section, .command-section, .support-section, .topgg-section {
+    padding: 20px;
+}
+
+.patreon-image, .topgg-image {
+    max-width: 100%;
+}
+
+/* Patreon section styling */
 .patreon-section {
     padding: 20px;
     background-color: transparent;
@@ -93,18 +108,12 @@ main {
     align-items: center;
     justify-content: space-between;
     transition: background-color 0.3s;
-    flex-direction: row-reverse;
+    flex-direction: row;
     text-align: left;
 }
 
 .patreon-section:hover {
     background-color: #add8e6;
-}
-
-
-.patreon-section .patreon-image {
-    max-width: 30%;
-    height: auto;
 }
 
 .patreon-section .patreon-image {
@@ -117,14 +126,6 @@ main {
 .patreon-section p,
 .patreon-section a {
     order: 1;
-}
-
-.section, .patreon-section, .command-section, .support-section, .topgg-section {
-    padding: 20px;
-}
-
-.patreon-image, .topgg-image {
-    max-width: 100%;
 }
 
 /* Footer and Subpages Bar */
@@ -143,36 +144,31 @@ main {
 }
 
 .footer a,
-#subpages-bar a {
-    color: #333333;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-#subpages-bar a:hover {
-    color: #ff69b4;
-}
-
+#subpages-bar a,
 #back-to-main {
     color: #333333;
     text-decoration: none;
     transition: color 0.3s;
 }
 
+#subpages-bar a:hover,
 #back-to-main:hover {
-    color: #add8e6;
+    color: #ff69b4;
 }
 
 /* Support and TopGG section styling */
 .support-topgg-container {
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 }
+
 .widget-frame {
     height: 500px;
     max-width: 100%;
 }
+
 .support-section,
 .topgg-section {
     width: 45%;
@@ -180,6 +176,7 @@ main {
     text-align: left;
     box-sizing: border-box;
 }
+
 .topgg-image {
     height: auto;
     max-width: 100%;
