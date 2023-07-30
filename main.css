@@ -29,11 +29,12 @@ header {
     flex-direction: row;
 }
 
-.header-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
+/* Header styling */
+.header-content .color-line {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
 .header-gif {
@@ -51,25 +52,26 @@ header {
 }
 
 /* Theme switcher styling */
-.theme-switcher {
+.theme-button {
     position: absolute;
     top: 10px;
     right: 20px;
     background-color: #ff69b4;
     border: none;
     color: white;
-    padding: 5px 10px;
+    padding: 10px 20px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
 }
 
-.theme-switcher:hover {
+.theme-button:hover {
     background-color: #ff4069;
 }
+
 
 .theme-switcher label {
     color: #fff;
@@ -93,13 +95,13 @@ footer {
     text-align: center;
 }
 
-#terms-bar {
+#subpages-bar {
     background-color: #f2f2f2;
     padding: 10px;
     text-align: center;
 }
 
-#terms-bar a {
+#subpages-bar a {
     text-decoration: none;
     color: #333333;
 }
@@ -114,7 +116,7 @@ footer {
 
 .widget-frame {
     max-width: 100%;
-    height: auto; /* Responsive height */
+    height: 500;
 }
 
 .support-section,
@@ -127,7 +129,7 @@ footer {
 
 .topgg-image {
     max-width: 100%;
-    height: auto; /* Responsive height */
+    height: auto;
 }
 
 /* Media queries for responsiveness */
