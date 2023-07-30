@@ -57,13 +57,23 @@ a:active, a img:active, img:active {
     display: flex;
     align-items: center;
     width: 100%;
+    justify-content: space-between;
+}
+
+.audio-button-container {
+    display: flex;
+    align-items: center;
+}
+
+.theme-button {
+    margin-right: 10px;
 }
 
 .header-logo {
-    max-width: 15%;
+    /* max-width: 15%;
     height: 100px;
-    object-fit: cover;
-    padding-left: 20px;
+    object-fit: scale-down;
+    padding-left: 20px; */
     border-radius: 10px;
 }
 
@@ -123,6 +133,14 @@ main {
     align-items: center;
     text-align: center;
     flex-grow: 1;
+}
+
+.patreon-section a:hover {
+    background-color: #add8e6;
+}
+
+.patreon-section:hover {
+    background-color: #add8e6;
 }
 
 .patreon-section .patreon-image {
@@ -198,19 +216,27 @@ main {
 }
 
 .owner-section {
+    background-color: #4a90e2;
+    padding: 20px;
     display: flex;
     align-items: center;
-    justify-content: center; /* Center the content horizontally */
+    justify-content: space-between;
+}
+
+.owner-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .owner-text {
-    flex: 2; /* Adjust as needed to change the space distribution */
-    text-align: center;
+    text-align: left;
+    flex: 3;
 }
 
 .owner-image {
-    flex: 1; /* Adjust as needed to change the space distribution */
-    text-align: center;
+    text-align: right;
+    flex: 1;
 }
 
 /* Responsiveness */

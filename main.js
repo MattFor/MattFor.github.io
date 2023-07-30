@@ -33,6 +33,38 @@ const toggleTheme = () => {
     }
 };
 
+const setInitialAudio = () => {
+    const audioPlayer = document.getElementById('audioPlayer');
+    const audioButton = document.getElementById('audioButton');
+    const audioStatus = localStorage.getItem('audioStatus');
+
+    if (audioStatus === 'off') {
+        audioPlayer.pause();
+        audioButton.innerText = 'Music Off';
+    } else {
+        audioPlayer.play();
+        audioPlayer.volume = 0.2;
+        audioButton.innerText = 'Music On';
+    }
+};
+
+const toggleAudio = () => {
+    const audioPlayer = document.getElementById('audioPlayer');
+    const audioButton = document.getElementById('audioButton');
+
+    if (audioPlayer.paused) {
+        audioPlayer.play();
+        audioPlayer.volume = 0.2;
+        audioButton.innerText = 'Music On';
+        localStorage.setItem('audioStatus', 'on');
+    } else {
+        audioPlayer.pause();
+        audioButton.innerText = 'Music Off';
+        localStorage.setItem('audioStatus', 'off');
+    }
+};
+
 document.addEventListener("DOMContentLoaded", () => {
     setInitialTheme();
+    setInitialAudio();
 });
