@@ -5,89 +5,91 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="Relaxy! - Multipurpose Discord Bot">
-    <meta property="og:description" content="Relaxy is a multipurpose bot with advanced features such as censoring, custom forums, heartboards, and more. Created by mattfor/MattFor#9884.">
-    <meta property="twitter:image" content="./resources/relaxy.png">
-    <meta property="og:url" content="https://www.relaxy.xyz">
-    <meta property="og:color" content="16738740">
     <title>Relaxy! - Multipurpose Discord Bot</title>
     <link rel="stylesheet" href="main.css">
     <link rel="icon" href="resources/relaxy.ico" type="image/x-icon">
+    <meta property="og:title" content="Relaxy! - Multipurpose Discord Bot">
+    <meta property="og:description" content="Relaxy is a multipurpose bot with advanced features such as censoring, custom forums, heartboards, and more. Created by mattfor/MattFor#9884.">
+    <meta property="og:image" content="./resources/relaxy.png">
+    <meta property="og:url" content="https://www.relaxy.xyz">
+    <meta property="og:color" content="16738740">
 </head>
 
-
 <body class="dark-mode">
-    <header>
+    <header class="header">
         <div class="header-content">
-            <img src="resources/relaxy.gif" alt="Relaxing" class="header-gif">
-            <div class="header-text">
-                <h1 class="color-line">Relaxy - Multipurpose Discord Bot</h1>
+            <img src="resources/relaxy.gif" alt="Relaxing" class="header-logo">
+            <div class="header-title">
+                <h1>Relaxy - Multipurpose Discord Bot</h1>
                 <p>By mattfor/MattFor#9884</p>
             </div>
         </div>
-        <div class="theme-switcher">
-            <button id="themeButton" class="theme-button" onclick="toggleTheme()">Light Mode</button>
-        </div>
+        <button id="themeButton" class="theme-button" onclick="toggleTheme()">Light Mode</button>
     </header>
 
     <main>
-        <section id="about">
-            <h2>About Relaxy</h2>
-            <p>Relaxy is a multipurpose bot that can keep track of levels, provide modlogs, automatic forums, live reaction moderation panels, polls, and more. Made by a single person (mattfor/MattFor#9884) as a passion project at the start of the pandemic. It is being worked on almost every single day!</p>
-        </section>
+        <div class="sections">
+            <div class="left-right-sections">
+                <section id="about" class="section">
+                    <h2>About Relaxy</h2>
+                    <p>Relaxy is a multipurpose bot that can keep track of levels, provide modlogs, automatic forums, live reaction moderation panels, polls, and more. Made by a single person (mattfor/MattFor#9884) as a passion project at the start of the pandemic. It is being worked on almost every single day!</p>
+                </section>
 
-        <section id="features">
-            <h2>Main Features</h2>
-            <ul>
-                <li>Incredibly advanced censoring</li>
-                <li>Custom forums with detailed access control</li>
-                <li>Multiple different heartboards with customizations</li>
-                <li>An advanced moderator log with over 30 events</li>
-            </ul>
-        </section>
+                <section id="features" class="section">
+                    <h2>Main Features</h2>
+                    <ul>
+                        <li>Incredibly advanced censoring</li>
+                        <li>Custom forums with detailed access control</li>
+                        <li>Multiple different heartboards with customizations</li>
+                        <li>An advanced moderator log with over 30 events</li>
+                    </ul>
+                </section>
 
-        <section id="patreon" class="patreon-section">
-            <h2>Relaxy's OnlyFans</h2>
-            <p>Support Relaxy on Patreon!</p>
-            <a href="https://www.patreon.com/MattFor" target="_blank">Click here to view and support ;)</a>
-            <img src="resources/relaxy-cute.png" alt="Relaxy Cute" class="patreon-image">
-        </section>
+                <section id="patreon" class="patreon-section">
+                    <h2>Relaxy's OnlyFans</h2>
+                    <p>Support Relaxy on Patreon!</p>
+                    <a href="https://www.patreon.com/MattFor" target="_blank">Click here to view and support ;)</a>
+                    <img src="resources/relaxy-cute.png" alt="Relaxy Cute" class="patreon-image">
+                </section>
+            </div>
 
-
-        <section id="commands">
-            <h2>Commands Categories</h2>
-            <h3>Fun</h3>
-            <p>8b, buy, coinflip, customboostmessage, dice, heartboard, inventory, leaderboard, leveling, lovemeter, lvl, minesweeper, poll, preview, profile, rep+, shop, snake, trade, translate, welcomechannel</p>
-            <h3>Image</h3>
-            <p>banner, caption, changemymind, circlepfp, confusedstonks, delete, doesntaffect, drip, execute, gay, hug, kiss, myman, pat, payrespect, perfect, pfp, phub, picture, present, putin, reddit, ross, slap, spank, stonks, sus, trash, triggered</p>
-            <h3>Miscellaneous</h3>
-            <p>customizewelcome, devlog, dmout, embed, fetch, files, forum, getemoji, halt, help, invite, len, levelout, mixemoji, musicoptions, prefix, privatechannel, record, redirect, relaxytime, remindme, reminds, rename, request, roleinfo, save, stats, status, thanks, toolkit, vote, whois, youtubesearch</p>
-            <h3>Moderation</h3>
-            <p>autoban, autoname, autorole, ban, censor, clearingchannel, disable, disconnect, dmwelcome, exempt, fetchban, free, kick, lockdown, modlog, mute, mutes, purge, purgereactions, reactionpanel, reactionrole, remake, restrain, restrict, setslowmode, unban, unmute, user, warning, warnings</p>
-            <h3>Music</h3>
-            <p>back, bitrate, clearq, end, filter, goto, join, jump, leave, loop, lyrics, pause, play, pskip, queue, remove, repeat, resume, search, shuffle, skip, song, volume</p>
-        </section>
-
-        <section id="support-and-topgg" style="display: flex; justify-content: space-between; align-items: center;">
-            <section id="join-support" style="text-align: center; width: 50%; padding-bottom: 20px;">
-                <h2>Have questions, need support, or just want to hang out?</h2>
-                <a href="https://www.discord.gg/xRAGVePxk6" target="_blank" style="display: block; margin-bottom: 10px; font-size: 20px;">Join Relaxy's Requests!</a>
-                <iframe class="widget-frame" src="https://discord.com/widget?id=1034514185922564106&theme=dark" width="550" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+            <section id="commands" class="command-section">
+                <h2>Commands Categories</h2>
+                <h3>Fun</h3>
+                <p>8b, buy, coinflip, customboostmessage, dice, heartboard, inventory, leaderboard, leveling, lovemeter, lvl, minesweeper, poll, preview, profile, rep+, shop, snake, trade, translate, welcomechannel</p>
+                <h3>Image</h3>
+                <p>banner, caption, changemymind, circlepfp, confusedstonks, delete, doesntaffect, drip, execute, gay, hug, kiss, myman, pat, payrespect, perfect, pfp, phub, picture, present, putin, reddit, ross, slap, spank, stonks, sus, trash, triggered</p>
+                <h3>Miscellaneous</h3>
+                <p>customizewelcome, devlog, dmout, embed, fetch, files, forum, getemoji, halt, help, invite, len, levelout, mixemoji, musicoptions, prefix, privatechannel, record, redirect, relaxytime, remindme, reminds, rename, request, roleinfo, save, stats, status, thanks, toolkit, vote, whois, youtubesearch</p>
+                <h3>Moderation</h3>
+                <p>autoban, autoname, autorole, ban, censor, clearingchannel, disable, disconnect, dmwelcome, exempt, fetchban, free, kick, lockdown, modlog, mute, mutes, purge, purgereactions, reactionpanel, reactionrole, remake, restrain, restrict, setslowmode, unban, unmute, user, warning, warnings</p>
+                <h3>Music</h3>
+                <p>back, bitrate, clearq, end, filter, goto, join, jump, leave, loop, lyrics, pause, play, pskip, queue, remove, repeat, resume, search, shuffle, skip, song, volume</p>
             </section>
-            <section id="topgg" class="topgg-section">
-                <a href="https://top.gg/bot/775358898088968202" target="_blank" class="topgg-link"><h3>Check out the top.gg website</h3></a>
-                <a href="https://top.gg/bot/775358898088968202/vote" target="_blank" style="font-size: 18px;"><h1>And better yet, Vote for Relaxy!</h1></a>
-                <img class="topgg-image" src="resources/topgg.png" alt="Top.gg">
-            </section>
-        </section>
 
-        <div id="subpages-bar">
-            <a href="subpages/terms.html">Terms of Service</a> | <a href="subpages/credits.html">Credits</a>
-        </div>
+            <div id="support-and-topgg" class="support-topgg-container">
+                <section id="join-support" class="support-section">
+                    <h2>Have questions, need support, or just want to hang out?</h2>
+                    <a href="https://www.discord.gg/xRAGVePxk6" target="_blank" style="display: block; margin-bottom: 10px; font-size: 20px;">Join Relaxy's Requests!</a>
+                    <iframe class="widget-frame" src="https://discord.com/widget?id=1034514185922564106&theme=dark" width="550" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+                </section>
+                <section id="topgg" class="topgg-section">
+                    <a href="https://top.gg/bot/775358898088968202" target="_blank" class="topgg-link">
+                        <h3>Check out the top.gg website</h3>
+                    </a>
+                    <a href="https://top.gg/bot/775358898088968202/vote" target="_blank" style="font-size: 18px;">
+                        <h1>And better yet, Vote for Relaxy!</h1>
+                    </a>
+                    <img class="topgg-image" src="resources/topgg.png" alt="Top.gg">
+                </section>
+                </section>
+            </div>
     </main>
-    <footer>
+
+    <footer class="footer">
         <p>© 2023 Relaxy - All Rights Reserved</p>
     </footer>
+
     <script src="main.js"></script>
 </body>
 

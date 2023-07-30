@@ -1,70 +1,56 @@
 /* Body and global styling */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    background-color: #2a2b2a;
+    padding: 0 20px;
     color: #fff;
-    padding: 0 20px; /* Added 20px padding to left and right */
+    background-color: #2a2b2a;
+    font-family: Arial, sans-serif;
     transition: background-color 0.3s, color 0.3s;
 }
 
 body.light-mode {
-    background-color: #f9f9f9;
     color: #333;
+    background-color: #f9f9f9;
 }
 
 /* Header styling */
-header {
-    background-color: #4a90e2;
+.header {
     color: #fff;
     padding: 20px;
-    text-align: center;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    flex-direction: row;
+    justify-content: space-between;
+    background-color: #4a90e2;
 }
 
 .header-content {
-    align-items: center;
-    justify-content: flex-start;
-    white-space: nowrap;
     display: flex;
+    align-items: center;
     overflow: hidden;
-    text-overflow: ellipsis;
     max-width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
-.header-content h1, .header-content p {
-    color: #fff;
-}
-
-.header-text {
-    flex-grow: 1;
-    text-align: center;
-    margin: 0;
-}
-
-.header-gif {
-    max-width: 40%;
+.header-logo {
     width: 100px;
-    padding-right: 20px;
     margin-right: 20px;
 }
 
+.header-title h1,
+.header-title p {
+    color: #fff;
+    margin: 0;
+}
+
 .theme-button {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    background-color: #ff69b4;
-    border: none;
     color: white;
     padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
     font-size: 16px;
     cursor: pointer;
+    border: none;
     border-radius: 10px;
+    background-color: #ff69b4;
     transition: background-color 0.3s;
 }
 
@@ -78,17 +64,26 @@ h1, h2, h3 {
 }
 
 ul {
-    list-style-type: disc;
     padding-left: 20px;
+    list-style-type: disc;
+}
+
+/* Main Sections */
+.sections,
+.left-right-sections,
+#support-and-topgg {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-right-sections {
+    flex-wrap: wrap;
 }
 
 /* Patreon section styling */
 .patreon-section {
-    position: relative;
-    flex-grow: 1;
     padding: 20px;
     background-color: #4a90e2;
-    color: #fff;
 }
 
 .patreon-section a {
@@ -96,68 +91,67 @@ ul {
 }
 
 .patreon-image {
-    width: 50%;
-    display: block;
     margin-top: 10px;
-}
-
-/* Footer and terms bar styling */
-footer {
-    background-color: #2c3e50;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-}
-
-#subpages-bar {
-    background-color: #f2f2f2;
-    padding: 10px;
-    text-align: center;
-}
-
-#subpages-bar a {
-    text-decoration: none;
-    color: #333333;
+    display: block;
+    width: 20%;
 }
 
 /* Support and TopGG section styling */
-#support-and-topgg {
+.support-topgg-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     flex-wrap: wrap;
 }
 
 .widget-frame {
+    height: 500px;
     max-width: 100%;
-    height: 500;
 }
 
 .support-section,
 .topgg-section {
     width: 45%;
     padding: 10px;
-    box-sizing: border-box;
     text-align: center;
+    box-sizing: border-box;
 }
 
 .topgg-image {
-    max-width: 100%;
     height: auto;
+    max-width: 100%;
 }
 
-/* Media queries for responsiveness */
+/* Footer and Subpages Bar */
+.footer,
+#subpages-bar {
+    padding: 10px;
+    text-align: center;
+}
+
+.footer {
+    color: #fff;
+    background-color: #2c3e50;
+}
+
+#subpages-bar {
+    background-color: #f2f2f2;
+}
+
+.footer a,
+#subpages-bar a {
+    color: #333333;
+    text-decoration: none;
+}
+
+/* Use media queries for responsiveness */
 @media screen and (max-width: 768px) {
-    .header-content {
+    .left-right-sections,
+    #support-and-topgg {
         flex-direction: column;
     }
 
-    .header-gif {
-        max-width: 100%;
-        padding-right: 0;
-    }
-
-    #support-and-topgg {
+    .header-content {
         flex-direction: column;
     }
 
