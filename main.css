@@ -85,6 +85,7 @@ main {
 /* Footer and Subpages Bar */
 .footer,
 #subpages-bar {
+    padding: 20px 0;
     text-align: center;
 }
 
