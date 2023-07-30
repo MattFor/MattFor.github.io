@@ -15,7 +15,7 @@ body.light-mode {
 /* Header styling */
 .header {
     color: #fff;
-    padding: 20px;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -32,11 +32,12 @@ body.light-mode {
 }
 
 .header-logo {
-    width: 100px;
-    max-width: 40%;
+    width: auto;
+    max-width: 15%;
+    height: 100px;
     margin-right: 20px;
-    padding-right: 20px;
 }
+
 
 .header-title h1,
 .header-title p {
@@ -130,11 +131,12 @@ ul {
 /* Footer and Subpages Bar */
 .footer,
 #subpages-bar {
-    padding: 10px;
+    padding: 0;
     text-align: center;
 }
 
 .footer {
+    padding: 0;
     color: #fff;
     background-color: #2c3e50;
 }
