@@ -67,7 +67,7 @@ ul {
 
 /* Main Sections and General Styling */
 main {
-    min-height: calc(100vh - 100px); /* 100px is the combined height of footer and subpages bar */
+    min-height: calc(100vh - 100px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -84,7 +84,6 @@ main {
 /* Footer and Subpages Bar */
 .footer,
 #subpages-bar {
-    padding: 10px 0; /* Added padding for height */
     text-align: center;
 }
 
@@ -100,7 +99,6 @@ main {
 #subpages-bar a {
     color: #333333;
     text-decoration: none;
-    margin: 0 10px;
 }
 
 /* Responsiveness */
