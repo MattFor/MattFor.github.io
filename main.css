@@ -32,18 +32,10 @@ ul {
     background-color: #4a90e2;
 }
 
-.header h1 {
-    text-align: center;
-    margin: 0;
-}
-
 .header-content {
     display: flex;
     align-items: center;
-    overflow: hidden;
-    max-width: 100%;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    width: 100%;
 }
 
 .header-logo {
@@ -51,6 +43,11 @@ ul {
     max-width: 15%;
     height: 100px;
     margin-right: 20px;
+}
+
+.header-title {
+    text-align: center;
+    flex-grow: 1; /* Allows the title to take up available space */
 }
 
 .theme-button {
@@ -69,72 +66,18 @@ ul {
 }
 
 /* Main Sections and General Styling */
-.section {
-    padding: 0 20px;
-}
-
-.sections,
-.left-right-sections,
-#support-and-topgg {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.left-right-sections {
-    flex-wrap: wrap;
-}
-
-#terms {
-    text-align: center;
-    margin: 20px auto;
-    max-width: 80%;
-}
-
-/* Patreon section styling */
-.patreon-section {
+.section, .patreon-section, .command-section, .support-section, .topgg-section {
     padding: 20px;
-    background-color: #4a90e2;
 }
 
-.patreon-section a,
-.patreon-image {
-    color: #ff69b4;
-    margin-top: 10px;
-    display: block;
-    width: 20%;
-}
-
-/* Support and TopGG section styling */
-.support-topgg-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.widget-frame {
-    height: 500px;
-    max-width: 100%;
-}
-
-.support-section,
-.topgg-section {
-    width: 45%;
-    padding: 10px;
-    text-align: center;
-    box-sizing: border-box;
-}
-
-.topgg-image {
-    height: auto;
+.patreon-image, .topgg-image {
     max-width: 100%;
 }
 
 /* Footer and Subpages Bar */
 .footer,
 #subpages-bar {
-    padding: 0;
+    padding: 0; /* Zero padding */
     text-align: center;
 }
 
@@ -146,7 +89,6 @@ ul {
 #subpages-bar {
     background-color: #f2f2f2;
     margin: 0;
-    padding: 10px 0;
 }
 
 .footer a,
@@ -158,17 +100,7 @@ ul {
 
 /* Responsiveness */
 @media screen and (max-width: 768px) {
-    .left-right-sections,
-    #support-and-topgg {
-        flex-direction: column;
-    }
-
     .header-content {
         flex-direction: column;
-    }
-
-    .support-section,
-    .topgg-section {
-        width: 100%;
     }
 }
