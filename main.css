@@ -12,11 +12,6 @@ body.light-mode {
     color: #333;
 }
 
-body.dark-mode {
-    background-color: #2a2b2a;
-    color: #fff;
-}
-
 /* Header styling */
 header {
     background-color: #4a90e2;
@@ -29,8 +24,9 @@ header {
     flex-direction: row;
 }
 
-/* Header styling */
-.header-content .color-line {
+.header-content {
+    align-items: center;
+    justify-content: flex-start;
     white-space: nowrap;
     display: flex;
     overflow: hidden;
@@ -38,55 +34,21 @@ header {
     max-width: 100%;
 }
 
+.header-content h1, .header-content p {
+    color: #fff;
+}
+
 .header-text {
     flex-grow: 1;
     text-align: center;
+    margin: 0;
 }
 
 .header-gif {
     max-width: 40%;
+    width: 100px;
     padding-right: 20px;
     margin-right: 20px;
-}
-
-.main-content {
-    display: flex;
-}
-
-.patreon-section {
-    flex-grow: 1;
-    padding: 20px;
-    background-color: #4a90e2;
-    color: #fff;
-}
-
-.patreon-section a {
-    color: #ff69b4;
-}
-
-.header-content h1 {
-    color: #fff;
-}
-
-.header-content p {
-    color: #fff;
-}
-
-/* Theme switcher styling */
-.theme-switcher {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    background-color: #ff69b4;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
 }
 
 .theme-button {
@@ -109,11 +71,6 @@ header {
     background-color: #ff4069;
 }
 
-
-.theme-switcher label {
-    color: #fff;
-}
-
 /* Heading and list styles */
 h1, h2, h3 {
     color: #ff69b4;
@@ -122,6 +79,25 @@ h1, h2, h3 {
 ul {
     list-style-type: disc;
     padding-left: 20px;
+}
+
+/* Patreon section styling */
+.patreon-section {
+    position: relative;
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #4a90e2;
+    color: #fff;
+}
+
+.patreon-section a {
+    color: #ff69b4;
+}
+
+.patreon-image {
+    width: 100%;
+    display: block;
+    margin-top: 10px;
 }
 
 /* Footer and terms bar styling */
@@ -159,7 +135,7 @@ footer {
 .support-section,
 .topgg-section {
     width: 45%;
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box;
     text-align: center;
 }
