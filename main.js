@@ -43,7 +43,7 @@ const setInitialAudio = () => {
         audioButton.innerText = 'Music Off';
     } else {
         audioPlayer.play();
-        audioPlayer.volume = 0.2;
+        audioPlayer.volume = 0.1;
         audioButton.innerText = 'Music On';
     }
 };
@@ -54,7 +54,7 @@ const toggleAudio = () => {
 
     if (audioPlayer.paused) {
         audioPlayer.play();
-        audioPlayer.volume = 0.2;
+        audioPlayer.volume = 0.1;
         audioButton.innerText = 'Music On';
         localStorage.setItem('audioStatus', 'on');
     } else {
@@ -62,6 +62,20 @@ const toggleAudio = () => {
         audioButton.innerText = 'Music Off';
         localStorage.setItem('audioStatus', 'off');
     }
+};
+
+const scrollToTop = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+};
+
+const scrollToBottom = () => {
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+    });
 };
 
 document.addEventListener("DOMContentLoaded", () => {

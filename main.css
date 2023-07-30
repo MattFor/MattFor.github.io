@@ -12,6 +12,10 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
+img:hover {
+    border: none !important;
+}
+
 body.light-mode {
     color: #333;
     background-color: #f9f9f9;
@@ -70,10 +74,8 @@ a:active, a img:active, img:active {
 }
 
 .header-logo {
-    /* max-width: 15%;
-    height: 100px;
-    object-fit: scale-down;
-    padding-left: 20px; */
+    max-width: 15%;
+    padding-left: 20px;
     border-radius: 10px;
 }
 
@@ -235,7 +237,7 @@ main {
 }
 
 .owner-image {
-    text-align: right;
+    text-align: center;
     flex: 1;
 }
 
