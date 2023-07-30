@@ -12,6 +12,16 @@ body.light-mode {
     background-color: #f9f9f9;
 }
 
+/* Heading and list styles */
+h1, h2, h3 {
+    color: #ff69b4;
+}
+
+ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
 /* Header styling */
 .header {
     color: #fff;
@@ -20,6 +30,11 @@ body.light-mode {
     align-items: center;
     justify-content: space-between;
     background-color: #4a90e2;
+}
+
+.header h1 {
+    text-align: center;
+    margin: 0;
 }
 
 .header-content {
@@ -38,13 +53,6 @@ body.light-mode {
     margin-right: 20px;
 }
 
-
-.header-title h1,
-.header-title p {
-    color: #fff;
-    margin: 0;
-}
-
 .theme-button {
     color: white;
     padding: 10px 20px;
@@ -60,17 +68,7 @@ body.light-mode {
     background-color: #ff4069;
 }
 
-/* Heading and list styles */
-h1, h2, h3 {
-    color: #ff69b4;
-}
-
-ul {
-    padding-left: 20px;
-    list-style-type: disc;
-}
-
-/* Main Sections */
+/* Main Sections and General Styling */
 .section {
     padding: 0 20px;
 }
@@ -79,11 +77,18 @@ ul {
 .left-right-sections,
 #support-and-topgg {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .left-right-sections {
     flex-wrap: wrap;
+}
+
+#terms {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 80%;
 }
 
 /* Patreon section styling */
@@ -92,11 +97,9 @@ ul {
     background-color: #4a90e2;
 }
 
-.patreon-section a {
-    color: #ff69b4;
-}
-
+.patreon-section a,
 .patreon-image {
+    color: #ff69b4;
     margin-top: 10px;
     display: block;
     width: 20%;
@@ -136,22 +139,24 @@ ul {
 }
 
 .footer {
-    padding: 0;
-    color: #fff;
     background-color: #2c3e50;
+    margin: 0;
 }
 
 #subpages-bar {
     background-color: #f2f2f2;
+    margin: 0;
+    padding: 10px 0;
 }
 
 .footer a,
 #subpages-bar a {
     color: #333333;
     text-decoration: none;
+    margin: 0 10px;
 }
 
-/* Use media queries for responsiveness */
+/* Responsiveness */
 @media screen and (max-width: 768px) {
     .left-right-sections,
     #support-and-topgg {
