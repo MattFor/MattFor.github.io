@@ -31,3 +31,14 @@ footer {
     padding: 10px;
     text-align: center;
 }
+
+#terms-bar {
+    background-color: #f2f2f2; /* light gray background */
+    padding: 10px;
+    text-align: center;
+}
+
+#terms-bar a {
+    text-decoration: none;
+    color: #333333; /* dark gray text */
+}
