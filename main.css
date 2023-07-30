@@ -108,6 +108,7 @@ main {
 .patreon-section {
     padding: 20px;
     background-color: transparent;
+    justify-content: center;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -120,6 +121,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     flex-grow: 1;
 }
 
@@ -127,6 +129,7 @@ main {
     max-width: 30%;
     height: auto;
     order: 2;
+    margin-left: 20px;
 }
 
 .patreon-section h2,
@@ -192,6 +195,22 @@ main {
 .topgg-image {
     height: auto;
     max-width: 100%;
+}
+
+.owner-section {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the content horizontally */
+}
+
+.owner-text {
+    flex: 2; /* Adjust as needed to change the space distribution */
+    text-align: center;
+}
+
+.owner-image {
+    flex: 1; /* Adjust as needed to change the space distribution */
+    text-align: center;
 }
 
 /* Responsiveness */
