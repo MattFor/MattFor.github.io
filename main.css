@@ -101,6 +101,29 @@ main {
     text-decoration: none;
 }
 
+/* Support and TopGG section styling */
+.support-topgg-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.widget-frame {
+    height: 500px;
+    max-width: 100%;
+}
+.support-section,
+.topgg-section {
+    width: 45%;
+    padding: 10px;
+    text-align: center;
+    box-sizing: border-box;
+}
+.topgg-image {
+    height: auto;
+    max-width: 100%;
+}
+
 /* Responsiveness */
 @media screen and (max-width: 768px) {
     .header-content {
