@@ -1,24 +1,32 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
+    background-color: #2a2b2a;
+    color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.light-mode {
     background-color: #f9f9f9;
     color: #333;
 }
 
+body.dark-mode {
+    background-color: #2a2b2a;
+    color: #2c2c2c;
+}
+
 header {
-    background-color: #4b6cc1;
+    background-color: #ff69b4; /* hot pink */
     color: #fff;
     padding: 20px;
     text-align: center;
 }
 
-main {
-    padding: 20px;
+h1, h2, h3 {
+    color: #ff69b4; /* hot pink */
 }
 
-h1, h2, h3 {
-    color: #2c3e50;
-}
 
 ul {
     list-style-type: disc;
@@ -77,4 +85,14 @@ footer {
     #support-and-topgg {
         flex-direction: column;
     }
+}
+
+.theme-switcher {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.theme-switcher label {
+    color: #fff;
 }

@@ -15,15 +15,20 @@
     <link rel="icon" href="resources/relaxy.ico" type="image/x-icon">
 </head>
 
-<body>
+<body class="dark-mode">
     <header>
+        <div class="theme-switcher">
+            <label>Dark Mode: <input type="checkbox" id="darkModeToggle" onclick="toggleDarkMode()"></label>
+        </div>
         <h1>Relaxy - A Multipurpose Discord Bot</h1>
         <p>By mattfor/MattFor#9884</p>
     </header>
+
     <main>
         <section id="about">
             <h2>About Relaxy</h2>
-            <p>Relaxy is a multipurpose bot that can keep track of levels, provide modlogs, automatic forums, live reaction moderation panels, polls and more. Made by a single person (mattfor/MattFor#9884) as a passion project at the start of the pandemic. It is being worked on almost every single day!</p>
+            <img src="resources/relaxy.gif" alt="Relaxing" class="relax-gif">
+            <p>Relaxy is a multipurpose bot that can keep track of levels, provide modlogs, automatic forums, live reaction moderation panels, polls, and more. Made by a single person (mattfor/MattFor#9884) as a passion project at the start of the pandemic. It is being worked on almost every single day!</p>
         </section>
 
         <section id="features">
@@ -54,7 +59,7 @@
             <section id="join-support" style="text-align: center; width: 50%;">
                 <h2>Have questions, need support, or just want to hang out?</h2>
                 <a href="https://www.discord.gg/xRAGVePxk6" target="_blank" style="display: block; margin-bottom: 10px; font-size: 20px;">Join Relaxy's Requests!</a>
-                <iframe src="https://discord.com/widget?id=1034514185922564106&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+                <iframe src="https://discord.com/widget?id=1034514185922564106&theme=dark" width="550" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
             </section>
             <section id="topgg" class="topgg-section">
                 <a href="https://top.gg/bot/775358898088968202" target="_blank" class="topgg-link"><h3>Check my top.gg website</h3></a>
@@ -70,6 +75,7 @@
     <footer>
         <p>© 2023 Relaxy - All Rights Reserved</p>
     </footer>
+    <script src="main.js"></script>
 </body>
 
 </html>
