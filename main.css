@@ -21,6 +21,7 @@ h1, h2, h3 {
 ul {
     padding-left: 20px;
     list-style-type: disc;
+    text-align: center;
 }
 
 p {
@@ -48,6 +49,7 @@ p {
     max-width: 15%;
     height: 100px;
     padding-left: 20px;
+    border-radius: 5px;
 }
 
 .header-title {
@@ -77,6 +79,19 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.patreon-section {
+    padding: 20px;
+    border: 2px solid #4a90e2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.patreon-section .patreon-image {
+    max-width: 30%;
+    height: auto;
 }
 
 .section, .patreon-section, .command-section, .support-section, .topgg-section {
@@ -112,7 +127,6 @@ main {
 .support-topgg-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     flex-wrap: wrap;
 }
 .widget-frame {
