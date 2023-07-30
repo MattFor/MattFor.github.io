@@ -1,4 +1,4 @@
-const toggleDarkMode = () => {
+const toggleTheme = () => {
     const themeButton = document.getElementById('themeButton');
     if (document.body.classList.contains('dark-mode')) {
         document.body.classList.remove('dark-mode');

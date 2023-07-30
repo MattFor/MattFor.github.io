@@ -32,15 +32,36 @@ header {
 /* Header styling */
 .header-content .color-line {
     white-space: nowrap;
+    display: flex;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 100%;
+}
+
+.header-text {
+    flex-grow: 1;
+    text-align: center;
 }
 
 .header-gif {
     max-width: 40%;
     padding-right: 20px;
     margin-right: 20px;
+}
+
+.main-content {
+    display: flex;
+}
+
+.patreon-section {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #4a90e2;
+    color: #fff;
+}
+
+.patreon-section a {
+    color: #ff69b4;
 }
 
 .header-content h1 {
@@ -52,6 +73,22 @@ header {
 }
 
 /* Theme switcher styling */
+.theme-switcher {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background-color: #ff69b4;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
 .theme-button {
     position: absolute;
     top: 10px;
