@@ -21,6 +21,33 @@ header {
     color: #fff;
     padding: 20px;
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-gif {
+    max-width: 100px; /* or your preferred size */
+}
+
+.theme-switcher {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background-color: #ff69b4;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.theme-switcher:hover {
+    background-color: #ff4069;
 }
 
 h1, h2, h3 {
