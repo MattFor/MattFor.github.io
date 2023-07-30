@@ -66,6 +66,13 @@ ul {
 }
 
 /* Main Sections and General Styling */
+main {
+    min-height: calc(100vh - 100px); /* 100px is the combined height of footer and subpages bar */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .section, .patreon-section, .command-section, .support-section, .topgg-section {
     padding: 20px;
 }
@@ -77,18 +84,16 @@ ul {
 /* Footer and Subpages Bar */
 .footer,
 #subpages-bar {
-    padding: 0;
+    padding: 10px 0; /* Added padding for height */
     text-align: center;
 }
 
 .footer {
     background-color: #2c3e50;
-    margin: 0;
 }
 
 #subpages-bar {
     background-color: #f2f2f2;
-    margin: 0;
 }
 
 .footer a,
