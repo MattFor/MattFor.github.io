@@ -4,6 +4,7 @@ body {
     margin: 0;
     background-color: #2a2b2a;
     color: #fff;
+    padding: 0 20px; /* Added 20px padding to left and right */
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -95,7 +96,7 @@ ul {
 }
 
 .patreon-image {
-    width: 100%;
+    width: 50%;
     display: block;
     margin-top: 10px;
 }
