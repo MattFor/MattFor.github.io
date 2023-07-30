@@ -112,12 +112,15 @@ main {
     align-items: center;
     justify-content: space-between;
     transition: background-color 0.3s;
-    flex-direction: row;
     text-align: left;
 }
 
-.patreon-section:hover {
-    background-color: #add8e6;
+.patreon-section .patreon-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
 }
 
 .patreon-section .patreon-image {
