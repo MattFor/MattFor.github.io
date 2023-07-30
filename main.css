@@ -15,11 +15,16 @@ body.light-mode {
 /* Heading and list styles */
 h1, h2, h3 {
     color: #ff69b4;
+    text-align: center;
 }
 
 ul {
     padding-left: 20px;
     list-style-type: disc;
+}
+
+p {
+    text-align: center;
 }
 
 /* Header styling */
@@ -42,8 +47,7 @@ ul {
     width: auto;
     max-width: 15%;
     height: 100px;
-    margin-right: 20px;
-    padding-right: 20px;
+    padding-left: 20px;
 }
 
 .header-title {
@@ -57,6 +61,7 @@ ul {
     font-size: 16px;
     cursor: pointer;
     border: none;
+    margin-right: 20px;
     border-radius: 10px;
     background-color: #ff69b4;
     transition: background-color 0.3s;
@@ -85,7 +90,7 @@ main {
 /* Footer and Subpages Bar */
 .footer,
 #subpages-bar {
-    padding: 20px 0;
+    padding: 10px 0;
     text-align: center;
 }
 
