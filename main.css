@@ -33,7 +33,7 @@ ul, p, address {
 
 ul {
     padding-left: 20px;
-    list-style-type: disc;
+    list-style-type: none !important;
 }
 
 /* Invite link styling */
