@@ -78,17 +78,7 @@ const scrollToBottom = () => {
     });
 };
 
-const loadChangelog = () => {
-    fetch(changelogPath)
-        .then(response => response.text())
-        .then(text => {
-            const markdownContent = marked(text);
-            document.getElementById('changelog-content').innerHTML = markdownContent;
-        }).catch(() => {})
-};
-
 document.addEventListener("DOMContentLoaded", () => {
     setInitialTheme();
     setInitialAudio();
-    loadChangelog();
 });
