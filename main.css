@@ -77,7 +77,7 @@ a:active, a img:active, img:active {
 .header-logo {
     max-width: 15%;
     border-top-right-radius: 15px;
-    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 .header-title {
@@ -131,25 +131,22 @@ main {
 }
 
 .patreon-image-wrapper {
-    position: relative;
-    width: 45%;
+    width: 25%; /* Adjust this value as needed */
+    text-align: center; /* Centers the images */
+}
+
+.patreon-content {
+    width: 50%; /* Adjust this value as needed */
+    text-align: center;
+    color: #fff;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5); /* Optional: Adds a translucent background to make the text more readable */
 }
 
 .patreon-image {
     max-width: 100%;
     height: auto;
     display: block;
-}
-
-.patreon-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.5); /* Optional: Adds a translucent background to make the text more readable */
 }
 
 /* Footer and Subpages Bar */
@@ -209,6 +206,7 @@ main {
 .topgg-image {
     height: auto;
     max-width: 100%;
+    border-radius: 20px;
 }
 
 .owner-section {
