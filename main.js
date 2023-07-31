@@ -1,10 +1,5 @@
 let marked = null
 
-import('marked').then(module => {
-    marked = module.default;
-    // You can now use "marked" in your code
-});
-
 /**
  * Grr stop looking here all is available at
  * @link https://github.com/MattFor/MattFor.github.io
@@ -105,6 +100,9 @@ document.addEventListener("DOMContentLoaded", () => {
     setInitialAudio();
 
     if (window.location.pathname.endsWith('changelog.html')) {
-        loadChangelog();
+        import('marked').then(module => {
+            marked = module.default;
+            loadChangelog();
+        });
     }
 });
