@@ -177,6 +177,10 @@ main {
     background: rgba(0, 0, 0, 0.2);
 }
 
+.patreon-content a:hover {
+    opacity: 0.45;
+}
+
 .patreon-content a {
     font-size: 25px;
     color: #ff4069;
