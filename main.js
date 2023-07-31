@@ -3,6 +3,8 @@
  * @link https://github.com/MattFor/MattFor.github.io
  */
 
+import marked from 'marked'
+
 const setInitialTheme = () => {
     const theme = localStorage.getItem('theme');
     const themeButton = document.getElementById('themeButton');
@@ -78,7 +80,24 @@ const scrollToBottom = () => {
     });
 };
 
+const loadChangelog = () => {
+    const changelogContent = document.getElementById('changelog-content');
+
+    if (changelogContent) {
+        fetch('../resources/changelog.md')
+            .then(response => response.text())
+            .then(markdown => {
+                const html = marked(markdown);
+                changelogContent.innerHTML = html;
+            }).catch(() => {});
+    }
+};
+
 document.addEventListener("DOMContentLoaded", () => {
     setInitialTheme();
     setInitialAudio();
+
+    if (window.location.pathname.endsWith('changelog.html')) {
+        loadChangelog();
+    }
 });

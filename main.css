@@ -149,6 +149,7 @@ main {
 /* Patreon section styling */
 .patreon-image {
     max-width: 70%;
+    text-align: center;
 }
 
 .patreon-section {
@@ -157,7 +158,7 @@ main {
     justify-content: center;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     transition: background-color 0.3s;
     text-align: left;
 }
@@ -179,6 +180,7 @@ main {
 .patreon-content a {
     font-size: 25px;
     color: #ff4069;
+    padding: 0 20px;
 }
 
 .patreon-section a:hover {
@@ -307,7 +309,7 @@ main {
 
 .owner-image {
     flex: 1;
-    height: auto;
+    height: 200px;
     max-width: 100%;
     text-align: center;
     margin-left: 10px;
