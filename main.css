@@ -75,7 +75,6 @@ a:active, a img:active, img:active {
 
 .header-logo {
     max-width: 15%;
-    padding-left: 20px;
     border-radius: 10px;
 }
 
@@ -156,6 +155,27 @@ main {
 .patreon-section p,
 .patreon-section a {
     order: 1;
+}
+
+.patreon-images {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.patreon-section .patreon-images .left-image,
+.patreon-section .patreon-images .right-image {
+    max-width: 45%;
+    height: auto;
+}
+
+.patreon-section .patreon-images .left-image {
+    margin-right: 10px;
+}
+
+.patreon-section .patreon-images .right-image {
+    margin-left: 10px;
 }
 
 /* Footer and Subpages Bar */
