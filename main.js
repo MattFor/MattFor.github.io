@@ -1,4 +1,4 @@
-import marked from 'marked'
+const marked = await import('marked').default
 
 /**
  * Grr stop looking here all is available at
