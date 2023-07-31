@@ -100,8 +100,8 @@ document.addEventListener("DOMContentLoaded", () => {
     setInitialAudio();
 
     if (window.location.pathname.endsWith('changelog.html')) {
-        import('marked').then(module => {
-            marked = module.default;
+        import('./node_modules/marked/marked.min.js').then(module => {
+            marked = module;
             loadChangelog();
         });
     }

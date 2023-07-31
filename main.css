@@ -148,44 +148,42 @@ main {
 }
 
 /* Patreon section styling */
-.patreon-image {
-    max-width: 70%;
-    text-align: center;
-}
-
 .patreon-section {
     padding: 20px;
-    background-color: transparent;
-    justify-content: center;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    transition: background-color 0.3s;
     text-align: left;
 }
 
-.patreon-section .patreon-content {
+.patreon-images {
+    display: flex;
+    max-width: 70%;
+    align-items: center;
+}
+
+.left-image {
+    order: -1; /* This will make sure the left image comes first */
+    max-width: 30%;
+    height: auto;
+    margin-right: 20px;
+}
+
+.right-image {
+    max-width: 30%;
+    height: auto;
+    margin-left: 20px;
+}
+
+.patreon-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     flex-grow: 1;
-}
-
-.patreon-content {
     border-radius: 20px;
     background: rgba(0, 0, 0, 0.2);
-}
-
-.patreon-content a:hover {
-    opacity: 0.8;
-}
-
-.patreon-content a {
-    font-size: 25px;
-    color: #ff4069;
-    padding: 0 20px;
 }
 
 .patreon-section a:hover {
@@ -194,40 +192,6 @@ main {
 
 .patreon-section:hover {
     background-color: #add8e6;
-}
-
-.patreon-section .patreon-image {
-    max-width: 30%;
-    height: auto;
-    order: 2;
-    margin-left: 20px;
-}
-
-.patreon-section h2,
-.patreon-section p,
-.patreon-section a {
-    order: 1;
-}
-
-.patreon-images {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.patreon-section .patreon-images .left-image,
-.patreon-section .patreon-images .right-image {
-    max-width: 45%;
-    height: auto;
-}
-
-.patreon-section .patreon-images .left-image {
-    margin-right: 10px;
-}
-
-.patreon-section .patreon-images .right-image {
-    margin-left: 10px;
 }
 
 /* Footer and Subpages Bar */
