@@ -1,5 +1,3 @@
-let marked = null
-
 /**
  * Grr stop looking here all is available at
  * @link https://github.com/MattFor/MattFor.github.io
@@ -35,74 +33,8 @@ const toggleTheme = () => {
     }
 };
 
-const setInitialAudio = () => {
-    const audioPlayer = document.getElementById('audioPlayer');
-    const audioButton = document.getElementById('audioButton');
-    const audioStatus = localStorage.getItem('audioStatus');
-
-    if (audioStatus === 'off') {
-        audioPlayer.pause();
-        audioButton.innerText = 'Music Off';
-    } else {
-        audioPlayer.play();
-        audioPlayer.volume = 0.1;
-        audioButton.innerText = 'Music On';
-    }
-};
-
-const toggleAudio = () => {
-    const audioPlayer = document.getElementById('audioPlayer');
-    const audioButton = document.getElementById('audioButton');
-
-    if (audioPlayer.paused) {
-        audioPlayer.play();
-        audioPlayer.volume = 0.1;
-        audioButton.innerText = 'Music On';
-        localStorage.setItem('audioStatus', 'on');
-    } else {
-        audioPlayer.pause();
-        audioButton.innerText = 'Music Off';
-        localStorage.setItem('audioStatus', 'off');
-    }
-};
-
-const scrollToTop = () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-};
-
-const scrollToBottom = () => {
-    window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth'
-    });
-};
-
-const loadChangelog = () => {
-    const changelogContent = document.getElementById('changelog-content');
-
-    if (changelogContent) {
-        fetch('../resources/changelog.md')
-            .then(response => response.text())
-            .then(markdown => {
-                const html = marked(markdown);
-                changelogContent.innerHTML = html;
-            }).catch(() => {});
-    }
-};
-
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("Website version 1.0.0")
+    console.log("Website version PRERELEASE")
 
-    setInitialTheme();
-    setInitialAudio();
-
-    if (window.location.pathname.endsWith('changelog.html')) {
-        import('./node_modules/marked/marked.min.js').then(module => {
-            marked = module;
-            loadChangelog();
-        });
-    }
+    setInitialTheme()
 });
