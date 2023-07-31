@@ -36,6 +36,27 @@ ul {
     list-style-type: disc;
 }
 
+/* Invite link styling */
+.invite-link {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.invite-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #ff69b4;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.invite-button:hover {
+    background-color: #ff4069;
+}
+
 /* Link and Image styling */
 a, a img, img {
     outline: none !important;
@@ -113,11 +134,15 @@ main {
     padding: 20px;
 }
 
-.patreon-image, .topgg-image {
+.topgg-image {
     max-width: 100%;
 }
 
 /* Patreon section styling */
+.patreon-image {
+    max-width: 70%;
+}
+
 .patreon-section {
     padding: 20px;
     background-color: transparent;
@@ -136,6 +161,10 @@ main {
     align-items: center;
     text-align: center;
     flex-grow: 1;
+}
+
+.patreon-content {
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .patreon-section a:hover {
@@ -245,30 +274,35 @@ main {
     padding: 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .owner-container {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-
     width: 100%;
-    display: flex;
-    align-items: center;
 }
 
 .owner-text {
     text-align: left;
     flex: 3;
+    text-align: center;
+    margin-right: 10px;
 }
 
 .owner-image {
-    text-align: center;
     flex: 1;
     height: auto;
     max-width: 100%;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.owner-image img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Responsiveness */
