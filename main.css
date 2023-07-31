@@ -58,7 +58,7 @@ ul {
 .invite-button:hover {
     background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet, red, orange, yellow, green, blue, indigo, violet);
     background-size: 300% 300%;
-    animation: gradient 5s linear infinite;
+    animation: gradient 4s linear infinite;
 }
 
 @keyframes gradient {
