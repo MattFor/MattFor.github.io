@@ -20,7 +20,7 @@ const setInitialTheme = () => {
     }
 };
 
-const toggleTheme = () => {
+window.toggleTheme = () => {
     const themeButton = document.getElementById('themeButton');
     if (document.body.classList.contains('dark-mode')) {
         document.body.classList.remove('dark-mode');
@@ -50,7 +50,7 @@ const setInitialAudio = () => {
     }
 };
 
-const toggleAudio = () => {
+window.toggleAudio = () => {
     const audioPlayer = document.getElementById('audioPlayer');
     const audioButton = document.getElementById('audioButton');
 
@@ -66,14 +66,14 @@ const toggleAudio = () => {
     }
 };
 
-const scrollToTop = () => {
+window.scrollToTop = () => {
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
     });
 };
 
-const scrollToBottom = () => {
+window.scrollToBottom = () => {
     window.scrollTo({
         top: document.body.scrollHeight,
         behavior: 'smooth'
