@@ -1,4 +1,9 @@
-const marked = await import('marked').default
+let marked = null
+
+import('marked').then(module => {
+    marked = module.default;
+    // You can now use "marked" in your code
+});
 
 /**
  * Grr stop looking here all is available at
