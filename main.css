@@ -148,42 +148,38 @@ main {
 }
 
 /* Patreon section styling */
+.patreon-image {
+    max-width: 70%;
+    text-align: center;
+}
+
 .patreon-section {
     padding: 20px;
+    background-color: transparent;
+    justify-content: center;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    transition: background-color 0.3s;
     text-align: left;
 }
 
-.patreon-images {
-    display: flex;
-    max-width: 70%;
-    align-items: center;
-}
-
-.left-image {
-    order: -1; /* This will make sure the left image comes first */
-    max-width: 30%;
-    height: auto;
-    margin-right: 20px;
-}
-
-.right-image {
-    max-width: 30%;
-    height: auto;
-    margin-left: 20px;
-}
-
-.patreon-content {
+.patreon-section .patreon-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     flex-grow: 1;
+}
+
+.patreon-content {
     border-radius: 20px;
     background: rgba(0, 0, 0, 0.2);
+}
+
+.patreon-content a:hover {
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .patreon-content a {
