@@ -76,7 +76,8 @@ a:active, a img:active, img:active {
 
 .header-logo {
     max-width: 15%;
-    border-radius: 10px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
 }
 
 .header-title {
@@ -120,42 +121,6 @@ main {
 .patreon-section {
     padding: 20px;
     background-color: transparent;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: background-color 0.3s;
-    text-align: left;
-}
-
-.patreon-section .patreon-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    flex-grow: 1;
-}
-
-.patreon-section a:hover {
-    background-color: #add8e6;
-}
-
-.patreon-section:hover {
-    background-color: #add8e6;
-}
-
-.patreon-section .patreon-image {
-    max-width: 30%;
-    height: auto;
-    order: 2;
-    margin-left: 20px;
-}
-
-.patreon-section h2,
-.patreon-section p,
-.patreon-section a {
-    order: 1;
 }
 
 .patreon-images {
@@ -165,18 +130,26 @@ main {
     width: 100%;
 }
 
-.patreon-section .patreon-images .left-image,
-.patreon-section .patreon-images .right-image {
-    max-width: 45%;
+.patreon-image-wrapper {
+    position: relative;
+    width: 45%;
+}
+
+.patreon-image {
+    max-width: 100%;
     height: auto;
+    display: block;
 }
 
-.patreon-section .patreon-images .left-image {
-    margin-right: 10px;
-}
-
-.patreon-section .patreon-images .right-image {
-    margin-left: 10px;
+.patreon-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5); /* Optional: Adds a translucent background to make the text more readable */
 }
 
 /* Footer and Subpages Bar */
@@ -247,6 +220,11 @@ main {
 }
 
 .owner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
     width: 100%;
     display: flex;
     align-items: center;
@@ -260,6 +238,8 @@ main {
 .owner-image {
     text-align: center;
     flex: 1;
+    height: auto;
+    max-width: 100%;
 }
 
 /* Responsiveness */
