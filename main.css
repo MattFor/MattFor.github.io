@@ -38,13 +38,14 @@ ul {
 
 /* Link and Image styling */
 a, a img, img {
-    outline: none;
-    border: 0;
+    outline: none !important;
+    border: none !important;
 }
 
 a:focus, a img:focus, img:focus
 a:active, a img:active, img:active {
-    outline: none;
+    outline: none !important;
+    border: none !important;
 }
 
 /* Header styling */
