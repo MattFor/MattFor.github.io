@@ -52,6 +52,9 @@ ul {
     border-radius: 10px;
     margin-top: 20px;
     transition: background-color 0.3s, color 0.3s;
+    font-size: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .invite-button:hover {
