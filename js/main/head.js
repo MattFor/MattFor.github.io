@@ -40,7 +40,7 @@
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relaxy! - ${pageTitle}</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="/main.css">
     <link rel="icon" href="resources/relaxy.ico" type="image/x-icon">
     <meta name="theme-color" content="#ff69b4">
     <meta name="author" content="MattFor">
