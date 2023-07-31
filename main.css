@@ -176,6 +176,11 @@ main {
     background: rgba(0, 0, 0, 0.2);
 }
 
+.patreon-content a {
+    font-size: 25px;
+    color: #ff4069;
+}
+
 .patreon-section a:hover {
     background-color: #add8e6;
 }
