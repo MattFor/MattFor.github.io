@@ -94,6 +94,8 @@ const loadChangelog = () => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+    console.log("Website version 1.0.0")
+
     setInitialTheme();
     setInitialAudio();
 
