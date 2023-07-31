@@ -1,9 +1,9 @@
+import marked from 'marked'
+
 /**
  * Grr stop looking here all is available at
  * @link https://github.com/MattFor/MattFor.github.io
  */
-
-import marked from 'marked'
 
 const setInitialTheme = () => {
     const theme = localStorage.getItem('theme');
