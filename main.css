@@ -22,7 +22,7 @@ body.light-mode {
 }
 
 /* Heading and list styles */
-h1, h2, h3 {
+h1, h2, h3, h4 {
     color: #ff69b4;
     text-align: center;
 }
