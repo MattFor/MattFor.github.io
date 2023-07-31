@@ -31,13 +31,12 @@
         htmlContent += '<a href="/" class="btn-main-page" id="back-to-main">Back to Main Page</a> | ';
     }
 
-    subpages.forEach((page, index) => {
+    subpages.filter(p => !currentPage.includes(p.link)).forEach((page, index) => {
         const link = isSubpage ? page.link.replace('subpages/', '') : page.link;
-        if (!currentPage.includes(page.name)) {
-            htmlContent += `<a href="${link}">${page.name}</a>`;
-            if (index < subpages.length - 1) {
-                htmlContent += ' | ';
-            }
+
+        htmlContent += `<a href="${link}">${page.name}</a>`;
+        if (index < subpages.length - 1) {
+            htmlContent += ' | ';
         }
     });
 
