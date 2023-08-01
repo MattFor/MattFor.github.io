@@ -1,0 +1,223 @@
+body {
+    background: #0e1015;
+    font-family: "Lato", sans-serif;
+}
+
+h2 {
+    color: white;
+}
+
+h3 {
+    padding: 15px;
+    color: white;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #0e1015;
+    overflow-x: hidden;
+    padding-top: 100px;
+    border-right: 1px solid #181a20;
+}
+  
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #646e78;
+    display: block;
+}
+  
+.sidenav a:hover {
+    color: #ff69b4;
+}
+  
+.infoBox {
+    width: 65%;
+    border-radius: 7px;
+    padding: 10px;
+    background-color: #181a20;
+    position: relative;
+    left: 30px;
+    right: 20px;
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: -10;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1px; 
+    justify-items: start; 
+}
+
+ul li {
+    padding: 2px 15px; 
+    color: #68727d;
+    display: flex;
+    align-items: center;
+}
+
+ul span {
+    padding: 5px;
+    color: white;
+}
+
+.help-icon,
+.copy-icon {
+    width: 10px;
+    height: 10px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right: 5px;
+    transition-duration: 0.5s;
+}
+
+.help-icon {
+    background-image: url('images/question-symbol.png');
+    transition-duration: 0.5s;
+}
+
+#helpButton:hover .help-icon {
+    background-image: url('images/question-symbol-hovered.png');
+    transition-duration: 0.5s;
+}
+
+.copy-icon {
+    background-image: url('images/copy-symbol.png');
+    transition-duration: 0.5s;
+}
+
+#serverID:hover .copy-icon {
+    background-image: url('images/copy-symbol-hovered.png');
+    transition-duration: 0.5s;
+}
+
+#helpButton,
+#serverID {
+    color: #ff69b4;
+    padding-top: 5px;
+    padding-bottom: 25px;
+    transition-duration: 0.5s;
+}
+
+#helpButton:hover {
+    color: #bb4b83;
+    transition-duration: 0.5s;
+}
+
+#serverID:hover {
+    color: #bb4b83;
+    transition-duration: 0.5s;
+}
+
+
+#main {
+    position: relative;
+    left: 5px;
+    padding: 16px;
+}
+
+.barGraph {
+    border-radius: 5px;
+    background-color: #272b34;
+    padding: 15px;
+    margin-bottom: 30px;
+    margin-right: 50px;
+    width: 415px;
+    height: 415px; /* Adjusted height to accommodate the lines and gap */
+    left: 30px;
+    right: 20px;
+    position: relative;
+  }
+  
+.barGraph::before {
+    content: "";
+    position: absolute;
+    top: 65px; /* Move the gradient down by 65 pixels to start after the top line */
+    left: 0;
+    right: 0;
+    width: 80%;
+    bottom: 0; /* Set the bottom to 0, so the lines fill the container from top to bottom */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background: repeating-linear-gradient(
+    to bottom,
+    #ffffff 0,
+    #ffffff 1px,
+    transparent 1px,
+    transparent 66px /* Set the gap between lines to 65 pixels */
+    );
+}
+
+.button {
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.5s;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 40%;
+}
+
+.dashboardButton {
+    background-color: #272b34;
+    color: white;
+    margin-left: 15px; /* Add margin to create space between buttons */
+}
+
+.dashboardButton:hover {
+    background-color: #ff69b4;
+    color: white;
+}
+
+#serverStatsControl {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#buttonContainer {
+    left: 0;
+    margin-bottom: auto;
+}
+
+#serverStatsHeader {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+#selectStatHeader {
+    /* Add a margin to align with the start of the buttonContainer */
+    margin-right: 0;
+    margin-left: auto;
+    left: 300px;
+}
+
+/* Optional: To ensure headers and buttons stay on the same line in smaller screens */
+@media screen and (max-width: 600px) {
+    #alignedHeadersContainer {
+        flex-direction: column;
+    }
+    #selectStatHeader {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}

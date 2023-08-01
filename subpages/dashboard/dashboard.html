@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relaxy!</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="main.js"></script>
+</head>
+<body>
+    
+    <div id="mySidenav" class="sidenav">
+        <a href="#">Information</a>
+        <a href="#">Commands</a>
+        <a href="#">Settings</a>
+        <a href="#">Credits</a>
+        <a href="#">Help</a>
+    </div>
+    
+    <div id="main">
+        <h2>Fancy's Backrooms Game</h2>
+    </div>
+
+    <div id="serverInfo" class="infoBox">
+        <h3>SERVER INFO</h3>
+        <ul>
+            <li>Members: <span>84,084</span></li>
+            <li>Categories: <span>10</span></li>
+            <li>Text Channels: <span>49</span></li>
+            <li>Voice Channels: <span>11</span></li>
+            <li>Roles: <span>48</span></li>
+            <li>Server Boosts: <span>116</span></li>
+            <li id="serverID"><span class="copy-icon"></span>Copy Server ID</li>
+            <li id="helpButton"><span class="help-icon"></span>Need Help?</li>
+        </ul>
+    </div>
+
+    <div id="serverStats" class="infoBox">
+        <div id="serverStatsControl">
+            <div id="graphBox">
+                <h3 id="serverStatsHeader">SERVER STATS</h3>
+                <div id="barGraph" class="barGraph">
+                    <div class="lines"></div>
+                </div>
+            </div>
+            <div id="buttonContainer">
+                <h3 id="selectStatHeader">SELECT A STAT</h3>
+                <button class="dashboardButton button">Messages Sent</button>
+                <button class="dashboardButton button">Messages Removed</button>
+                <button class="dashboardButton button">Commands Used</button>
+                <button class="dashboardButton button">Members Joined</button>
+                <button class="dashboardButton button">Members Left</button>
+                <button class="dashboardButton button">Punishments</button>
+
+                <h3 id="settingsHeader">GRAPH SETTINGS</h3>
+                <button class="dashboardButton button">Daily</button>
+                <button class="dashboardButton button">Weekly</button>
+                <button class="dashboardButton button">Monthly</button>
+                <button class="dashboardButton button">Yearly</button>
+                <button class="dashboardButton button">Export CSV</button>
+                <button class="dashboardButton button">Help</button>
+            </div>
+        </div>
+    </div>
+    
+    
+</body>
+</html>
