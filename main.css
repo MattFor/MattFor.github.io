@@ -92,8 +92,7 @@ a:active, a img:active, img:active {
     display: flex;
     align-items: center;
     width: 100%;
-    position: relative;
-    /* justify-content: space-between; */
+    justify-content: center;
 }
 
 .audio-button-container {
@@ -109,13 +108,10 @@ a:active, a img:active, img:active {
     max-width: 15%;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    position: absolute;
-    left: 10px; 
 }
 
 .header-title {
     text-align: center;
-    width: 100%;
     flex-grow: 1;
 }
 
