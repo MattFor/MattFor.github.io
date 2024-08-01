@@ -23,7 +23,7 @@
     ];
 
     const currentPage = window.location.pathname;
-    const isSubpage = currentPage.includes('/subpages/');
+    const isSubpage = currentPage.includes('subpages');
 
     let htmlContent = '';
     if (currentPage !== '/' && currentPage !== '/index.html') 
@@ -32,7 +32,7 @@
     }
 
     subpages.filter(p => !currentPage.includes(p.link)).forEach((page, index) => {
-        const link = isSubpage ? page.link.replace(/subpages\/.*/, '') : page.link;
+        const link = isSubpage ? page.link.replace(/subpages\/.*/g, '') : page.link;
 
         htmlContent += `<a href="${link}">${page.name}</a>`;
         if (index < subpages.length - 1) 

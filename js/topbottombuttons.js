@@ -1,13 +1,13 @@
 const scrollToTop = () => {
     window.scrollTo({
         top: 0,
-        behavior: 'smooth'
+        behavior: "smooth"
     });
 };
 
 const scrollToBottom = () => {
     window.scrollTo({
         top: document.body.scrollHeight,
-        behavior: 'smooth'
+        behavior: "smooth"
     });
 };
