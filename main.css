@@ -92,7 +92,7 @@ a:active, a img:active, img:active {
     display: flex;
     align-items: center;
     width: 100%;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .audio-button-container {
