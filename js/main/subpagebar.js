@@ -34,7 +34,7 @@
     subpages.filter(p => !currentPage.includes(p.link)).forEach((page, index) => {
         const link = isSubpage ? page.link.replace(/subpages\/.*\//, '') : page.link;
 
-        htmlContent += `<a href="${page.link}">${page.name}</a>`;
+        htmlContent += `<a href="${link}">${page.name}</a>`;
         if (index < subpages.length - 1) 
         {
             htmlContent += ' | ';
