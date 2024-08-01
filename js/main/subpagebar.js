@@ -2,22 +2,22 @@
     const subpages = [
         {
             name: "Terms of Service",
-            link: "subpages/terms-of-service",
+            link: "subpages/terms-of-service/index.html",
             description: "Read the Terms of Service for using Relaxy!, the Multipurpose Discord Bot."
         },
         {
             name: "Privacy Policy",
-            link: "subpages/privacy-policy",
+            link: "subpages/privacy-policy/index.html",
             description: "Read the Privacy Policy for using Relaxy!, the Multipurpose Discord Bot."
         },
         {
             name: "Changelog",
-            link: "subpages/changelog",
+            link: "subpages/changelog/index.html",
             description: "Check out the changelog and see the latest changes for Relaxy!, the Multipurpose Discord Bot."
         },
         {
             name: "Credits",
-            link: "subpages/credits",
+            link: "subpages/credits/index.html",
             description: "Credits and acknowledgments for those who have contributed to the development of Relaxy!, the Multipurpose Discord Bot."
         }
     ];
@@ -32,7 +32,7 @@
     }
 
     subpages.filter(p => !currentPage.includes(p.link)).forEach((page, index) => {
-        const link = isSubpage ? page.link.replace(/subpages\/.*/g, '') : page.link;
+        const link = isSubpage ? page.link.replace(/subpages\/.*\//, '') : page.link;
 
         htmlContent += `<a href="${link}">${page.name}</a>`;
         if (index < subpages.length - 1) 
