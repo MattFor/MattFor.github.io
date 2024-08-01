@@ -88,6 +88,10 @@ a:active, a img:active, img:active {
     background-color: #4a90e2;
 }
 
+.header-logo-container {
+    flex: 0 0 auto;
+}
+
 .header-content {
     display: flex;
     align-items: center;
