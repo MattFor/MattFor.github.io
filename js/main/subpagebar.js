@@ -25,7 +25,7 @@
     const currentPage = window.location.pathname;
 
     let htmlContent = "";
-    if (currentPage !== "/" && currentPage !== "/subpages/terms-of-service.html")
+    if (currentPage !== "/")
     {
         htmlContent += '<a href="/" class="btn-main-page" id="back-to-main">Back to Main Page</a> <span>|</span> ';
     }

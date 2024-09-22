@@ -115,6 +115,9 @@ a:active, a img:active, img:active {
 }
 
 .header-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     text-align: center;
     flex-grow: 1;
 }
