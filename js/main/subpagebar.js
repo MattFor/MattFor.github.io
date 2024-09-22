@@ -2,22 +2,22 @@
     const subpages = [
         {
             name: "Terms of Service",
-            link: "subpages/terms-of-service/index.html",
+            link: "subpages/terms-of-service/terms-of-service.html",
             description: "Read the Terms of Service for using Relaxy!, the Multipurpose Discord Bot."
         },
         {
             name: "Privacy Policy",
-            link: "subpages/privacy-policy/index.html",
+            link: "subpages/privacy-policy/terms-of-service.html",
             description: "Read the Privacy Policy for using Relaxy!, the Multipurpose Discord Bot."
         },
         {
             name: "Changelog",
-            link: "subpages/changelog/index.html",
+            link: "subpages/changelog/terms-of-service.html",
             description: "Check out the changelog and see the latest changes for Relaxy!, the Multipurpose Discord Bot."
         },
         {
             name: "Credits",
-            link: "subpages/credits/index.html",
+            link: "subpages/credits/terms-of-service.html",
             description: "Credits and acknowledgments for those who have contributed to the development of Relaxy!, the Multipurpose Discord Bot."
         }
     ];
@@ -26,7 +26,7 @@
     const isSubpage = currentPage.includes('subpages');
 
     let htmlContent = '';
-    if (currentPage !== '/' && currentPage !== '/index.html') 
+    if (currentPage !== '/' && currentPage !== '/terms-of-service.html')
     {
         htmlContent += '<a href="/" class="btn-main-page" id="back-to-main">Back to Main Page</a> | ';
     }
