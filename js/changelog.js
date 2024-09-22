@@ -2,7 +2,10 @@ const changelogContent = document.getElementById("changelog-content");
 
 if (changelogContent)
 {
-    fetch("/resources/changelog.md")
+    const url = window.location.href;
+    const fetchUrl = url.includes("devlog") ? "/resources/text/devlog.md" : "/resources/text/changelog.md";
+
+    fetch(fetchUrl)
         .then(response => {
             if (!response.ok)
             {
@@ -15,7 +18,7 @@ if (changelogContent)
             changelogContent.innerHTML = marked(markdown);
         })
         .catch(error => {
-            console.error("Error fetching changelog:", error);
-            changelogContent.innerHTML = "<p>Error loading changelog. Please try again later.</p>";
+            console.error("Error fetching data:", error);
+            changelogContent.innerHTML = "<p>Error loading data. Please try again later.</p>";
         });
 }

@@ -194,7 +194,8 @@ main {
 }
 
 .patreon-section a:hover {
-    background-color: #add8e6;
+    border-radius: 20px;
+    background-color: #65d8fa;
 }
 
 .patreon-section:hover {

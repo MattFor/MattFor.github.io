@@ -16,6 +16,11 @@
             description: "Check out the changelog and see the latest changes for Relaxy!, the Multipurpose Discord Bot."
         },
         {
+            name: "Devlog",
+            link: "/subpages/devlog.html",
+            description: "Check out Relaxy!'s creator, MattFor's development log."
+        },
+        {
             name: "Credits",
             link: "/subpages/credits.html",
             description: "Credits and acknowledgments for those who have contributed to the development of Relaxy!, the Multipurpose Discord Bot."

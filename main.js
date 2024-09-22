@@ -1,5 +1,5 @@
 /**
- * Grr stop looking here all is available at
+ * Grr! stop looking here all is available at
  * @link https://github.com/MattFor/MattFor.github.io
  */
 
