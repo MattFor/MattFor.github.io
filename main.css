@@ -50,7 +50,6 @@ ul {
     text-decoration: none;
     border-radius: 10px;
     margin-top: 20px;
-    transition: all 0.3s;
     font-size: 40px;
     margin-bottom: 20px;
 }
@@ -58,7 +57,7 @@ ul {
 .invite-button:hover {
     background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet, red, orange, yellow, green, blue, indigo, violet);
     background-size: 400% 400%;
-    animation: gradient 4s linear infinite;
+    animation: gradient 6s linear infinite;
 }
 
 @keyframes gradient {
@@ -72,7 +71,7 @@ a, a img, img {
     border: none !important;
 }
 
-a:focus, a img:focus, img:focus
+a:focus, a img:focus, img:focus,
 a:active, a img:active, img:active {
     outline: none !important;
     border: none !important;
@@ -166,7 +165,6 @@ main {
     justify-content: center;
     display: flex;
     align-items: center;
-    justify-content: space-around;
     transition: background-color 0.3s;
     text-align: center;
 }
@@ -295,15 +293,15 @@ body.light-mode .footer {
 .owner-container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 100%;
+    justify-content: flex-start;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .owner-text {
     text-align: left;
-    flex: 3;
-    text-align: center;
-    margin-right: 10px;
+    flex: 2;
+    margin-right: 20px;
 }
 
 .owner-image {
@@ -311,13 +309,14 @@ body.light-mode .footer {
     height: 200px;
     max-width: 100%;
     text-align: center;
-    margin-left: 10px;
 }
 
 .owner-image img {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    width: 150px;
+    border-radius: 20%;
 }
 
 /* Changelog */
