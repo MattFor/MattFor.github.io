@@ -25,8 +25,8 @@
     const currentPage = window.location.pathname;
     const isSubpage = currentPage.includes('subpages');
 
-    let htmlContent = '';
-    if (currentPage !== '/' && currentPage !== '/terms-of-service.html')
+    let htmlContent = "";
+    if (currentPage !== "/" && currentPage !== "/terms-of-service.html")
     {
         htmlContent += '<a href="/" class="btn-main-page" id="back-to-main">Back to Main Page</a> | ';
     }
