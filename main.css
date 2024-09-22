@@ -186,6 +186,33 @@ main {
     text-decoration: none;
 }
 
+.patreon-supporters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Use space-between for even spacing */
+}
+
+.supporter {
+    flex: 1 1 calc(33.33% - 20px); /* 3 columns with space between */
+    box-sizing: border-box; /* Ensure padding/margins are included in width */
+    margin: 10px; /* Margin around each supporter for spacing */
+}
+
+.supporter p {
+    margin: 0; /* Reset default margins */
+}
+
+.centered-text {
+    text-align: center;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .supporter {
+        flex: 1 1 100%; /* Stack columns on smaller screens */
+    }
+}
+
 .patreon-section {
     padding: 20px;
     background-color: transparent;
