@@ -206,6 +206,22 @@ main {
     padding: 10px 0;
     text-align: center;
 }
+#subpages-bar a, #subpages-bar span {
+    color: #333333;
+    transition: color 0.3s;
+}
+
+#subpages-bar a:hover, #subpages-bar span:hover {
+    color: #ff69b4;
+}
+
+body.light-mode #subpages-bar a, body.light-mode #subpages-bar span {
+    color: #333;
+}
+
+body.light-mode #subpages-bar a:hover, body.light-mode #subpages-bar span:hover {
+    color: #ff69b4;
+}
 
 .footer {
     color: #fff;

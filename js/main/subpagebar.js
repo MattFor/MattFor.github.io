@@ -27,7 +27,7 @@
     let htmlContent = "";
     if (currentPage !== "/" && currentPage !== "/subpages/terms-of-service.html")
     {
-        htmlContent += '<a href="/" class="btn-main-page" id="back-to-main">Back to Main Page</a> | ';
+        htmlContent += '<a href="/" class="btn-main-page" id="back-to-main">Back to Main Page</a> <span>|</span> ';
     }
 
     subpages.filter(p => !currentPage.includes(p.link)).forEach((page, index) => {
