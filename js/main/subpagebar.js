@@ -41,7 +41,7 @@
 
     if (htmlContent.endsWith(" <span>|</span> "))
     {
-        htmlContent = htmlContent.slice(0, -3); // Remove trailing separator
+        htmlContent = htmlContent.slice(0, -16); // Remove trailing separator
     }
 
     document.getElementById("subpages-bar").innerHTML = htmlContent;

@@ -317,6 +317,32 @@ body.light-mode .footer {
     margin-right: auto;
 }
 
+/* Changelog */
+#changelog-content h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    margin: 1em 0;
+}
+
+#changelog-content p {
+    margin: 0.5em 0;
+}
+
+#changelog-content ul {
+    margin-left: 20px;
+}
+
+#changelog-content pre {
+    background-color: #f4f4f4;
+    padding: 1em;
+    overflow-x: auto;
+}
+
+#changelog-content code {
+    background-color: #f4f4f4;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
 /* Responsiveness */
 @media screen and (max-width: 768px) {
     .header-content {
