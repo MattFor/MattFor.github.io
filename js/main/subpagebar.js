@@ -35,11 +35,11 @@
 
         if (index < subpages.length - 1)
         {
-            htmlContent += " | ";
+            htmlContent += " <span>|</span> ";
         }
     });
 
-    if (htmlContent.endsWith(" | "))
+    if (htmlContent.endsWith(" <span>|</span> "))
     {
         htmlContent = htmlContent.slice(0, -3); // Remove trailing separator
     }
