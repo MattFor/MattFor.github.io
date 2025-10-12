@@ -406,3 +406,208 @@ body.light-mode .footer {
         flex-direction: column;
     }
 }
+
+
+:root{
+  --bg: #0f1720;
+  --card: #0b1220;
+  --accent: #ff69b4;
+  --text: #e6eef8;
+  --muted: #9fb0c8;
+  --max-width: 1200px;
+  --gutter: 1rem;
+  --container-padding: 1rem;
+}
+
+html{
+  box-sizing: border-box;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,*::before,*::after{box-sizing:inherit;}
+
+body.dark-mode{
+  background: linear-gradient(180deg,var(--bg), #07101a);
+  color:var(--text);
+  margin:0;
+  line-height:1.45;
+  padding:0;
+}
+
+main{max-width:var(--max-width);margin:0 auto;padding: clamp(0.75rem, 2vw, 1.5rem);}
+
+/* Header */
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  padding: clamp(0.5rem, 1.6vw, 1rem);
+  background: rgba(255,255,255,0.02);
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  position: sticky;
+  top:0;
+  z-index:20;
+}
+
+.header-content{
+  display:flex;
+  gap:0.75rem;
+  align-items:center;
+  min-width:0;
+}
+
+/* Logo */
+.header-logo{
+  width: clamp(48px, 10vw, 72px);
+  height: clamp(48px,10vw,72px);
+  object-fit:cover;
+  border-radius:10px;
+  flex-shrink:0;
+  image-rendering:auto;
+}
+
+/* Title */
+.header-title h1{
+  font-size: clamp(1.0rem, 3.2vw, 1.5rem);
+  margin:0;
+  line-height:1.05;
+  letter-spacing: -0.01em;
+}
+.header-title p{margin:0;font-size:0.85rem;color:var(--muted)}
+
+/* Theme button */
+.theme-button{
+  border:0;
+  background:transparent;
+  color:var(--text);
+  padding:0.5rem 0.75rem;
+  border-radius:8px;
+  font-weight:600;
+  cursor:pointer;
+  transition: transform .12s ease;
+}
+.theme-button:active{transform:scale(.98)}
+
+/* Invite button container */
+.invite-link{display:flex;justify-content:center;margin:0.75rem 0}
+.invite-button{
+  display:inline-block;
+  text-decoration:none;
+  background:linear-gradient(90deg,var(--accent), #ff8acb);
+  color:#111;
+  padding:0.8rem 1rem;
+  border-radius:12px;
+  font-weight:700;
+  font-size:clamp(0.9rem, 2.6vw, 1.05rem);
+  box-shadow:0 6px 18px rgba(255,105,180,0.12);
+  width:100%;
+  max-width:420px;
+  text-align:center;
+}
+
+/* Main sections: use grid with responsive fallback */
+.left-right-sections{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-items:start;
+}
+
+/* Sections style */
+.section, .patreon-section, .command-section{
+  background: rgba(255,255,255,0.02);
+  padding: clamp(0.8rem, 2.6vw, 1.1rem);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.02);
+}
+
+/* Patreon images row */
+.patreon-section{
+  display:flex;
+  gap:0.75rem;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.patreon-image{
+  width: clamp(64px, 20vw, 160px);
+  height: auto;
+  border-radius:12px;
+  aspect-ratio: 1/1;
+  object-fit:cover;
+  flex-shrink:0;
+}
+
+/* Commands: make them wrap nicely */
+.command-section p{white-space:normal;word-break:break-word;font-size:clamp(0.9rem,2.3vw,1rem);color:var(--muted)}
+.command-section h3{margin-top:0.6rem}
+
+/* Support + top.gg container */
+.support-topgg-container{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:1rem;
+  margin-top:1rem;
+}
+
+/* Make the Discord widget responsive */
+.widget-wrap{
+  width:100%;
+  border-radius:10px;
+  overflow:hidden;
+  background: #071018;
+  border:1px solid rgba(255,255,255,0.02);
+}
+
+/* Responsive iframe: preserve aspect ratio */
+.widget-wrap::before{
+  content:"";
+  display:block;
+  padding-top: min(80%, 500px); /* allows aspect flexibility — smaller screens get taller box */
+}
+.widget-frame{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+/* top.gg image */
+.topgg-image{max-width:160px;width:100%;height:auto;display:block;margin:0.25rem 0}
+
+/* Footer */
+.footer{padding:1rem;text-align:center;color:var(--muted);font-size:0.9rem;margin-top:1.5rem}
+
+/* Make layout two-column on larger screens */
+@media (min-width: 880px){
+  .left-right-sections{
+    grid-template-columns: 1fr 380px;
+    align-items:start;
+  }
+  .support-topgg-container{
+    grid-template-columns: 1fr 320px;
+    align-items:start;
+  }
+  .widget-wrap::before{padding-top:calc(500px / 1); /* desktop height */
+  }
+}
+
+/* Small screen polish */
+@media (max-width: 520px){
+  .header{padding:0.6rem}
+  .header-content{flex-direction:row;align-items:center}
+  .header-title h1{font-size:1.05rem}
+  .patreon-section{justify-content:center}
+  .patreon-content{text-align:center}
+  .theme-button{font-size:0.85rem;padding:0.4rem 0.6rem}
+  .invite-button{padding:0.75rem;font-size:1rem}
+  /* stack support/topgg sections for narrow screens */
+  .support-topgg-container{grid-template-columns:1fr}
+}
+
+/* Accessibility focus outlines */
+a:focus, button:focus {outline:3px solid rgba(255,105,180,0.18);outline-offset:3px}
