@@ -1106,3 +1106,39 @@ It will only accept files on "server storage" saved with the prefix "server-"
 
 - whatever was before
 - recreate the Counting bot and Ticket bot within Relaxy
+
+# [2.4.4] 20-09-2023 22:00
+
+## Added
+- internal support for modals, select menus and more (first used in =warnings overhaul)
+- =swap - swap the places of 2 songs within the music queue
+
+## Improvements
+- =purge has way more functionality now, with more coming soon
+- =heartboard, =poll, =warnings, =reactionpanel, =welcomechannel
+- =steamgame - from now on maintained by Giuca. Works better
+- =toolkit improved internal logic
+- garbage collector code improved
+
+## Fixes
+- =kiss works properly in / command form now
+- =pat now works (again)
+- =help and the global relaxy footer image has been refreshed
+- =rename has been fixed and has on-the-go permission checking
+- =request now works (again)
+- =play now works (again) because a yt update broke it
+
+## Internal
+- added =console - interact with Relaxy's console through Discord
+- =gdsc, =gpsc - delete and post slash commands on the fly
+- changed how console output is handled, created mode to disable ALL logging
+
+## Removed
+- =reddit - removed until Reddit removes API restrictions
+
+## Upcoming
+- entire music module rewrite:
+Currently running on a custom modified version of discord-player 5.4
+While the most up-to-date version is: `6.6.4`
+- =warn / command version
++ stuff from previous posts
