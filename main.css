@@ -940,6 +940,24 @@ body.nav-open {
     text-align: center;
 }
 
+/* Collab art as a faint watermark behind the supporters card. */
+#patreon-supporters {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+#patreon-supporters::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('/resources/collab.webp') center / cover no-repeat;
+    opacity: 0.1;
+    z-index: -1;
+    pointer-events: none;
+    border-radius: inherit;
+}
+
 .supporter p {
     margin: 0;
 }
@@ -1273,6 +1291,26 @@ html.js .reveal.is-visible {
     /* On phones the tooltip behaves as a tap-to-open, self-scrolling card. */
     .cmd-tip {
         max-width: min(420px, 94vw);
+    }
+
+    /* Footer: links left so Relaxy has the right corner; image sits inside. */
+    #subpages-bar {
+        text-align: left;
+    }
+
+    .footer {
+        text-align: left;
+        /* leave right margin so the text never runs under the image */
+        padding-right: calc(clamp(64px, 22vw, 96px) + 1.25rem);
+    }
+
+    .footer-relaxy {
+        /* inside the footer, pinned to the bottom-right corner */
+        bottom: 0;
+        right: 0.5rem;
+        width: clamp(64px, 22vw, 96px);
+        /* no translateY nudge – image is fully inside the bar */
+        transform: none;
     }
 }
 
