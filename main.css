@@ -1354,7 +1354,7 @@ html.js .reveal.is-visible {
         width: clamp(140px, 45vw, 190px);
         height: auto;
         margin: 0 auto;
-        box-shadow: var(--shadow-md);
+        /*box-shadow: var(--shadow-md);*/
     }
 
     /* On phones the tooltip behaves as a tap-to-open, self-scrolling card. */
