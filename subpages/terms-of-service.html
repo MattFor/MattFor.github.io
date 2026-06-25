@@ -40,10 +40,23 @@
         <span>Relaxy!</span>
     </a>
     <nav class="site-nav" id="topnav" aria-label="Pages"></nav>
-    <button id="themeButton" class="theme-button" type="button" aria-pressed="false" onclick="toggleTheme()">Light
-        Mode
-    </button>
+    <div class="topbar-end">
+        <button id="themeButton" class="theme-button" type="button" aria-pressed="false" onclick="toggleTheme()">Light
+            Mode
+        </button>
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
 </header>
+
+<div class="nav-drawer" id="navDrawer" aria-hidden="true">
+    <div class="nav-drawer-overlay" id="navOverlay"></div>
+    <div class="nav-drawer-panel">
+        <button class="nav-drawer-close" id="navDrawerClose" type="button" aria-label="Close navigation">✕</button>
+        <nav class="drawer-nav" id="drawerNav" aria-label="Navigation"></nav>
+    </div>
+</div>
 
 <section class="hero">
     <p class="eyebrow">Legal</p>
@@ -102,6 +115,7 @@
 <script src="/js/main/subpagebar.js" defer></script>
 <script src="/main.js" defer></script>
 <script src="/js/main/enhance.js" defer></script>
+<script src="/js/main/mobilenav.js" defer></script>
 </body>
 
 </html>

@@ -274,8 +274,14 @@ section {
     color: var(--accent);
 }
 
-.theme-button {
+.topbar-end {
     justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.theme-button {
     color: #fff;
     background: var(--accent);
     padding: var(--space-2) var(--space-4);
@@ -291,6 +297,160 @@ section {
 .theme-button:hover {
     background: var(--accent-2);
     transform: translateY(-1px);
+}
+
+/* ============================================================= Nav toggle (hamburger) */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 38px;
+    height: 38px;
+    background: transparent;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    padding: 0;
+    color: var(--text);
+    flex-shrink: 0;
+    transition: border-color var(--t-fast), background var(--t-fast);
+}
+
+.nav-toggle:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent-ring);
+}
+
+.nav-toggle span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+    transition: transform var(--t-fast), opacity var(--t-fast);
+    transform-origin: center;
+}
+
+.nav-toggle.is-open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.is-open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.nav-toggle.is-open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ============================================================= Nav drawer */
+.nav-drawer {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.nav-drawer.is-open {
+    pointer-events: auto;
+    visibility: visible;
+}
+
+.nav-drawer-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    opacity: 0;
+    transition: opacity var(--t);
+}
+
+.nav-drawer.is-open .nav-drawer-overlay {
+    opacity: 1;
+}
+
+.nav-drawer-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(280px, 80vw);
+    background: var(--bg-surface);
+    border-left: 1px solid var(--border-strong);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-4);
+    gap: var(--space-1);
+    transform: translateX(100%);
+    transition: transform var(--t);
+    overflow-y: auto;
+}
+
+.nav-drawer.is-open .nav-drawer-panel {
+    transform: none;
+}
+
+.nav-drawer-close {
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    margin-bottom: var(--space-3);
+    flex-shrink: 0;
+    transition: color var(--t-fast), border-color var(--t-fast), background var(--t-fast);
+}
+
+.nav-drawer-close:hover {
+    color: var(--text);
+    border-color: var(--border-strong);
+    background: var(--accent-soft);
+}
+
+.drawer-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.drawer-nav a {
+    display: block;
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-weight: 500;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-sm);
+    transition: color var(--t-fast), background var(--t-fast);
+}
+
+.drawer-nav a:hover,
+.drawer-nav a.is-active {
+    color: var(--text);
+    background: var(--accent-soft);
+}
+
+.drawer-nav a.nav-page {
+    color: var(--text-muted);
+}
+
+.drawer-nav a.nav-page:hover {
+    color: var(--accent);
+    background: var(--accent-soft);
+}
+
+body.nav-open {
+    overflow: hidden;
 }
 
 /* ============================================================= Hero */
@@ -987,10 +1147,9 @@ html.js .reveal.is-visible {
 @media (max-width: 720px) {
     .topbar {
         grid-template-columns: 1fr auto;
-        grid-template-rows: auto auto;
-        row-gap: var(--space-2);
+        grid-template-rows: auto;
         padding: var(--space-2) var(--space-4);
-        gap: var(--space-2);
+        gap: var(--space-3);
     }
 
     .brand img {
@@ -998,23 +1157,12 @@ html.js .reveal.is-visible {
         height: 40px;
     }
 
-    /* Nav slides horizontally — no wrapping, no clutter */
     .site-nav {
-        grid-column: 1 / -1;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        justify-content: flex-start;
-        padding-bottom: 2px;
+        display: none;
     }
-    .site-nav::-webkit-scrollbar { display: none; }
-    .site-nav a, .site-nav .nav-sep {
-        flex-shrink: 0;
-    }
-    .site-nav a {
-        font-size: 0.85rem;
-        padding: var(--space-1) var(--space-3);
+
+    .nav-toggle {
+        display: flex;
     }
 
     .patreon-section {
