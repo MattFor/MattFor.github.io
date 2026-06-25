@@ -701,8 +701,6 @@ body.nav-open {
     width: clamp(120px, 30vw, 300px);
     height: auto;
 
-    transform: translateX(-180%) translateY(49%);
-
     pointer-events: none;
     user-select: none;
     z-index: 2;
@@ -1303,6 +1301,16 @@ html.js .reveal {
 html.js .reveal.is-visible {
     opacity: 1;
     transform: none;
+}
+
+.about-relaxy.reveal {
+    opacity: 0;
+    transform: translateX(-180%) translateY(49%) !important;
+}
+
+.about-relaxy.reveal.is-visible {
+    opacity: 1;
+    transform: translateX(-180%) translateY(49%) !important;
 }
 
 /* ============================================================= Responsive */
