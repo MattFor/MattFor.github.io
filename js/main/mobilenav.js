@@ -12,9 +12,27 @@
     // Mirror topnav into the drawer — subpagebar.js already ran (it's listed first in the scripts)
     if (topnav && drawerNav)
     {
-        Array.from(topnav.children).forEach(child =>
+        const children = Array.from(topnav.children);
+        const hasSep = children.some(c => c.tagName === 'SPAN' && c.classList.contains('nav-sep'));
+
+        const makeLabel = (text) =>
         {
-            if (child.tagName === 'SPAN' && child.classList.contains('nav-sep')) return;
+            const el = document.createElement('div');
+            el.className = 'drawer-group-label';
+            el.textContent = text;
+            return el;
+        };
+
+        if (hasSep) drawerNav.appendChild(makeLabel('Sections'));
+        else if (children.length) drawerNav.appendChild(makeLabel('Pages'));
+
+        children.forEach(child =>
+        {
+            if (child.tagName === 'SPAN' && child.classList.contains('nav-sep'))
+            {
+                drawerNav.appendChild(makeLabel('Pages'));
+                return;
+            }
             drawerNav.appendChild(child.cloneNode(true));
         });
     }
