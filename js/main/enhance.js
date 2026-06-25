@@ -237,12 +237,30 @@
                 tip.classList.remove('is-open');
             }
         });
+
+        const isMobile = window.matchMedia('(pointer: coarse)').matches;
+
         window.addEventListener('scroll', () =>
         {
+            if (isMobile)
+            {
+                if (pinned)
+                {
+                    clearPin();
+                }
+                else
+                {
+                    tip.classList.remove('is-open');
+                }
+
+                return;
+            }
+
             if (pinned)
             {
                 const r = pinned.getBoundingClientRect();
                 const offscreen = r.bottom < -80 || r.top > window.innerHeight + 80;
+
                 if (offscreen)
                 {
                     clearPin();

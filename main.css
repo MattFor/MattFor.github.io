@@ -1295,24 +1295,30 @@ html.js .reveal.is-visible {
         max-width: min(420px, 94vw);
     }
 
-    /* Footer: links left so Relaxy has the right corner; image sits inside. */
+    /* Footer: links compress left; Relaxy perches on the footer's top-right edge. */
     #subpages-bar {
         text-align: left;
+        /* reserve right column so links don't run under Relaxy */
+        padding-right: calc(clamp(88px, 24vw, 120px) + 1rem);
     }
 
     .footer {
         text-align: left;
-        /* leave right margin so the text never runs under the image */
-        padding-right: calc(clamp(64px, 22vw, 96px) + 1.25rem);
+        /* Relaxy sits above the footer so no right padding needed here */
+    }
+
+    .footer p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 0.78rem;
     }
 
     .footer-relaxy {
-        /* inside the footer, pinned to the bottom-right corner */
-        bottom: 0;
         right: 0.5rem;
-        width: clamp(64px, 22vw, 96px);
-        /* no translateY nudge – image is fully inside the bar */
-        transform: none;
+        bottom: 100%;
+        width: clamp(88px, 30vw, 120px);
+        transform: translateY(-38%);
     }
 }
 
