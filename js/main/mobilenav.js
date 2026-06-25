@@ -65,10 +65,19 @@
     {
         drawer.classList.remove('is-open');
         toggle.classList.remove('is-open');
-        drawer.setAttribute('aria-hidden', 'true');
         toggle.setAttribute('aria-expanded', 'false');
         document.body.classList.remove('nav-open');
-        toggle.focus();
+
+        const panel = drawer.querySelector('.nav-drawer-panel');
+
+        const done = () =>
+        {
+            drawer.setAttribute('aria-hidden', 'true');
+            toggle.focus();
+            panel.removeEventListener('transitionend', done);
+        };
+
+        panel.addEventListener('transitionend', done, { once: true });
     };
 
     toggle.addEventListener('click', openDrawer);

@@ -436,12 +436,11 @@ section {
     inset: 0;
     z-index: 300;
     pointer-events: none;
-    visibility: hidden;
+    visibility: visible;
 }
 
 .nav-drawer.is-open {
     pointer-events: auto;
-    visibility: visible;
 }
 
 .nav-drawer-overlay {
