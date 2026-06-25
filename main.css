@@ -701,6 +701,8 @@ body.nav-open {
     width: clamp(120px, 30vw, 300px);
     height: auto;
 
+    transform: translateX(-180%) translateY(49%)
+
     pointer-events: none;
     user-select: none;
     z-index: 2;
