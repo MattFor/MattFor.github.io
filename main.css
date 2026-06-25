@@ -1305,11 +1305,13 @@ html.js .reveal.is-visible {
 
 .about-relaxy.reveal {
     opacity: 0;
+    transition: opacity 2s var(--ease), transform 2s var(--ease); !important;
     transform: translateX(-180%) translateY(49%) !important;
 }
 
 .about-relaxy.reveal.is-visible {
     opacity: 1;
+    transition: opacity 2s var(--ease), transform 2s var(--ease); !important;
     transform: translateX(-180%) translateY(49%) !important;
 }
 
