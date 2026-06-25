@@ -660,6 +660,28 @@ body.nav-open {
     align-items: start;
 }
 
+/* About mascot */
+#about {
+    position: relative;
+    overflow: visible;
+    min-height: 100px; /* Gives him somewhere to sit */
+}
+
+.about-relaxy {
+    position: absolute;
+    left: 50%;
+    bottom: -1.5rem;
+
+    width: clamp(120px, 30vw, 300px);
+    height: auto;
+
+    transform: translateX(-82%) translateY(92%);
+
+    pointer-events: none;
+    user-select: none;
+    z-index: 2;
+}
+
 /* Feature lists -> tidy checked lists inside cards */
 .feature-list {
     list-style: none;
@@ -1000,7 +1022,7 @@ body.nav-open {
 }
 
 .owner-grid img {
-    width: 240px;
+    width: 337px;
     max-width: 100%;
     border-radius: 20%;
     box-shadow: var(--shadow-md);
@@ -1366,5 +1388,11 @@ html.js .reveal.is-visible {
         background-image: none;
         background-color: var(--accent-2);
         filter: none;
+    }
+}
+
+@media (max-width: 720px) {
+    .about-relaxy {
+        display: none;
     }
 }
