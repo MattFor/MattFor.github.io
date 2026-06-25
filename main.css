@@ -141,6 +141,13 @@ body::after {
     100% { transform: translate3d(0, 0, 0) scale(1.05);   opacity: 0.7; }
 }
 
+/* Light mode: freeze the spotlights — no animation at all. */
+html.light-mode body::before,
+html.light-mode body::after {
+    animation: none;
+    transform: none;
+}
+
 img {
     max-width: 100%;
     height: auto;
