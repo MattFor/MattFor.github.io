@@ -414,11 +414,13 @@ section {
     inset: 0;
     background: rgba(0, 0, 0, 0.55);
     opacity: 0;
+    /* only transition on close - on open the overlay must cover instantly */
     transition: opacity var(--t);
 }
 
 .nav-drawer.is-open .nav-drawer-overlay {
     opacity: 1;
+    transition: none;
 }
 
 .nav-drawer-panel {

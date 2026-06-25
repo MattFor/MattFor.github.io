@@ -130,8 +130,16 @@
             const spaceBelow = window.innerHeight - r.bottom - gap - margin;
             const spaceAbove = r.top - gap - margin;
             const below = spaceBelow >= spaceAbove;
-            const avail = Math.max(below ? spaceBelow : spaceAbove, 140);
-            tip.style.maxHeight = Math.floor(avail) + 'px';
+            // On mobile cap to 58 % of the viewport so there's always free
+            // screen area outside the tooltip to initiate a page scroll.
+            const viewportCap = window.innerWidth <= 720
+                ? Math.floor(window.innerHeight * 0.58)
+                : window.innerHeight - margin * 2;
+            const avail = Math.min(
+                Math.max(below ? spaceBelow : spaceAbove, 140),
+                viewportCap
+            );
+            tip.style.maxHeight = avail + 'px';
 
             tip.style.left = '0';
             tip.style.top = '0';
