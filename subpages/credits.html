@@ -3,119 +3,145 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="content-type" content="nosniff">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relaxy! - Credits</title>
+    <script>document.documentElement.classList.add('js');
+    try
+    {
+        if (localStorage.getItem('theme') === 'light')
+        {
+            document.documentElement.classList.add('light-mode');
+        }
+    }
+    catch (e)
+    {
+    }</script>
     <link rel="stylesheet" href="/main.css">
     <link rel="icon" href="/resources/relaxy.ico" type="image/x-icon">
     <meta name="theme-color" content="#ff69b4">
     <meta name="author" content="MattFor">
-    <meta name="publisher" content="MattFor">
+    <meta name="description"
+          content="Credits and acknowledgments for those who have contributed to the development of Relaxy!, the Multipurpose Discord Bot.">
+    <link rel="canonical" href="https://www.relaxy.xyz/subpages/credits.html">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.relaxy.xyz">
+    <meta property="og:url" content="https://www.relaxy.xyz/subpages/credits.html">
     <meta property="og:title" content="Relaxy! - Credits">
-    <meta property="og:description" content="Credits and acknowledgments for those who have contributed to the development of Relaxy!, the Multipurpose Discord Bot.">
-    <meta property="og:image" content="https://media.discordapp.net/attachments/1265429138999869450/1268555589253070910/relaxy.png?ex=66acd9f5&is=66ab8875&hm=2ad77443f2a84ee5b18469e6481ad3f58f36a3aa19ff1b4a4950040e89874b8e&=&format=webp&quality=lossless&width=314&height=314">
-    <meta property="twitter:card" content="summary">
+    <meta property="og:description"
+          content="Credits and acknowledgments for those who have contributed to the development of Relaxy!, the Multipurpose Discord Bot.">
+    <meta property="og:image" content="https://www.relaxy.xyz/resources/og-image.jpg">
+    <meta name="twitter:card" content="summary">
 </head>
 
-<body class="dark-mode">
-    <header class="header">
-        <div class="header-content">
-            <img src="../resources/relaxy.gif" alt="Relaxing" class="header-logo">
-            <div class="header-title">
-                <h1>Relaxy - Credits!</h1>
-                <p>I offer infinite gratitude to everyone on this page.</p>
-                <p>Here are displayed all of the people who helped and some of my links as well!</p>
-            </div>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="topbar">
+    <a href="/" class="brand">
+        <img src="../resources/relaxy.webp" alt="" width="56" height="56" decoding="async">
+        <span>Relaxy!</span>
+    </a>
+    <nav class="site-nav" id="topnav" aria-label="Pages"></nav>
+    <button id="themeButton" class="theme-button" type="button" aria-pressed="false" onclick="toggleTheme()">Light
+        Mode
+    </button>
+</header>
+
+<section class="hero">
+    <p class="eyebrow">Thank you</p>
+    <h1>Credits</h1>
+    <p class="tagline">Infinite gratitude to everyone on this page - the people who helped, plus some of my links.</p>
+</section>
+
+<main id="main" class="wrap">
+    <section id="patreon-supporters" class="card section reveal">
+        <div class="section-head" style="text-align:left;margin-bottom:var(--space-4)">
+            <p class="eyebrow">Supporters</p>
+            <h2 style="text-align:left">These people make Relaxy work!</h2>
+            <p style="margin:0">Click a name to visit their preferred profile.</p>
         </div>
-        <button id="themeButton" class="theme-button" onclick="toggleTheme()">Light Mode</button>
-    </header>
+        <div class="supporter-grid">
+            <a class="supporter-chip" href="https://www.discord.com" target="_blank" rel="noopener">thealteringcat</a>
+            <a class="supporter-chip" href="https://www.discord.com" target="_blank" rel="noopener">Чумачеча</a>
+            <a class="supporter-chip" href="https://www.discord.com" target="_blank" rel="noopener">sake</a>
+            <a class="supporter-chip" href="https://www.discord.com" target="_blank" rel="noopener">holypenguin0</a>
+            <a class="supporter-chip" href="https://steamcommunity.com/profiles/76561198084077535" target="_blank"
+               rel="noopener">f34rmachinex</a>
+            <a class="supporter-chip" href="https://www.youtube.com/channel/UCbhW-KFuHj-a1cFYA7Ntr4w" target="_blank"
+               rel="noopener">koshkamatew</a>
+            <a class="supporter-chip" href="https://www.reddit.com/user/Simple_goat_999999/" target="_blank"
+               rel="noopener">goaty_the_goat</a>
+            <a class="supporter-chip" href="https://steamcommunity.com/profiles/76561199170896820" target="_blank"
+               rel="noopener">ikol.</a>
+            <a class="supporter-chip" href="https://steamcommunity.com/profiles/76561199367700318" target="_blank"
+               rel="noopener">roystbit</a>
+            <a class="supporter-chip" href="https://x.com/Shad0wlool94" target="_blank" rel="noopener">shad0w94</a>
+            <a class="supporter-chip" href="https://www.discord.com" target="_blank" rel="noopener">pulk_</a>
+            <a class="supporter-chip" href="https://2021-johnsloan.wixsite.com/home" target="_blank" rel="noopener">oldmangamess</a>
+            <a class="supporter-chip" href="https://www.discord.com" target="_blank" rel="noopener">GINGER</a>
+        </div>
+        <p class="centered-text"><strong><a href="https://ko-fi.com/relaxy" target="_blank" rel="noopener">Want to be on
+            the list too? Support on Ko-fi &lt;3</a></strong></p>
+    </section>
 
-    <main>
-        <section id="patreon-supporters" class="section">
-            <h2>Supporters! These people make Relaxy work!</h2>
-            <div class="patreon-supporters">
-                <div class="supporter">
-                    <p><a href="https://www.discord.com">thealteringcat</a></p>
-                </div>
-                <div class="supporter">
-                    <p><a href="https://www.discord.com">Чумачеча</a></p>
-                    <p><a href="https://www.discord.com">sake</a></p>
-                    <p><a href="https://www.discord.com">holypenguin0</a></p>
-                </div>
-                <div class="supporter">
-                    <p><a href="https://steamcommunity.com/profiles/76561198084077535">f34rmachinex</a></p>
-                    <p><a href="https://www.youtube.com/channel/UCbhW-KFuHj-a1cFYA7Ntr4w">koshkamatew</a></p>
-                    <p><a href="https://www.reddit.com/user/Simple_goat_999999/">goaty_the_goat</a></p>
-                </div>
-                <div class="supporter">
-                    <p><a href="https://steamcommunity.com/profiles/76561199170896820">ikol.</a></p>
-                    <p><a href="https://steamcommunity.com/profiles/76561199367700318">roystbit</a></p>
-                    <p><a href="https://x.com/Shad0wlool94">shad0w94</a></p>
-                </div>
-                <div class="supporter">
-                    <p><a href="https://www.discord.com">pulk_</a></p>
-                    <p><a href="https://2021-johnsloan.wixsite.com/home">oldmangamess</a></p>
-                    <p><a href="https://www.discord.com">GINGER</a></p>
-                </div>
+    <section id="others" class="card section prose reveal" data-reveal-delay="60">
+        <h2>Others</h2>
+        <p>Femcy, for providing the images on the main page!</p>
+        <p>@lean.2 for helping with heartboards</p>
+        <p>Fancy for giving Relaxy a big server to expand on from</p>
+    </section>
+
+    <section id="old-era" class="card section reveal" data-reveal-delay="120">
+        <div class="section-head" style="text-align:left;margin-bottom:var(--space-4)">
+            <p class="eyebrow">Old era</p>
+            <h2 style="text-align:left">Requests before 1.0.0</h2>
+            <p style="margin:0">Public release - last private version: 12.0.1</p>
+        </div>
+        <ul class="request-list">
+            <li><code>=pskip</code> <span>Mened#5127</span></li>
+            <li><code>economy suite</code> <span>Baroncalledmetrashmaster#8408</span></li>
+            <li><code>=restrict</code> <span>TheTriforceofAwesomeness#3389</span></li>
+            <li><code>=censor, =autoban, =lockdown</code> <span>Maxel#1457</span></li>
+            <li><code>=image</code> <span>Cum#4869</span></li>
+            <li><code>=decimate, =dm</code> <span>bendy51743#4526</span></li>
+            <li><code>=8b</code> <span>Dante Sparda#7157</span></li>
+            <li><code>=execute</code> <span>Tea4_Jenkins#4071</span></li>
+            <li><code>=myman, =sus, =drip</code> <span>Onytx#6815</span></li>
+            <li><code>=delete, =shop, =preview, =buy</code> <span>Deppy#3350</span></li>
+            <li><code>! Furry ! shop title</code> <span>Duke#4614</span></li>
+            <li><code>More modlog customization</code> <span>Destiny#0701</span></li>
+        </ul>
+    </section>
+
+    <section id="owner" class="card section reveal">
+        <div class="owner-grid">
+            <div class="owner-text">
+                <p class="eyebrow">The maker</p>
+                <h2>MattFor's Information</h2>
+                <p><a href="https://github.com/MattFor" target="_blank" rel="noopener">My GitHub</a></p>
+                <p><a href="https://github.com/MattFor/MattFor.github.io" target="_blank" rel="noopener">This page's
+                    GitHub Repo</a></p>
+                <p><a href="https://github.com/MattFor/Relaxy-public-showcase" target="_blank" rel="noopener">Relaxy!'s
+                    GitHub Repo (Public Showcase)</a></p>
+                <p style="color:var(--text-muted)">Note: Full version is closed source.</p>
+                <p><a href="https://steamcommunity.com/id/MattFor/" target="_blank" rel="noopener">My Steam Profile</a>
+                </p>
+                <address>My email is: <a href="mailto:mattfor@relaxy.xyz">mattfor@relaxy.xyz</a></address>
             </div>
-            <p class="centered-text"><strong><a href="https://ko-fi.com/relaxy">Click here if you'd want to be on the list as well <3</a></strong></p>
-            <p>Click on a user to go to their preferred internet profile!</p>
-        </section>
+            <img src="../resources/last_owner.png" alt="MattFor's profile picture" width="240" height="240"
+                 loading="lazy" decoding="async">
+        </div>
+    </section>
+</main>
 
-        <section id="others" class="section">
-            <h2>Others</h2>
-            <p>Femcy, for providing the images on the main page!</p>
-            <p>@lean.2 for helping with heartboards</p>
-            <p>Fancy for giving Relaxy a big server to expand on from</p>
-        </section>
+<div id="subpages-bar"></div>
 
-        <section id="old-era" class="section">
-            <h2>Old era</h2>
-            <h3>Before 1.0.0 (public release), last version: 12.0.1</h3>
-            <p><strong>=pskip</strong> Requested by ♡ Mened ♡#5127</p>
-            <p><strong>(basically everything from Relaxy global economy)</strong> Requested by Baroncalledmetrashmaster#8408</p>
-            <p><strong>=restrict</strong> Requested by TheTriforceofAwesomeness#3389</p>
-            <p><strong>=censor, =autoban, =lockdown</strong> Requested by Maxel#1457</p>
-            <p><strong>=image</strong> [=gif too, but it's deprecated] Requested by Cum#4869</p>
-            <p><strong>=decimate, =dm</strong> Requested by bendy51743#4526</p>
-            <p><strong>=8b</strong> Requested by Dante Sparda#7157</p>
-            <p><strong>=execute</strong> Requested by Tea4_Jenkins❤#4071</p>
-            <p><strong>=myman, =sus, =drip</strong> Requested by Onytx❤#6815</p>
-            <p><strong>=delete (in =files), Unicorn title in =shop, making =shop, =preview and =buy spliy</strong> Requested by Deppy#3350</p>
-            <p><strong>! Furry ! title in =shop</strong> Requested by Duke#4614</p>
-            <p><strong>More modlog customization</strong> Requested by Destiny#0701</p>
-        </section>
+<footer class="footer">
+    <p>© 2026 Relaxy! Made by MattFor - All Rights Reserved</p>
+</footer>
 
-        <section class="owner-section">
-            <div class="owner-container">
-                <div class="owner-text">
-                    <h2>MattFor's Information</h2>
-                    <p><a href="https://github.com/MattFor" target="_blank" style="color: white;">My GitHub</a></p>
-                    <p><a href="https://github.com/MattFor/MattFor.github.io" target="_blank" style="color: white;">This page's GitHub Repo</a></p>
-                    <p><a href="https://github.com/MattFor/Relaxy-public-showcase" target="_blank" style="color: white;">Relaxy!'s GitHub Repo (Public Showcase)</a></p>
-                    <p style="color: white;">Note: Full version is closed source.</p>
-
-                    <p><a href="https://steamcommunity.com/id/MattFor/" target="_blank" style="color: white;">My Steam Profile</a></p>
-                    <address>
-                        My email is: <a href="mailto:mattfor@relaxy.xyz">mattfor@relaxy.xyz</a>
-                    </address>
-                </div>
-                <div class="owner-image">
-                    <img src="../resources/last_owner.png" alt="MattFor's Profile Picture" style="width: 200px; border-radius: 20%;">
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <div id="subpages-bar"></div><script src="/js/main/subpagebar.js" defer></script>
-
-    <footer class="footer">
-        <p>© 2026 Relaxy! Made by MattFor - All Rights Reserved</p>
-    </footer>
-
-    <script src="/main.js"></script>
+<script src="/js/main/subpagebar.js" defer></script>
+<script src="/main.js" defer></script>
+<script src="/js/main/enhance.js" defer></script>
 </body>
 
 </html>

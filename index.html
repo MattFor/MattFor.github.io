@@ -3,137 +3,471 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="content-type" content="nosniff">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relaxy! - Multipurpose Discord Bot</title>
+
+    <!-- Apply the saved theme before first paint (no flash of the wrong theme) -->
+    <script>document.documentElement.classList.add('js');
+    try
+    {
+        if (localStorage.getItem('theme') === 'light')
+        {
+            document.documentElement.classList.add('light-mode');
+        }
+    }
+    catch (e)
+    {
+    }</script>
+
+    <link rel="preconnect" href="https://discord.com">
     <link rel="stylesheet" href="/main.css">
     <link rel="icon" href="/resources/relaxy.ico" type="image/x-icon">
+
     <meta name="theme-color" content="#ff69b4">
     <meta name="author" content="MattFor">
-    <meta name="publisher" content="MattFor">
+    <meta name="description"
+          content="Relaxy! is a free, self-hosted multipurpose Discord bot with advanced censoring, custom forums, heartboards, ticketing, moderation logging, music and more. Made by MattFor. 200,000+ users across 250+ servers.">
+    <meta name="keywords"
+          content="Relaxy, Discord bot, multipurpose Discord bot, moderation bot, music bot, heartboard, starboard, custom forums, free Discord bot">
+    <link rel="canonical" href="https://www.relaxy.xyz/">
+
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.relaxy.xyz">
+    <meta property="og:url" content="https://www.relaxy.xyz/">
     <meta property="og:title" content="Relaxy! - Multipurpose Discord Bot">
-    <meta property="og:description" content="Relaxy is a multipurpose with advanced features such as censoring, custom forums, heartboards, and more. Created by mattfor/MattFor#9884. Over 145000 users on 200+ servers.">
-    <meta property="og:image" content="https://media.discordapp.net/attachments/1265429138999869450/1268555589253070910/relaxy.png?ex=66acd9f5&is=66ab8875&hm=2ad77443f2a84ee5b18469e6481ad3f58f36a3aa19ff1b4a4950040e89874b8e&=&format=webp&quality=lossless&width=314&height=314">
-    <meta property="twitter:card" content="summary">
+    <meta property="og:description"
+          content="A free, self-hosted multipurpose Discord bot: advanced censoring, custom forums, heartboards, ticketing, moderation and music. 200,000+ users on 250+ servers.">
+    <meta property="og:image" content="https://www.relaxy.xyz/resources/og-image.jpg">
+    <meta property="og:image:alt" content="Relaxy! the Discord bot mascot">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Relaxy! - Multipurpose Discord Bot">
+    <meta name="twitter:description"
+          content="A free, self-hosted multipurpose Discord bot. 200,000+ users on 250+ servers.">
+    <meta name="twitter:image" content="https://www.relaxy.xyz/resources/og-image.jpg">
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Relaxy!",
+            "applicationCategory": "CommunicationApplication",
+            "operatingSystem": "Discord",
+            "url": "https://www.relaxy.xyz/",
+            "author": {
+                "@type": "Person",
+                "name": "MattFor"
+            },
+            "description": "A free, self-hosted multipurpose Discord bot with advanced censoring, custom forums, heartboards, ticketing, moderation logging and music.",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            }
+        }
+    </script>
 </head>
 
-<body class="dark-mode">
-    <header class="header">
-        <div class="header-content">
-            <img src="resources/relaxy.gif" alt="Relaxing" class="header-logo">
-            <div class="header-title">
-                <h1>Relaxy - Multipurpose Discord Bot</h1>
-                <p>By MattFor</p>
-            </div>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="topbar">
+    <a href="/" class="brand">
+        <img src="resources/relaxy.webp" alt="" width="56" height="56" decoding="async">
+        <span>Relaxy!</span>
+    </a>
+    <nav class="site-nav" id="topnav" aria-label="Sections">
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#engineering">Under the hood</a>
+        <a href="#commands">Commands</a>
+        <a href="#support">Support</a>
+    </nav>
+    <button id="themeButton" class="theme-button" type="button" aria-pressed="false" onclick="toggleTheme()">Light
+        Mode
+    </button>
+</header>
+
+<section class="hero">
+    <picture>
+        <source srcset="resources/relaxy.webp" type="image/webp">
+        <img src="resources/relaxy.gif" alt="The Relaxy! mascot, relaxing" class="hero-logo" width="180" height="180"
+             fetchpriority="high" decoding="async">
+    </picture>
+    <p class="eyebrow">Multipurpose Discord Bot</p>
+    <h1>Relaxy!</h1>
+    <p class="tagline">Function over form. Every feature is free - no paywalls, not now, nor ever! No matter how
+        demanding a server is.</p>
+    <a href="https://discord.com/api/oauth2/authorize?client_id=775358898088968202&permissions=3262528&scope=applications.commands%20bot"
+       target="_blank" rel="noopener" class="invite-button">Invite Relaxy!</a>
+    <p class="byline">By MattFor · 200,000+ users · 250+ servers</p>
+</section>
+
+<main id="main" class="wrap">
+    <div class="grid-2 section">
+        <section id="about" class="card reveal">
+            <p class="eyebrow">About</p>
+            <h2 style="text-align:left">Built to stay free and reliable</h2>
+            <p>Relaxy! is a bot made to combat the aggressive monetization of big multi-functional bots. Every feature
+                is free and will never be pay-walled. Updates happen daily and suggestions in the support server are
+                added over time. Relaxy! is function over form which means it can be hard to use, however, once mastered
+                it's infinitely flexible.</p>
+            <p>I offer full real time support for free to every server owner that uses Relaxy! Every server owner with
+                more than 100 users can request anything they want into the bot as long as it will benefit every user of
+                Relaxy!</p>
+            <p>Relaxy!'s internals feature a real time monitoring system to ensure as little downtime as possible. I
+                still self host the bot as it's too expensive to keep on the cloud for now.</p>
+            <p>I offer my infinite gratitude to anyone who supports this project financially, if you decide to do so,
+                I'll add in anything you request, as long as it benefits every user and isn't a completely whack
+                idea.</p>
+        </section>
+
+        <section id="features" class="card reveal" data-reveal-delay="80">
+            <p class="eyebrow">Features</p>
+            <h2 style="text-align:left">Main features</h2>
+            <ul class="feature-list">
+                <li>Fully customizable ticketing system</li>
+                <li>Advanced warning and autobanning system</li>
+                <li>Highly advanced censoring capabilities</li>
+                <li>Custom forums with detailed access control</li>
+                <li>Multiple heartboards with extensive customization</li>
+                <li>Comprehensive moderator log tracking over 30 events</li>
+            </ul>
+
+            <h3 style="text-align:left">Additional utilities</h3>
+            <ul class="feature-list">
+                <li>Custom boost messages for your server</li>
+                <li>Built-in music player for seamless audio streaming</li>
+                <li>Custom-built voice recorder</li>
+                <li>Utility tools to enhance your server management</li>
+                <li>Fully customizable embeds the bot sends for you</li>
+                <li>Customizable welcome / leave channels</li>
+                <li>Self-clearing channels based on a timer</li>
+                <li>Image manipulation and file saving</li>
+            </ul>
+        </section>
+    </div>
+
+    <section id="engineering" class="section">
+        <div class="section-head reveal">
+            <p class="eyebrow">Under the hood</p>
+            <h2>How it's built</h2>
+            <p>A lot of careful work went into ensuring Relaxy has the highest possible uptime possible. I've
+                implemented a lot of redundancies and fail-over systems to make sure that even if something breaks, it's
+                automatically corrected.</p>
         </div>
-        <button id="themeButton" class="theme-button" onclick="toggleTheme()">Light Mode</button>
-    </header>
-
-    <main>
-        <div class="sections">
-            <div class="invite-link">
-                <a href="https://discord.com/api/oauth2/authorize?client_id=775358898088968202&permissions=3262528&scope=applications.commands%20bot" target="_blank" class="invite-button">Click here to invite Relaxy!</a>
-            </div>
-
-            <div class="left-right-sections">
-                <section id="about" class="section">
-                    <h2>About Relaxy</h2>
-                    <p>Relaxy! is a bot made to combat the aggressive monetization of big multi-functional bots. Every feature is free and will never be pay-walled. Updates happen daily and suggestions in the support server are added over time. Relaxy! is function over form which means it can be hard to use, however, once mastered it's infinitely flexible. I offer full real time support for free to every server owner that uses Relaxy!. Every server owner with more than 100 users can request anything they want into the bot as long as it will benefit every user of Relaxy!</p>
-                    <p>Relaxy!'s internals feature a real time monitoring system to ensure as little downtime as possible. However, I still self host the bot as it's too expensive to keep on the cloud for now.</p>
-                </section>
-
-                <section id="features" class="section">
-                    <h2>Main Features</h2>
-                    <ul>
-                        <li>Fully customizable ticketing system</li>
-                        <li>Advanced warning and autobanning system</li>
-                        <li>Highly advanced censoring capabilities</li>
-                        <li>Custom forums with detailed access control</li>
-                        <li>Multiple heartboards with extensive customization options</li>
-                        <li>Comprehensive moderator log tracking over 30 events</li>
-                    </ul>
-
-                    <h3>Additional Utilities</h3>
-                    <ul>
-                        <li>Fully customizable heartboards (commonly known as "starboards")</li>
-                        <li>Custom boost messages for your server</li>
-                        <li>Built-in music player for seamless audio streaming</li>
-                        <li>A variety of utility tools to enhance your server management</li>
-                        <li>Fully customizable embeds the bot will send for You</li>
-                        <li>Fully customizable welcome / leave channels</li>
-                        <li>Self-clearing channels based on a timer</li>
-                        <li>Image manipulation and file saving</li>
-                    </ul>
-                </section>
-
-                <section id="patreon" class="patreon-section">
-                    <div class="patreon-images">
-                        <img src="resources/relaxy-cute2.png" alt="Relaxy Mommy" class="patreon-image left-image">
-                    </div>
-
-                    <div class="patreon-content">
-                        <h2>Relaxy's LifeLine Support</h2>
-                        <p>Support the continued development of Relaxy! Get custom commands, suggestion priority and more!</p>
-                        <a href="https://ko-fi.com/relaxy" target="_blank">Click here to view and support ;)</a>
-                    </div>
-
-                    <div class="patreon-images">
-                        <img src="resources/relaxy-cute.png" alt="Relaxy Femboy" class="patreon-image right-image">
-                    </div>
-                </section>
-            </div>
-
-            <section id="commands" class="command-section">
-                <h2>Commands Categories</h2>
-                <h3>Fun</h3>
-                <p>8b, buy, coinflip, customboostmessage, dice, heartboard, inventory, leaderboard, leveling, lovemeter, lvl, minesweeper, poll, preview, profile, rep+, shop, snake, trade, translate, welcomechannel</p>
-                <h3>Image</h3>
-                <p>banner, caption, changemymind, circlepfp, confusedstonks, delete, doesntaffect, drip, execute, gay, hug, kiss, myman, pat, payrespect, perfect, pfp, phub, picture, present, putin, reddit, ross, sakify, slap, spank, stonks, sus, trash, triggered</p>
-                <h3>Miscellaneous</h3>
-                <p>customizewelcome, devlog, dmout, embed, fetch, files, forum, getemoji, halt, help, invite, levelout, mixemoji, musicoptions, pickrandomreacter, prefix, privatechannel, record, redirect, relaxytime, remindme, reminds, rename, request, roleinfo, save, stats, status, steamgame, thanks, ticketsystem, toolkit, vote, whois, youtubesearch</p>
-                <h3>Moderation</h3>
-                <p>autoban, autoname, autorole, ban, censor, clearingchannel, disable, disconnect, dmwelcome, exempt, fetchban, free, kick, lockdown, modlog, mute, mutes, purge, purgereactions, reactionpanel, reactionrole, remake, restrain, restrict, setslowmode, unban, unmute, user, warning, warnings</p>
-                <h3>Music</h3>
-                <p>back, bitrate, clear, filter, goto, join, jump, loop, lyrics, pause, play, pskip, queue, remove, repeat, resume, reverse, search, shuffle, skip, song, stop, swap, volume</p>
-            </section>
+        <div class="eng-grid">
+            <article class="card card-hover eng-card reveal">
+                <span class="eng-icon">SH</span>
+                <h3>Hybrid-sharding clusters</h3>
+                <p>Shards are grouped into clusters supervised by a manager process, so Relaxy! can quickly scale and
+                    adjust to server demands.</p>
+            </article>
+            <article class="card card-hover eng-card reveal" data-reveal-delay="60">
+                <span class="eng-icon">AD</span>
+                <h3>Self-repair systems</h3>
+                <p>An ADSR diagnostic system watches error rates and silently restarts misbehaving shards; a heartbeat
+                    manager revives unresponsive and/or broken clusters.</p>
+            </article>
+            <article class="card card-hover eng-card reveal" data-reveal-delay="120">
+                <span class="eng-icon">RC</span>
+                <h3>Rolling re-cluster</h3>
+                <p>Updates roll out shard-by-shard in real time, without a global restart, no interruption to your
+                    server.</p>
+            </article>
+            <article class="card card-hover eng-card reveal">
+                <span class="eng-icon">DB</span>
+                <h3>Batched persistence</h3>
+                <p>Database writes are queued and flushed in 200&nbsp;ms batches on a dedicated worker thread. No
+                    updates will be lost, as there is a robust and extensive local cache in place.</p>
+            </article>
+            <article class="card card-hover eng-card reveal" data-reveal-delay="60">
+                <span class="eng-icon">HR</span>
+                <h3>Hot reloading</h3>
+                <p>Modules reload from source on the fly, so I can deliver fixes and features without taking the bot
+                    offline.</p>
+            </article>
+            <article class="card card-hover eng-card reveal" data-reveal-delay="120">
+                <span class="eng-icon">MO</span>
+                <h3>Real-time monitoring</h3>
+                <p>A live monitoring system tracks module health and uptime so downtime stays minimal, all
+                    self-hosted.</p>
+            </article>
+            <article class="card card-hover eng-card reveal">
+                <span class="eng-icon">WT</span>
+                <h3>Worker-thread offloading</h3>
+                <p>Heavy database, file and processing work runs on dedicated worker threads, so the gateway never
+                    blocks on disk or I/O. Commands won't slow down.</p>
+            </article>
+            <article class="card card-hover eng-card reveal" data-reveal-delay="60">
+                <span class="eng-icon">RL</span>
+                <h3>Custom rate limiter</h3>
+                <p>Discord.js's in-built limiter was not enough. I've built my own that synchronises across shards, it
+                    can actually be used for any limitable action.</p>
+            </article>
+            <article class="card card-hover eng-card reveal" data-reveal-delay="120">
+                <span class="eng-icon">CN</span>
+                <h3>Anti-evasion censoring</h3>
+                <p>The censor normalizes look-alike characters, spacing tricks and zero-width junk with natural-language
+                    tooling, so filter-dodging still gets caught, even on edited messages.</p>
+            </article>
+            <article class="card card-hover eng-card reveal">
+                <span class="eng-icon">MU</span>
+                <h3>Full music engine</h3>
+                <p>Built on discord-player v4, updated by me since then: YouTube, SoundCloud and Spotify resolution, a
+                    live queue, audio filters and an equalizer, with smart buffering for clean playback.</p>
+            </article>
+            <article class="card card-hover eng-card reveal" data-reveal-delay="60">
+                <span class="eng-icon">IM</span>
+                <h3>On-the-fly image generation</h3>
+                <p>Dozens of image and GIF commands are rendered locally with canvas, canvacord and sharp with no
+                    external image services involved.</p>
+            </article>
+            <article class="card card-hover eng-card reveal">
+                <span class="eng-icon">VR</span>
+                <h3>Voice recording</h3>
+                <p>Per-user voice capture writes separate streams for each speaker, so recordings stay clean and
+                    individually usable, also entirely written by me.</p>
+            </article>
         </div>
+    </section>
 
-        <div id="support-and-topgg" class="support-topgg-container">
-            <section id="join-support" class="support-section">
-                <h2>Have questions, need assistance, or just want to hang out? Check out the support server!</h2>
-                <a href="https://www.discord.gg/xRAGVePxk6" target="_blank" style="display: block; margin-bottom: 10px; font-size: 20px;">Join Relaxy's Requests!</a>
-                <!-- <iframe class="widget-frame" src="https://discord.com/widget?id=1034514185922564106&theme=dark" width="550" height="500" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe> -->
-                <div class="widget-wrap" style="position:relative;">
-                    <iframe class="widget-frame"
-                        src="https://discord.com/widget?id=1034514185922564106&theme=dark"
-                        allowtransparency="true"
-                        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-                        loading="lazy"
-                        referrerpolicy="no-referrer">
-                    </iframe>
+    <section id="commands" class="section">
+        <div class="section-head reveal">
+            <p class="eyebrow">Commands</p>
+            <h2>What Relaxy can do</h2>
+            <p>145 commands across five categories. Most work as both the = prefix and / slash commands. You can also
+                set your own prefixes if you like.</p>
+        </div>
+        <div class="card reveal">
+            <div class="cmd-category">
+                <h3>Fun <span class="count">21 commands</span></h3>
+                <div class="chip-grid">
+                    <button class="chip" type="button" data-cmd="8b">8b</button>
+                    <button class="chip" type="button" data-cmd="buy">buy</button>
+                    <button class="chip" type="button" data-cmd="coinflip">coinflip</button>
+                    <button class="chip" type="button" data-cmd="customboostmessage">customboostmessage</button>
+                    <button class="chip" type="button" data-cmd="dice">dice</button>
+                    <button class="chip" type="button" data-cmd="heartboard">heartboard</button>
+                    <button class="chip" type="button" data-cmd="inventory">inventory</button>
+                    <button class="chip" type="button" data-cmd="leaderboard">leaderboard</button>
+                    <button class="chip" type="button" data-cmd="leveling">leveling</button>
+                    <button class="chip" type="button" data-cmd="lovemeter">lovemeter</button>
+                    <button class="chip" type="button" data-cmd="lvl">lvl</button>
+                    <button class="chip" type="button" data-cmd="minesweeper">minesweeper</button>
+                    <button class="chip" type="button" data-cmd="poll">poll</button>
+                    <button class="chip" type="button" data-cmd="preview">preview</button>
+                    <button class="chip" type="button" data-cmd="profile">profile</button>
+                    <button class="chip" type="button" data-cmd="rep+">rep+</button>
+                    <button class="chip" type="button" data-cmd="shop">shop</button>
+                    <button class="chip" type="button" data-cmd="snake">snake</button>
+                    <button class="chip" type="button" data-cmd="trade">trade</button>
+                    <button class="chip" type="button" data-cmd="translate">translate</button>
+                    <button class="chip" type="button" data-cmd="welcomechannel">welcomechannel</button>
                 </div>
+            </div>
+            <div class="cmd-category">
+                <h3>Image <span class="count">30 commands</span></h3>
+                <div class="chip-grid">
+                    <button class="chip" type="button" data-cmd="banner">banner</button>
+                    <button class="chip" type="button" data-cmd="caption">caption</button>
+                    <button class="chip" type="button" data-cmd="changemymind">changemymind</button>
+                    <button class="chip" type="button" data-cmd="circlepfp">circlepfp</button>
+                    <button class="chip" type="button" data-cmd="confusedstonks">confusedstonks</button>
+                    <button class="chip" type="button" data-cmd="delete">delete</button>
+                    <button class="chip" type="button" data-cmd="doesntaffect">doesntaffect</button>
+                    <button class="chip" type="button" data-cmd="drip">drip</button>
+                    <button class="chip" type="button" data-cmd="execute">execute</button>
+                    <button class="chip" type="button" data-cmd="gay">gay</button>
+                    <button class="chip" type="button" data-cmd="hug">hug</button>
+                    <button class="chip" type="button" data-cmd="kiss">kiss</button>
+                    <button class="chip" type="button" data-cmd="myman">myman</button>
+                    <button class="chip" type="button" data-cmd="pat">pat</button>
+                    <button class="chip" type="button" data-cmd="payrespect">payrespect</button>
+                    <button class="chip" type="button" data-cmd="perfect">perfect</button>
+                    <button class="chip" type="button" data-cmd="pfp">pfp</button>
+                    <button class="chip" type="button" data-cmd="phub">phub</button>
+                    <button class="chip" type="button" data-cmd="picture">picture</button>
+                    <button class="chip" type="button" data-cmd="present">present</button>
+                    <button class="chip" type="button" data-cmd="putin">putin</button>
+                    <button class="chip" type="button" data-cmd="reddit">reddit</button>
+                    <button class="chip" type="button" data-cmd="ross">ross</button>
+                    <button class="chip" type="button" data-cmd="sakify">sakify</button>
+                    <button class="chip" type="button" data-cmd="slap">slap</button>
+                    <button class="chip" type="button" data-cmd="spank">spank</button>
+                    <button class="chip" type="button" data-cmd="stonks">stonks</button>
+                    <button class="chip" type="button" data-cmd="sus">sus</button>
+                    <button class="chip" type="button" data-cmd="trash">trash</button>
+                    <button class="chip" type="button" data-cmd="triggered">triggered</button>
+                </div>
+            </div>
+            <div class="cmd-category">
+                <h3>Miscellaneous <span class="count">38 commands</span></h3>
+                <div class="chip-grid">
+                    <button class="chip" type="button" data-cmd="customizewelcome">customizewelcome</button>
+                    <button class="chip" type="button" data-cmd="devlog">devlog</button>
+                    <button class="chip" type="button" data-cmd="dmout">dmout</button>
+                    <button class="chip" type="button" data-cmd="embed">embed</button>
+                    <button class="chip" type="button" data-cmd="fetch">fetch</button>
+                    <button class="chip" type="button" data-cmd="files">files</button>
+                    <button class="chip" type="button" data-cmd="forum">forum</button>
+                    <button class="chip" type="button" data-cmd="getemoji">getemoji</button>
+                    <button class="chip" type="button" data-cmd="halt">halt</button>
+                    <button class="chip" type="button" data-cmd="help">help</button>
+                    <button class="chip" type="button" data-cmd="invite">invite</button>
+                    <button class="chip" type="button" data-cmd="jointocreate">jointocreate</button>
+                    <button class="chip" type="button" data-cmd="levelout">levelout</button>
+                    <button class="chip" type="button" data-cmd="mixemoji">mixemoji</button>
+                    <button class="chip" type="button" data-cmd="move">move</button>
+                    <button class="chip" type="button" data-cmd="musicoptions">musicoptions</button>
+                    <button class="chip" type="button" data-cmd="pickrandomreacter">pickrandomreacter</button>
+                    <button class="chip" type="button" data-cmd="prefix">prefix</button>
+                    <button class="chip" type="button" data-cmd="privatechannel">privatechannel</button>
+                    <button class="chip" type="button" data-cmd="record">record</button>
+                    <button class="chip" type="button" data-cmd="redirect">redirect</button>
+                    <button class="chip" type="button" data-cmd="relaxytime">relaxytime</button>
+                    <button class="chip" type="button" data-cmd="remindme">remindme</button>
+                    <button class="chip" type="button" data-cmd="reminds">reminds</button>
+                    <button class="chip" type="button" data-cmd="rename">rename</button>
+                    <button class="chip" type="button" data-cmd="request">request</button>
+                    <button class="chip" type="button" data-cmd="roleinfo">roleinfo</button>
+                    <button class="chip" type="button" data-cmd="save">save</button>
+                    <button class="chip" type="button" data-cmd="stats">stats</button>
+                    <button class="chip" type="button" data-cmd="status">status</button>
+                    <button class="chip" type="button" data-cmd="steamgame">steamgame</button>
+                    <button class="chip" type="button" data-cmd="thanks">thanks</button>
+                    <button class="chip" type="button" data-cmd="ticketsystem">ticketsystem</button>
+                    <button class="chip" type="button" data-cmd="toolkit">toolkit</button>
+                    <button class="chip" type="button" data-cmd="visusage">visusage</button>
+                    <button class="chip" type="button" data-cmd="vote">vote</button>
+                    <button class="chip" type="button" data-cmd="whois">whois</button>
+                    <button class="chip" type="button" data-cmd="youtubesearch">youtubesearch</button>
+                </div>
+            </div>
+            <div class="cmd-category">
+                <h3>Moderation <span class="count">32 commands</span></h3>
+                <div class="chip-grid">
+                    <button class="chip" type="button" data-cmd="autoban">autoban</button>
+                    <button class="chip" type="button" data-cmd="autoname">autoname</button>
+                    <button class="chip" type="button" data-cmd="autorole">autorole</button>
+                    <button class="chip" type="button" data-cmd="ban">ban</button>
+                    <button class="chip" type="button" data-cmd="banmessage">banmessage</button>
+                    <button class="chip" type="button" data-cmd="censor">censor</button>
+                    <button class="chip" type="button" data-cmd="clearingchannel">clearingchannel</button>
+                    <button class="chip" type="button" data-cmd="disable">disable</button>
+                    <button class="chip" type="button" data-cmd="disconnect">disconnect</button>
+                    <button class="chip" type="button" data-cmd="dmwelcome">dmwelcome</button>
+                    <button class="chip" type="button" data-cmd="exempt">exempt</button>
+                    <button class="chip" type="button" data-cmd="fetchban">fetchban</button>
+                    <button class="chip" type="button" data-cmd="free">free</button>
+                    <button class="chip" type="button" data-cmd="kick">kick</button>
+                    <button class="chip" type="button" data-cmd="lockdown">lockdown</button>
+                    <button class="chip" type="button" data-cmd="modlog">modlog</button>
+                    <button class="chip" type="button" data-cmd="mute">mute</button>
+                    <button class="chip" type="button" data-cmd="mutes">mutes</button>
+                    <button class="chip" type="button" data-cmd="purge">purge</button>
+                    <button class="chip" type="button" data-cmd="purgereactions">purgereactions</button>
+                    <button class="chip" type="button" data-cmd="reactionpanel">reactionpanel</button>
+                    <button class="chip" type="button" data-cmd="reactionrole">reactionrole</button>
+                    <button class="chip" type="button" data-cmd="remake">remake</button>
+                    <button class="chip" type="button" data-cmd="restrain">restrain</button>
+                    <button class="chip" type="button" data-cmd="restrict">restrict</button>
+                    <button class="chip" type="button" data-cmd="setslowmode">setslowmode</button>
+                    <button class="chip" type="button" data-cmd="tempban">tempban</button>
+                    <button class="chip" type="button" data-cmd="unban">unban</button>
+                    <button class="chip" type="button" data-cmd="unmute">unmute</button>
+                    <button class="chip" type="button" data-cmd="user">user</button>
+                    <button class="chip" type="button" data-cmd="warning">warning</button>
+                    <button class="chip" type="button" data-cmd="warnings">warnings</button>
+                </div>
+            </div>
+            <div class="cmd-category">
+                <h3>Music <span class="count">24 commands</span></h3>
+                <div class="chip-grid">
+                    <button class="chip" type="button" data-cmd="back">back</button>
+                    <button class="chip" type="button" data-cmd="bitrate">bitrate</button>
+                    <button class="chip" type="button" data-cmd="clear">clear</button>
+                    <button class="chip" type="button" data-cmd="filter">filter</button>
+                    <button class="chip" type="button" data-cmd="goto">goto</button>
+                    <button class="chip" type="button" data-cmd="join">join</button>
+                    <button class="chip" type="button" data-cmd="jump">jump</button>
+                    <button class="chip" type="button" data-cmd="loop">loop</button>
+                    <button class="chip" type="button" data-cmd="lyrics">lyrics</button>
+                    <button class="chip" type="button" data-cmd="pause">pause</button>
+                    <button class="chip" type="button" data-cmd="play">play</button>
+                    <button class="chip" type="button" data-cmd="pskip">pskip</button>
+                    <button class="chip" type="button" data-cmd="queue">queue</button>
+                    <button class="chip" type="button" data-cmd="remove">remove</button>
+                    <button class="chip" type="button" data-cmd="repeat">repeat</button>
+                    <button class="chip" type="button" data-cmd="resume">resume</button>
+                    <button class="chip" type="button" data-cmd="reverse">reverse</button>
+                    <button class="chip" type="button" data-cmd="search">search</button>
+                    <button class="chip" type="button" data-cmd="shuffle">shuffle</button>
+                    <button class="chip" type="button" data-cmd="skip">skip</button>
+                    <button class="chip" type="button" data-cmd="song">song</button>
+                    <button class="chip" type="button" data-cmd="stop">stop</button>
+                    <button class="chip" type="button" data-cmd="swap">swap</button>
+                    <button class="chip" type="button" data-cmd="volume">volume</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="lifeline" class="section">
+        <div class="card patreon-section reveal">
+            <img src="resources/relaxy-cute2.webp" alt="Relaxy Mommy" class="patreon-image left-image" width="150"
+                 height="150" loading="lazy" decoding="async">
+            <div class="patreon-content">
+                <p class="eyebrow">Support</p>
+                <h2>Relaxy's LifeLine</h2>
+                <p>Support the continued development of Relaxy! Get custom commands, suggestion priority and more.</p>
+                <a href="https://ko-fi.com/relaxy" target="_blank" rel="noopener">Support on Ko-fi ❤</a>
+            </div>
+            <img src="resources/relaxy-cute.webp" alt="Relaxy Femboy" class="patreon-image right-image" width="150"
+                 height="150" loading="lazy" decoding="async">
+        </div>
+    </section>
+
+    <section id="support" class="section">
+        <div class="section-head reveal">
+            <p class="eyebrow">Community Stuff</p>
+            <h2>Have questions, need help, or just want to talk 'n' hang out?</h2>
+            <p>Join the support server for real-time help, or check Relaxy! out on top.gg.</p>
+        </div>
+        <div class="support-topgg-container reveal">
+            <section class="card support-section">
+                <h2>Join the support server</h2>
+                <a href="https://www.discord.gg/xRAGVePxk6" target="_blank" rel="noopener" class="invite-button"
+                   style="font-size:1.1rem">Join Relaxy's Requests!</a>
+                <iframe class="widget-frame"
+                        title="Relaxy! Discord support server"
+                        src="https://discord.com/widget?id=1034514185922564106&theme=dark"
+                        loading="lazy"
+                        referrerpolicy="no-referrer"
+                        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
             </section>
-            <section id="topgg" class="topgg-section">
-                <a href="https://top.gg/bot/775358898088968202" target="_blank" class="topgg-link">
-                    <h2>Check out the top.gg website</h2>
+            <section class="card topgg-section">
+                <a href="https://top.gg/bot/775358898088968202" target="_blank" rel="noopener" class="topgg-link">
+                    <h2>Find Relaxy! on top.gg</h2>
                 </a>
-                <a href="https://top.gg/bot/775358898088968202/vote" target="_blank" style="font-size: 18px;">
-                    <h1>And better yet, Vote for Relaxy!</h1>
-                </a>
-                <img class="topgg-image" src="resources/topgg.png" alt="Top.gg">
+                <p>And better yet - vote for Relaxy!</p>
+                <a href="https://top.gg/bot/775358898088968202/vote" target="_blank" rel="noopener"
+                   class="invite-button" style="font-size:1.1rem">Vote for Relaxy!</a>
+                <img class="topgg-image" src="resources/topgg.png" alt="Relaxy! on top.gg" loading="lazy"
+                     decoding="async">
             </section>
         </div>
-    </main>
+    </section>
+</main>
 
-    <div id="subpages-bar"></div><script src="/js/main/subpagebar.js" defer></script>
+<div id="subpages-bar"></div>
+`
+<footer class="footer">
+    <p>© 2026 Relaxy! Made by MattFor - All Rights Reserved</p>
+</footer>
 
-    <footer class="footer">
-        <p>© 2026 Relaxy! Made by MattFor - All Rights Reserved</p>
-    </footer>
-
-    <script src="/main.js"></script>
+<script src="/js/main/subpagebar.js" defer></script>
+<script src="/main.js" defer></script>
+<script src="/js/main/commands.js" defer></script>
+<script src="/js/main/enhance.js" defer></script>
 </body>
 
 </html>

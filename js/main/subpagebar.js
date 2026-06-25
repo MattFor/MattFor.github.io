@@ -1,53 +1,80 @@
-(() => {
-    const subpages = [
+/**
+ * Builds the cross-page navigation in two places:
+ *   - #subpages-bar (footer): pipe-separated links, full names
+ *   - #topnav (top bar): pill links, short names - appended after any
+ *     existing links (so the homepage keeps its section anchors)
+ * https://github.com/MattFor/MattFor.github.io
+ */
+(() =>
+{
+    const pages = [
         {
-            name: "Terms of Service",
-            link: "/subpages/terms-of-service.html",
-            description: "Read the Terms of Service for using Relaxy!, the Multipurpose Discord Bot."
+            name: 'Home',
+            short: 'Home',
+            link: '/'
         },
         {
-            name: "Privacy Policy",
-            link: "/subpages/privacy-policy.html",
-            description: "Read the Privacy Policy for using Relaxy!, the Multipurpose Discord Bot."
+            name: 'Terms of Service',
+            short: 'Terms',
+            link: '/subpages/terms-of-service.html'
         },
         {
-            name: "Changelog",
-            link: "/subpages/changelog.html",
-            description: "Check out the changelog and see the latest changes for Relaxy!, the Multipurpose Discord Bot."
+            name: 'Privacy Policy',
+            short: 'Privacy',
+            link: '/subpages/privacy-policy.html'
         },
         {
-            name: "Devlog",
-            link: "/subpages/devlog.html",
-            description: "Check out Relaxy!'s creator, MattFor's development log."
+            name: 'Changelog',
+            short: 'Changelog',
+            link: '/subpages/changelog.html'
         },
         {
-            name: "Credits",
-            link: "/subpages/credits.html",
-            description: "Credits and acknowledgments for those who have contributed to the development of Relaxy!, the Multipurpose Discord Bot."
+            name: 'Devlog',
+            short: 'Devlog',
+            link: '/subpages/devlog.html'
+        },
+        {
+            name: 'Credits',
+            short: 'Credits',
+            link: '/subpages/credits.html'
         }
     ];
 
-    const currentPage = window.location.pathname;
+    const path = window.location.pathname;
+    const isCurrent = (link) =>
+        link === '/'
+            ? (path === '/' || path.endsWith('/index.html'))
+            : path.endsWith(link.replace(/^\//, '')) || path.includes(link);
 
-    let htmlContent = "";
-    if (currentPage !== "/")
+    const others = pages.filter((p) => !isCurrent(p.link));
+
+    // Footer bar - pipe-separated, full names.
+    const bottom = document.getElementById('subpages-bar');
+    if (bottom)
     {
-        htmlContent += '<a href="/" class="btn-main-page" id="back-to-main">Back to Main Page</a> <span>|</span> ';
+        bottom.innerHTML = others
+        .map((p) => `<a href="${p.link}">${p.name}</a>`)
+        .join(' <span aria-hidden="true">|</span> ');
     }
 
-    subpages.filter(p => !currentPage.includes(p.link)).forEach((page, index) => {
-        htmlContent += `<a href="${page.link}">${page.name}</a>`;
-
-        if (index < subpages.length - 1)
+    // Top bar - pill links, short names, appended after existing nav items.
+    const top = document.getElementById('topnav');
+    if (top)
+    {
+        if (top.children.length)
         {
-            htmlContent += " <span>|</span> ";
+            const sep = document.createElement('span');
+            sep.className = 'nav-sep';
+            sep.setAttribute('aria-hidden', 'true');
+            top.appendChild(sep);
         }
-    });
-
-    if (htmlContent.endsWith(" <span>|</span> "))
-    {
-        htmlContent = htmlContent.slice(0, -16); // Remove trailing separator
+        others.forEach((p) =>
+        {
+            const a = document.createElement('a');
+            a.href = p.link;
+            a.textContent = p.short;
+            a.className = 'nav-page';
+            top.appendChild(a);
+        });
     }
-
-    document.getElementById("subpages-bar").innerHTML = htmlContent;
 })();

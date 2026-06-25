@@ -24,7 +24,7 @@ h3 {
     padding-top: 100px;
     border-right: 1px solid #181a20;
 }
-  
+
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -32,11 +32,11 @@ h3 {
     color: #646e78;
     display: block;
 }
-  
+
 .sidenav a:hover {
     color: #ff69b4;
 }
-  
+
 .infoBox {
     width: 65%;
     border-radius: 7px;
@@ -53,12 +53,12 @@ ul {
     padding: 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1px; 
-    justify-items: start; 
+    grid-gap: 1px;
+    justify-items: start;
 }
 
 ul li {
-    padding: 2px 15px; 
+    padding: 2px 15px;
     color: #68727d;
     display: flex;
     align-items: center;
@@ -135,8 +135,8 @@ ul span {
     left: 30px;
     right: 20px;
     position: relative;
-  }
-  
+}
+
 .barGraph::before {
     content: "";
     position: absolute;
@@ -149,11 +149,11 @@ ul span {
     margin-left: auto;
     margin-right: auto;
     background: repeating-linear-gradient(
-    to bottom,
-    #ffffff 0,
-    #ffffff 1px,
-    transparent 1px,
-    transparent 66px /* Set the gap between lines to 65 pixels */
+            to bottom,
+            #ffffff 0,
+            #ffffff 1px,
+            transparent 1px,
+            transparent 66px /* Set the gap between lines to 65 pixels */
     );
 }
 
@@ -211,12 +211,18 @@ ul span {
     #alignedHeadersContainer {
         flex-direction: column;
     }
+
     #selectStatHeader {
         margin-left: 0;
     }
 }
 
 @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
 }

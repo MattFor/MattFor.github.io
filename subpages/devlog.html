@@ -3,58 +3,76 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="content-type" content="nosniff">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relaxy! - Changelog</title>
+    <title>Relaxy! - Developer Log</title>
+    <script>document.documentElement.classList.add('js');
+    try
+    {
+        if (localStorage.getItem('theme') === 'light')
+        {
+            document.documentElement.classList.add('light-mode');
+        }
+    }
+    catch (e)
+    {
+    }</script>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="/main.css">
     <link rel="icon" href="/resources/relaxy.ico" type="image/x-icon">
     <meta name="theme-color" content="#ff69b4">
     <meta name="author" content="MattFor">
-    <meta name="publisher" content="MattFor">
+    <meta name="description" content="Check out Relaxy!'s creator, MattFor's development log.">
+    <link rel="canonical" href="https://www.relaxy.xyz/subpages/devlog.html">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.relaxy.xyz">
+    <meta property="og:url" content="https://www.relaxy.xyz/subpages/devlog.html">
     <meta property="og:title" content="Relaxy! - Developer Log">
     <meta property="og:description" content="Check out Relaxy!'s creator, MattFor's development log.">
-    <meta property="og:image" content="https://media.discordapp.net/attachments/1265429138999869450/1268555589253070910/relaxy.png?ex=66acd9f5&is=66ab8875&hm=2ad77443f2a84ee5b18469e6481ad3f58f36a3aa19ff1b4a4950040e89874b8e&=&format=webp&quality=lossless&width=314&height=314">
-    <meta property="twitter:card" content="summary">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js"></script>
+    <meta property="og:image" content="https://www.relaxy.xyz/resources/og-image.jpg">
+    <meta name="twitter:card" content="summary">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js" defer></script>
 </head>
 
-<body class="dark-mode">
-<header class="header">
-    <div class="header-content">
-        <img src="../resources/relaxy.gif" alt="Relaxing" class="header-logo">
-        <div class="header-title">
-            <h1>Relaxy! - Developer Log</h1>
-            <p>Check out Relaxy!'s creator, MattFor's inner thoughts and current work-plan.</p>
-        </div>
-    </div>
-    <button id="themeButton" class="theme-button" onclick="toggleTheme()">Light Mode</button>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="topbar">
+    <a href="/" class="brand">
+        <img src="../resources/relaxy.webp" alt="" width="56" height="56" decoding="async">
+        <span>Relaxy!</span>
+    </a>
+    <nav class="site-nav" id="topnav" aria-label="Pages"></nav>
+    <button id="themeButton" class="theme-button" type="button" aria-pressed="false" onclick="toggleTheme()">Light
+        Mode
+    </button>
 </header>
 
-<main>
-    <button id="scrollToBottom" onclick="scrollToBottom()">Scroll to Bottom</button>
+<section class="hero">
+    <p class="eyebrow">Development</p>
+    <h1>Developer Log</h1>
+    <p class="tagline">MattFor's inner thoughts and current work-plan.</p>
+</section>
 
-    <section id="changelog" class="section">
+<main id="main" class="wrap">
+    <button id="scrollToBottom" type="button" onclick="scrollToBottom()">Jump to latest ↓</button>
+
+    <section id="changelog" class="card reveal">
         <div id="changelog-content"></div>
     </section>
 
-    <button id="scrollToTop" onclick="scrollToTop()">Scroll to Top</button>
+    <button id="scrollToTop" type="button" onclick="scrollToTop()">Back to top ↑</button>
 </main>
 
-<div id="subpages-bar"></div><script src="/js/main/subpagebar.js" defer></script>
+<div id="subpages-bar"></div>
 
 <footer class="footer">
     <p>© 2026 Relaxy! Made by MattFor - All Rights Reserved</p>
 </footer>
 
-
-<!-- Main -->
-<script src="/main.js"></script>
-
-<!-- custom  -->
+<script src="/js/main/subpagebar.js" defer></script>
+<script src="/main.js" defer></script>
 <script src="/js/changelog.js" defer></script>
-<script src="/js/topbottombuttons.js"></script>
+<script src="/js/topbottombuttons.js" defer></script>
+<script src="/js/main/enhance.js" defer></script>
 </body>
 
 </html>

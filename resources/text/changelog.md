@@ -55,14 +55,16 @@
 ### Fixed
 
 - `messageUpdate.js` breaking when a message without a previous image had one added (line 25;119)
-- `buy.js` (line 49) and `lvl.js` (line 38), removed `this.` before `client` so that it doesn't make the programs not start at all now!
+- `buy.js` (line 49) and `lvl.js` (line 38), removed `this.` before `client` so that it doesn't make the programs not
+  start at all now!
 - error in calculating the guild rank caused by using an await in Promise.all() function (line 210;76) in `Handler.js`
 
 ## [7.4.2A2] - 2021-09-07 23:49
 
 ### Added
 
-- check to see whether first input is a number in `modlogoptions.js` (line 63) so it doesn't error all the time when just typing the command
+- check to see whether first input is a number in `modlogoptions.js` (line 63) so it doesn't error all the time when
+  just typing the command
 
 ## [7.4.2A3] - 2021-09-08 18:23
 
@@ -72,7 +74,8 @@
 
 ### Fixed
 
-- leveling now correctly displays rank information in Handler.js **(in other files the variable wasnt dynamically changed thus didin't need to be saved before fetching)**
+- leveling now correctly displays rank information in Handler.js **(in other files the variable wasnt dynamically
+  changed thus didin't need to be saved before fetching)**
 
 ## [7.4.2A4] - 2021-09-09 09:12
 
@@ -84,7 +87,8 @@
 
 ### Changed
 
-- Heartboard posts now show images and every other file type separately instead of image and video only `Mainfactory.js` - `HeartBoardPostEmbed()`
+- Heartboard posts now show images and every other file type separately instead of image and video only
+  `Mainfactory.js` - `HeartBoardPostEmbed()`
 
 ### Fixed
 
@@ -128,7 +132,8 @@
 
 ### Removed
 
-- Logging of the Relaxy role id in `Handler.js` (line 431) (also in the blueprint of the Guild database Mongoose Document [line 154])
+- Logging of the Relaxy role id in `Handler.js` (line 431) (also in the blueprint of the Guild database Mongoose
+  Document [line 154])
 - All remaining logs so they don't clog up the repo in logs/
 
 ## [8.0.0A1] - 2021-10-09 23:39
@@ -225,7 +230,8 @@
 
 ### Fixed
 
-- "[PlayerError] Resource has already ended." is gone forever, reduced to atoms, enjoy the music while it is not yet broken!### Security
+- "[PlayerError] Resource has already ended." is gone forever, reduced to atoms, enjoy the music while it is not yet
+  broken!### Security
 
 ### Upcoming
 
@@ -249,7 +255,8 @@
 
 ### Added
 
-- buffering cooldown in relaxy music options, default 1300, how much time before music starts playing after typing the command, gives it time to process correctly, recommended about 2000-3000
+- buffering cooldown in relaxy music options, default 1300, how much time before music starts playing after typing the
+  command, gives it time to process correctly, recommended about 2000-3000
 
 ### Fixed
 
@@ -268,7 +275,8 @@
 ### Added
 
 - Total queue time to =queue and /queue
-- buffering cooldown in relaxy music options, default 1300, how much time before music starts playing after typing the command, gives it time to process correctly, recommended about 2000-3000
+- buffering cooldown in relaxy music options, default 1300, how much time before music starts playing after typing the
+  command, gives it time to process correctly, recommended about 2000-3000
 
 ### Changed
 
@@ -681,14 +689,16 @@
 ### Fixed
 
 - modlogs will no longer be turned off after being redirected to another channel while the original is deleted
-- Relaxy! will no longer leave channels while music is playing because he detects the channel as empty / music as invalid
+- Relaxy! will no longer leave channels while music is playing because he detects the channel as empty / music as
+  invalid
 - leveling counts even if in a restricted channel
 - =help additional information not displaying correctly
 - =myman and =drip not working
 
 ### Changed
 
-- many more commands will now show the information about their status when put without arguments instead of simply turning those features off. It will be updated for consistency later
+- many more commands will now show the information about their status when put without arguments instead of simply
+  turning those features off. It will be updated for consistency later
 
 ### Removed
 
@@ -708,7 +718,8 @@
 
 ## Fixed:
 
-- Links within censoring now get detected accurately as well as **links** and **invites** being boldened when displayed in =censor
+- Links within censoring now get detected accurately as well as **links** and **invites** being boldened when displayed
+  in =censor
 
 ## Upcoming:
 
@@ -776,7 +787,7 @@
 - =warningtiers
 - =leveltiers
 - Leveling overhaul
-- Relaxy added to top.gg! — 01/07/2023 20:25
+- Relaxy added to top.gg! - 01/07/2023 20:25
 
 # [1.4.0] 04-07-2023 04:20 (funny)
 
@@ -799,7 +810,8 @@
 
 - spelling mistakes on sticker events
 - editing messages sometimes working incorrectly (being worked on rn)
-- messageUpdate event not triggerring correctly when an attachment was added that hasn't previously been present in the message before.
+- messageUpdate event not triggerring correctly when an attachment was added that hasn't previously been present in the
+  message before.
 - threadDelete event not detecting non Relaxy! forum post deletions correctly
 
 ## Updated
@@ -811,7 +823,8 @@
 # Upgrades
 
 - heartboards have been internally overhauled to be better (and work + work faster)
-- database - the general database architecture and code is improving and will be changed completely within the upcoming updates
+- database - the general database architecture and code is improving and will be changed completely within the upcoming
+  updates
 - denesting numerous functions and improving error handling
 
 # Upcoming
@@ -915,12 +928,14 @@
 - All reactions have been changed to use the ratelimiter preventing strain / invalid placement
 - Same thing done to edits and messages sent (still working on it)
 - Added 'spam' as a custom option to =censor to censor spam
-- All modlogs should more accurately display the author / executor + have less of an interval and display more information wherever applicable + more coming soon.
+- All modlogs should more accurately display the author / executor + have less of an interval and display more
+  information wherever applicable + more coming soon.
 - Improved internal logic regarding #relaxy-log
 - All quickembeds have had their logic improved
 - Relaxy forum database structure overhauled
 - Custom message system within the `Relaxy Manager` implemented
-- Custom heartbeat system within the `Relaxy Manager` implemented - Shards, broken or unresponsive will now get revived by the power of God himself whenever something really bad happens.
+- Custom heartbeat system within the `Relaxy Manager` implemented - Shards, broken or unresponsive will now get revived
+  by the power of God himself whenever something really bad happens.
 - ReCluster manager added, whole clusters of shards are able to be reset silently without altering the user experience
 - Using _raw_ methods to print to output, directly to stdout.write instead of using console.logs etc
 - Massively improved documentation
@@ -936,12 +951,15 @@
 
 # Overhauls
 
-- =forum has received massively improved internal logic that provides Relaxy with smarter matching, responses and spam filtration
-- Database system for server has been overhauled because it was taking up too much space, if your heartboard doesn't work message me!
+- =forum has received massively improved internal logic that provides Relaxy with smarter matching, responses and spam
+  filtration
+- Database system for server has been overhauled because it was taking up too much space, if your heartboard doesn't
+  work message me!
 
 # Fixes
 
-- =reactionrole correctly detects custom emojis and is able to handle up to... 40000 reactions per 10 seconds according to my calculations
+- =reactionrole correctly detects custom emojis and is able to handle up to... 40000 reactions per 10 seconds according
+  to my calculations
 - Checking permissions now correctly works within a channel
 
 # Changes
@@ -976,7 +994,8 @@
 
 # Updated
 
-- Heartboard database structure - sorry guys! All previous heartboard posts are non-functional now. Only the new ones work!
+- Heartboard database structure - sorry guys! All previous heartboard posts are non-functional now. Only the new ones
+  work!
 - Naming scheme within some files
 - =status now displays global status
 - Added more documentation
@@ -1024,9 +1043,13 @@
 
 # Updates
 
-- You can now have however many heartboards you want, each fully customizable (I can add some more customizability or whatver just dm me :tearingup:)
-- =save will now save any **IMAGE ONLY** files that have the name prefix "server-" into the server storage. You need the `ManageGuilds` permission for it.
-  This will make it so that if you mention the name (without the server- prefix) within any of the embed commands f.e =embed, =customizeprefix, =customboostmessage (COMING OUT TODAY)) that file will be inserted into any field, author icon, image, thumbnail
+- You can now have however many heartboards you want, each fully customizable (I can add some more customizability or
+  whatver just dm me :tearingup:)
+- =save will now save any **IMAGE ONLY** files that have the name prefix "server-" into the server storage. You need the
+  `ManageGuilds` permission for it.
+  This will make it so that if you mention the name (without the server- prefix) within any of the embed commands f.e
+  =embed, =customizeprefix, =customboostmessage (COMING OUT TODAY)) that file will be inserted into any field, author
+  icon, image, thumbnail
 
 # Upcoming
 
@@ -1041,7 +1064,8 @@
 - ProcessIPCMessage.js -> moved into Services/IpcMessenger.js
 - FileWatcher.js -> moved into Services/FileWatcher.js
 - Events.js -> moved into Services/EventCatcher.js
-- Reclustering mode changed from graceful to rolling (recluster will occur when shards reset 1 by 1 in real time instead of all at once while all the new ones are ready as it could cause database overwrites (VERY VERY BAD))
+- Reclustering mode changed from graceful to rolling (recluster will occur when shards reset 1 by 1 in real time instead
+  of all at once while all the new ones are ready as it could cause database overwrites (VERY VERY BAD))
 - You can now have multiple heartboards
 - Achievements are now disabled on all servers until an appropriate command is made
 - Fixed some modlogs incorrectly showing the user (not all of them yet!)
@@ -1059,9 +1083,12 @@
 
 It will only accept files on "server storage" saved with the prefix "server-"
 
-- GarbageCollector has been incorporated into Relaxy that will queue up deletions of different database parts when needed. Relaxy will now store deleted server data up to 30 days after the server has kicked Relaxy out in case they want to have him again.
+- GarbageCollector has been incorporated into Relaxy that will queue up deletions of different database parts when
+  needed. Relaxy will now store deleted server data up to 30 days after the server has kicked Relaxy out in case they
+  want to have him again.
 - New hug and pat links.
-- =customboostmessage - a =embed formatted custom boost message, available for a normal boost and reaching level 1 2 or 3 with each being able to be put in a different channel
+- =customboostmessage - a =embed formatted custom boost message, available for a normal boost and reaching level 1 2 or
+  3 with each being able to be put in a different channel
 - You can now do "=pfp server" to show the server's icon
 
 # Upcoming
@@ -1100,7 +1127,8 @@ It will only accept files on "server storage" saved with the prefix "server-"
 
 - Emoji searching function (worked fine but threw an error)
 - Hearboards properly display embeds
-- When on_message_delete is enabled relaxyforums forums will properly respond when a message is deleted before a reaction is added
+- When on_message_delete is enabled relaxyforums forums will properly respond when a message is deleted before a
+  reaction is added
 
 # Upcoming
 
@@ -1110,10 +1138,12 @@ It will only accept files on "server storage" saved with the prefix "server-"
 # [2.4.4] 20-09-2023 22:00
 
 ## Added
+
 - internal support for modals, select menus and more (first used in =warnings overhaul)
 - =swap - swap the places of 2 songs within the music queue
 
 ## Improvements
+
 - =purge has way more functionality now, with more coming soon
 - =heartboard, =poll, =warnings, =reactionpanel, =welcomechannel
 - =steamgame - from now on maintained by Giuca. Works better
@@ -1121,6 +1151,7 @@ It will only accept files on "server storage" saved with the prefix "server-"
 - garbage collector code improved
 
 ## Fixes
+
 - =kiss works properly in / command form now
 - =pat now works (again)
 - =help and the global relaxy footer image has been refreshed
@@ -1129,16 +1160,62 @@ It will only accept files on "server storage" saved with the prefix "server-"
 - =play now works (again) because a yt update broke it
 
 ## Internal
+
 - added =console - interact with Relaxy's console through Discord
 - =gdsc, =gpsc - delete and post slash commands on the fly
 - changed how console output is handled, created mode to disable ALL logging
 
 ## Removed
+
 - =reddit - removed until Reddit removes API restrictions
 
 ## Upcoming
+
 - entire music module rewrite:
-Currently running on a custom modified version of discord-player 5.4
-While the most up-to-date version is: `6.6.4`
+  Currently running on a custom modified version of discord-player 5.4
+  While the most up-to-date version is: `6.6.4`
 - =warn / command version
+
 + stuff from previous posts
+
+# [GA 3.0] - General Availability
+
+The years between the last entry and now were spent rebuilding Relaxy! from a single
+bot process into a self-healing, horizontally-sharded system. This is a summary of where
+Relaxy! stands today rather than a play-by-play - the day-to-day was hundreds of smaller
+commits.
+
+## Architecture
+
+- **Two-process model** - a Cluster **Manager** now spawns and supervises one or more
+  **Clusters** (shards), each running its own `Relaxy` client. Built on
+  `discord-hybrid-sharding`.
+- **Self-repair** - `SelfRepair`, `ReClusterManager` and `HeartbeatManager` plugins keep
+  the fleet alive: broken or unresponsive shards are revived automatically.
+- **ADSR watchdog** - an active-diagnosis watchdog monitors error and warning rates and
+  silently restarts a shard before problems become visible to users.
+- **Rolling re-cluster** - updates roll out shard-by-shard in real time instead of all at
+  once, so your server keeps working while Relaxy! updates itself.
+- **Hot-reloading module loader** - fixes and features ship from source without taking the
+  bot offline.
+
+## Performance
+
+- **Batched database writes** - all writes go through a queue that flushes every 200&nbsp;ms
+  on a dedicated **worker thread**; reads come from MongoDB-backed in-memory caches.
+- Fetch-on-the-spot instead of pre-caching everything, dramatically lowering memory use.
+- A custom rate limiter keeps Relaxy! from ever stressing the Discord API.
+
+## Platform & features
+
+- Updated to **discord.js v14.26** on a current Node.js runtime.
+- **Music** rebuilt on **discord-player v7** with YouTube and SoundCloud extractors.
+- Image generation via `canvas` / `canvacord` / `sharp`.
+- New commands since the last entry include `=jointocreate`, `=move`, `=visusage`,
+  `=banmessage` and `=tempban`, alongside continuous improvements to `=forum`, `=censor`,
+  moderation logging and the music suite.
+
+## Hosting
+
+- Still proudly **self-hosted** - running on a Raspberry Pi since late 2024 - with the
+  real-time monitoring system keeping downtime as low as possible.
