@@ -890,7 +890,7 @@ body.nav-open {
 }
 
 .patreon-image {
-    width: clamp(90px, 14vw, 150px);
+    width: clamp(90px, 20vw, 275px);
     border-radius: var(--radius);
 }
 
