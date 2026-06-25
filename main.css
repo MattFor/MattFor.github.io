@@ -98,9 +98,10 @@ body {
     transition: background-color var(--t), color var(--t);
 }
 
-/* Animated spotlight background - two fixed, full-viewport layers of soft
-   ovals that drift and fade independently. Fixed positioning keeps them from
-   being cut off on any page (home or subpages) and from scrolling away. */
+/* Animated spotlight background.
+   X, Y, scale and opacity each run on their own duration so the combined
+   path is a Lissajous-like curve — no visible "corners" or discrete steps.
+   LCM of the periods is tens of hours, so it never visibly repeats. */
 body::before,
 body::after {
     content: "";
@@ -108,38 +109,41 @@ body::after {
     inset: -10vmax;
     z-index: -1;
     pointer-events: none;
-    will-change: transform, opacity;
 }
 
 body::before {
     background:
-        radial-gradient(38% 38% at 18% 28%, rgba(255, 105, 180, 0.20), transparent 70%),
-        radial-gradient(34% 34% at 82% 62%, rgba(74, 144, 226, 0.18), transparent 70%);
-    animation: spotlight-a 26s ease-in-out infinite;
+        radial-gradient(38% 38% at 18% 28%, rgba(255, 105, 180, 0.22), transparent 70%),
+        radial-gradient(34% 34% at 82% 62%, rgba(74, 144, 226, 0.20), transparent 70%);
+    animation:
+        bg-a-x     23s ease-in-out infinite alternate,
+        bg-a-y     31s ease-in-out infinite alternate,
+        bg-a-scale 17s ease-in-out infinite alternate,
+        bg-a-fade  13s ease-in-out infinite alternate;
 }
 
 body::after {
     background:
-        radial-gradient(32% 32% at 72% 16%, rgba(155, 77, 255, 0.18), transparent 70%),
-        radial-gradient(30% 30% at 28% 82%, rgba(255, 105, 180, 0.14), transparent 70%);
-    animation: spotlight-b 34s ease-in-out infinite;
+        radial-gradient(32% 32% at 72% 16%, rgba(155, 77, 255, 0.20), transparent 70%),
+        radial-gradient(30% 30% at 28% 82%, rgba(255, 105, 180, 0.16), transparent 70%);
+    animation:
+        bg-b-x     29s ease-in-out infinite alternate,
+        bg-b-y     19s ease-in-out infinite alternate,
+        bg-b-scale 23s ease-in-out infinite alternate,
+        bg-b-fade  11s ease-in-out infinite alternate;
 }
 
-@keyframes spotlight-a {
-    0%   { transform: translate3d(0, 0, 0) scale(1);      opacity: 0.85; }
-    25%  { transform: translate3d(6vw, 5vh, 0) scale(1.18); opacity: 0.45; }
-    50%  { transform: translate3d(-4vw, 9vh, 0) scale(1.06); opacity: 1; }
-    75%  { transform: translate3d(4vw, -6vh, 0) scale(0.92); opacity: 0.4; }
-    100% { transform: translate3d(0, 0, 0) scale(1);      opacity: 0.85; }
-}
+/* X via transform, Y via the individual `translate` property — browser composites
+   them as translate(tx,ty) → transform, so they combine without conflict. */
+@keyframes bg-a-x     { from { transform: translateX(-7vw); } to { transform: translateX(7vw); } }
+@keyframes bg-a-y     { from { translate: 0 -5vh; }           to { translate: 0 7vh; } }
+@keyframes bg-a-scale { from { scale: 0.90; }                 to { scale: 1.20; } }
+@keyframes bg-a-fade  { from { opacity: 0.38; }               to { opacity: 0.95; } }
 
-@keyframes spotlight-b {
-    0%   { transform: translate3d(0, 0, 0) scale(1.05);   opacity: 0.7; }
-    30%  { transform: translate3d(-7vw, -4vh, 0) scale(0.9); opacity: 1; }
-    55%  { transform: translate3d(5vw, 6vh, 0) scale(1.2);  opacity: 0.35; }
-    80%  { transform: translate3d(-3vw, 3vh, 0) scale(1);   opacity: 0.8; }
-    100% { transform: translate3d(0, 0, 0) scale(1.05);   opacity: 0.7; }
-}
+@keyframes bg-b-x     { from { transform: translateX(-8vw); } to { transform: translateX(6vw); } }
+@keyframes bg-b-y     { from { translate: 0 -6vh; }           to { translate: 0 5vh; } }
+@keyframes bg-b-scale { from { scale: 0.88; }                 to { scale: 1.15; } }
+@keyframes bg-b-fade  { from { opacity: 0.35; }               to { opacity: 1.0; } }
 
 img {
     max-width: 100%;
