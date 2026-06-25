@@ -1,3 +1,8 @@
+/**
+ * Grr! stop looking here all is available at
+ * @link https://github.com/MattFor/MattFor.github.io
+ */
+
 (() =>
 {
     const pages = [
@@ -51,6 +56,8 @@
     }
 
     // Top bar - pill links, short names, appended after existing nav items.
+    // The bar stays static across pages: every page is always listed, and the
+    // page you are currently on is marked active rather than removed.
     const top = document.getElementById('topnav');
     if (top)
     {
@@ -61,12 +68,17 @@
             sep.setAttribute('aria-hidden', 'true');
             top.appendChild(sep);
         }
-        others.forEach((p) =>
+        pages.forEach((p) =>
         {
             const a = document.createElement('a');
             a.href = p.link;
             a.textContent = p.short;
             a.className = 'nav-page';
+            if (isCurrent(p.link))
+            {
+                a.classList.add('is-active');
+                a.setAttribute('aria-current', 'page');
+            }
             top.appendChild(a);
         });
     }

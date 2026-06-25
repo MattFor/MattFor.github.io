@@ -172,73 +172,73 @@
         </div>
         <div class="eng-grid">
             <article class="card card-hover eng-card reveal">
-                <span class="eng-icon">SH</span>
+                <span class="eng-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></span>
                 <h3>Hybrid-sharding clusters</h3>
                 <p>Shards are grouped into clusters supervised by a manager process, so Relaxy! can quickly scale and
                     adjust to server demands.</p>
             </article>
             <article class="card card-hover eng-card reveal" data-reveal-delay="60">
-                <span class="eng-icon">AD</span>
+                <span class="eng-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
                 <h3>Self-repair systems</h3>
                 <p>An ADSR diagnostic system watches error rates and silently restarts misbehaving shards; a heartbeat
                     manager revives unresponsive and/or broken clusters.</p>
             </article>
             <article class="card card-hover eng-card reveal" data-reveal-delay="120">
-                <span class="eng-icon">RC</span>
+                <span class="eng-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M3 21v-5h5"/></svg></span>
                 <h3>Rolling re-cluster</h3>
                 <p>Updates roll out shard-by-shard in real time, without a global restart, no interruption to your
                     server.</p>
             </article>
             <article class="card card-hover eng-card reveal">
-                <span class="eng-icon">DB</span>
+                <span class="eng-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></span>
                 <h3>Batched persistence</h3>
                 <p>Database writes are queued and flushed in 200&nbsp;ms batches on a dedicated worker thread. No
                     updates will be lost, as there is a robust and extensive local cache in place.</p>
             </article>
             <article class="card card-hover eng-card reveal" data-reveal-delay="60">
-                <span class="eng-icon">HR</span>
+                <span class="eng-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span>
                 <h3>Hot reloading</h3>
                 <p>Modules reload from source on the fly, so I can deliver fixes and features without taking the bot
                     offline.</p>
             </article>
             <article class="card card-hover eng-card reveal" data-reveal-delay="120">
-                <span class="eng-icon">MO</span>
+                <span class="eng-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg></span>
                 <h3>Real-time monitoring</h3>
                 <p>A live monitoring system tracks module health and uptime so downtime stays minimal, all
                     self-hosted.</p>
             </article>
             <article class="card card-hover eng-card reveal">
-                <span class="eng-icon">WT</span>
+                <span class="eng-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg></span>
                 <h3>Worker-thread offloading</h3>
                 <p>Heavy database, file and processing work runs on dedicated worker threads, so the gateway never
                     blocks on disk or I/O. Commands won't slow down.</p>
             </article>
             <article class="card card-hover eng-card reveal" data-reveal-delay="60">
-                <span class="eng-icon">RL</span>
+                <span class="eng-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg></span>
                 <h3>Custom rate limiter</h3>
                 <p>Discord.js's in-built limiter was not enough. I've built my own that synchronises across shards, it
                     can actually be used for any limitable action.</p>
             </article>
             <article class="card card-hover eng-card reveal" data-reveal-delay="120">
-                <span class="eng-icon">CN</span>
+                <span class="eng-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
                 <h3>Anti-evasion censoring</h3>
                 <p>The censor normalizes look-alike characters, spacing tricks and zero-width junk with natural-language
                     tooling, so filter-dodging still gets caught, even on edited messages.</p>
             </article>
             <article class="card card-hover eng-card reveal">
-                <span class="eng-icon">MU</span>
+                <span class="eng-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span>
                 <h3>Full music engine</h3>
                 <p>Built on discord-player v4, updated by me since then: YouTube, SoundCloud and Spotify resolution, a
                     live queue, audio filters and an equalizer, with smart buffering for clean playback.</p>
             </article>
             <article class="card card-hover eng-card reveal" data-reveal-delay="60">
-                <span class="eng-icon">IM</span>
+                <span class="eng-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></span>
                 <h3>On-the-fly image generation</h3>
                 <p>Dozens of image and GIF commands are rendered locally with canvas, canvacord and sharp with no
                     external image services involved.</p>
             </article>
             <article class="card card-hover eng-card reveal">
-                <span class="eng-icon">VR</span>
+                <span class="eng-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg></span>
                 <h3>Voice recording</h3>
                 <p>Per-user voice capture writes separate streams for each speaker, so recordings stay clean and
                     individually usable, also entirely written by me.</p>
@@ -477,6 +477,7 @@
 <div id="subpages-bar"></div>
 
 <footer class="footer">
+    <img src="/resources/relaxy_sit.png" alt="" class="footer-relaxy" aria-hidden="true">
     <p>© 2026 Relaxy! Made by MattFor - All Rights Reserved</p>
 </footer>
 

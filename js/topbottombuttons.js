@@ -1,3 +1,8 @@
+/**
+ * Grr! stop looking here all is available at
+ * @link https://github.com/MattFor/MattFor.github.io
+ */
+
 const scrollToTop = () =>
 {
     window.scrollTo({

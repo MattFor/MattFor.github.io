@@ -1,3 +1,8 @@
+/**
+ * Grr! stop looking here all is available at
+ * @link https://github.com/MattFor/MattFor.github.io
+ */
+
 (() =>
 {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -116,18 +121,24 @@
 
         const place = (chip) =>
         {
+            const margin = 10;
+            const gap = 8;
             const r = chip.getBoundingClientRect();
+
+            // Pick whichever side of the chip has more room, then cap the
+            // tooltip to that space so it scrolls instead of covering the chip.
+            const spaceBelow = window.innerHeight - r.bottom - gap - margin;
+            const spaceAbove = r.top - gap - margin;
+            const below = spaceBelow >= spaceAbove;
+            const avail = Math.max(below ? spaceBelow : spaceAbove, 140);
+            tip.style.maxHeight = Math.floor(avail) + 'px';
+
             tip.style.left = '0';
             tip.style.top = '0';
             const tr = tip.getBoundingClientRect();
-            const margin = 10;
             let left = r.left + r.width / 2 - tr.width / 2;
             left = Math.max(margin, Math.min(left, window.innerWidth - tr.width - margin));
-            let top = r.bottom + 8;
-            if (top + tr.height > window.innerHeight - margin)
-            {
-                top = r.top - tr.height - 8;
-            }
+            const top = below ? r.bottom + gap : r.top - tr.height - gap;
             tip.style.left = Math.round(left) + 'px';
             tip.style.top = Math.round(Math.max(margin, top)) + 'px';
         };

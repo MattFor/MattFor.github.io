@@ -1,7 +1,8 @@
 /**
- * Auto-generated from the Relaxy! bot command sources.
- * name -> { u: usage, d: description } (mirrors what =help shows).
+ * Grr! stop looking here all is available at
+ * @link https://github.com/MattFor/MattFor.github.io
  */
+
 window.RELAXY_COMMANDS = {
     '8b': {
         'u': '=8ball',
