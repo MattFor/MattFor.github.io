@@ -1,7 +1,11 @@
-# Hiya everyone!
+# Hello everyone!
 
 Really glad to have the website sorted out.
-Currently working on bringing out the ticketing system out for everyone.
-Aside from that I am planning on bringing Relaxy over to the cloud however it takes a lotta money to do that.
 
-Considering my current monetary situation, Relaxy will be running on the raspberry pi a lot more starting 01/10/2024.
+I have finished the ticket system and intent on:
+- creating a dashboard for relaxy
+- hosting the website by myself
+- fixing all remaining bugs within the codebase
+- optimising the bot's structure
+- consolidating the database structure
+- reviving the music module
