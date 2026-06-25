@@ -661,10 +661,8 @@ body.nav-open {
 }
 
 /* About mascot */
-#about {
+.grid-2 {
     position: relative;
-    overflow: visible;
-    min-height: 100px; /* Gives him somewhere to sit */
 }
 
 .about-relaxy {
@@ -675,7 +673,7 @@ body.nav-open {
     width: clamp(120px, 30vw, 300px);
     height: auto;
 
-    transform: translateX(-82%) translateY(92%);
+    transform: translateX(-180%) translateY(49%);
 
     pointer-events: none;
     user-select: none;
