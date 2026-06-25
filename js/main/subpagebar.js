@@ -1,10 +1,3 @@
-/**
- * Builds the cross-page navigation in two places:
- *   - #subpages-bar (footer): pipe-separated links, full names
- *   - #topnav (top bar): pill links, short names - appended after any
- *     existing links (so the homepage keeps its section anchors)
- * https://github.com/MattFor/MattFor.github.io
- */
 (() =>
 {
     const pages = [

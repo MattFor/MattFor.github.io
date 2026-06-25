@@ -125,14 +125,14 @@
 ### Fixed
 
 - Heartboardpost creation in `Mainfactory.js` (line 37)
-- Link in `=invite` to invite Relaxy has added permission for **/** commands
+- Link in `=invite` to invite Relaxy! has added permission for **/** commands
 - `=leavevc` has a new _=dc_ alias
 - `=spank` now works
 - Weird file name inaccuracies -`Handler.js` (line 387) added [0] to the **indexOf(`${user_bans_split[0]}**
 
 ### Removed
 
-- Logging of the Relaxy role id in `Handler.js` (line 431) (also in the blueprint of the Guild database Mongoose
+- Logging of the Relaxy! role id in `Handler.js` (line 431) (also in the blueprint of the Guild database Mongoose
   Document [line 154])
 - All remaining logs so they don't clog up the repo in logs/
 
@@ -398,7 +398,7 @@
 
 ### Progress
 
-- Relaxy is alive again!
+- Relaxy! is alive again!
 - Relaxy's support server is also alive again! Get on with =invite!
 - Internal files have been renamed to their actual specifications
 
@@ -409,7 +409,7 @@
 - =preview not working with titles
 - =play not working has been fixed
 - =snake had too much redundant code
-- =rep+ now works on Relaxy himself
+- =rep+ now works on Relaxy! himself
 - =image is now working properly
 - Inventory managing has been fixed
 
@@ -431,7 +431,7 @@
 ### Progress
 
 - Now running on the latest nodeJS version v19.0.0
-- Relaxy updated to discord.js v14.6.0
+- Relaxy! updated to discord.js v14.6.0
 - Most commands received a / version
 - Music player updated
 - =image updated
@@ -500,7 +500,7 @@
 
 ### Progress
 
-- added HOT RELOADING! no more massive Relaxy downtimes when it's being worked on!
+- added HOT RELOADING! no more massive Relaxy! downtimes when it's being worked on!
 - many internal code improvements and more to come
 
 ### Fixes
@@ -531,7 +531,7 @@
 
 ### Improved
 
-- Relaxy sharding manager has been significantly improve [+ added console color but that's for me :)]
+- Relaxy! sharding manager has been significantly improve [+ added console color but that's for me :)]
 - music player compression algorithm improved
 - =except -> =exempt fixed typo and improved the command
 - =redirect fixed it and added forum functionality
@@ -542,7 +542,7 @@
 - =lovemeter fixed
 - =clearchannel works better now
 - heartboards now give a link to the original message whenever possible
-- Relaxy will not say 2 things at once when leaving the channel after playing music
+- Relaxy! will not say 2 things at once when leaving the channel after playing music
 
 ### Added
 
@@ -577,7 +577,7 @@
 
 ### Progress
 
-- Relaxy is now supported on Patreon and will try to stay up as much as possible 24/7
+- Relaxy! is now supported on Patreon and will try to stay up as much as possible 24/7
 - ready for mass public use
 
 ### Fixed
@@ -622,7 +622,7 @@
 - =request now works
 - =pskip works (better)
 - =q displays correct amount of songs in the queue and allocates time more accurately
-- Relaxy correctly identifies when it should leave the channel now
+- Relaxy! correctly identifies when it should leave the channel now
 
 ### [11.5.0] 18-02-2023 02:00
 
@@ -702,7 +702,7 @@
 
 ### Removed
 
-- the ability for Relaxy to send a message across ALL servers
+- the ability for Relaxy! to send a message across ALL servers
 
 ### Upcoming
 
@@ -787,7 +787,7 @@
 - =warningtiers
 - =leveltiers
 - Leveling overhaul
-- Relaxy added to top.gg! - 01/07/2023 20:25
+- Relaxy! added to top.gg! - 01/07/2023 20:25
 
 # [1.4.0] 04-07-2023 04:20 (funny)
 
@@ -922,7 +922,7 @@
 
 # Improvements & Updates
 
-- A custom RateLimiter preventing Relaxy from stressing the API
+- A custom RateLimiter preventing Relaxy! from stressing the API
 - Updated ReadMe and other texts.
 - Anything within the key file is now stored in a separate enum called DataTypes.js
 - All reactions have been changed to use the ratelimiter preventing strain / invalid placement
@@ -932,9 +932,9 @@
   information wherever applicable + more coming soon.
 - Improved internal logic regarding #relaxy-log
 - All quickembeds have had their logic improved
-- Relaxy forum database structure overhauled
-- Custom message system within the `Relaxy Manager` implemented
-- Custom heartbeat system within the `Relaxy Manager` implemented - Shards, broken or unresponsive will now get revived
+- Relaxy! forum database structure overhauled
+- Custom message system within the `Relaxy! Manager` implemented
+- Custom heartbeat system within the `Relaxy! Manager` implemented - Shards, broken or unresponsive will now get revived
   by the power of God himself whenever something really bad happens.
 - ReCluster manager added, whole clusters of shards are able to be reset silently without altering the user experience
 - Using _raw_ methods to print to output, directly to stdout.write instead of using console.logs etc
@@ -951,7 +951,7 @@
 
 # Overhauls
 
-- =forum has received massively improved internal logic that provides Relaxy with smarter matching, responses and spam
+- =forum has received massively improved internal logic that provides Relaxy! with smarter matching, responses and spam
   filtration
 - Database system for server has been overhauled because it was taking up too much space, if your heartboard doesn't
   work message me!
@@ -977,12 +977,12 @@
 
 - Whatever was in the latest big announcement
 - Overhaul of =embed to provide a better and easier user experience
-- Ability for servers to store files within Relaxy that can then be placed into embeds where applicable
+- Ability for servers to store files within Relaxy! that can then be placed into embeds where applicable
 - something with music cause it fucking sucks
 
 * Many many many more changes that would take too long to write here.
 
-# Remember to vote for Relaxy so we can become unstoppable
+# Remember to vote for Relaxy! so we can become unstoppable
 
 # https://top.gg/bot/775358898088968202/vote
 
@@ -1031,7 +1031,7 @@
 
 - Some useless data from the heartboard section in the server scheme
 
-# Remember to vote for Relaxy so we can become unstoppable
+# Remember to vote for Relaxy! so we can become unstoppable
 
 # https://top.gg/bot/775358898088968202/vote
 
@@ -1083,8 +1083,8 @@
 
 It will only accept files on "server storage" saved with the prefix "server-"
 
-- GarbageCollector has been incorporated into Relaxy that will queue up deletions of different database parts when
-  needed. Relaxy will now store deleted server data up to 30 days after the server has kicked Relaxy out in case they
+- GarbageCollector has been incorporated into Relaxy! that will queue up deletions of different database parts when
+  needed. Relaxy! will now store deleted server data up to 30 days after the server has kicked Relaxy! out in case they
   want to have him again.
 - New hug and pat links.
 - =customboostmessage - a =embed formatted custom boost message, available for a normal boost and reaching level 1 2 or
@@ -1111,7 +1111,7 @@ It will only accept files on "server storage" saved with the prefix "server-"
 
 ## Added
 
-- Fallback in case a user has the Relaxy muted role but isn't within the database.
+- Fallback in case a user has the Relaxy! muted role but isn't within the database.
 
 # [2.4.1.2] 24-07-2023 00:34
 

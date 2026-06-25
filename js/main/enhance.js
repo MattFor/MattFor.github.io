@@ -1,9 +1,3 @@
-/**
- * Progressive enhancement - scroll reveal + active nav highlighting.
- * Vanilla, dependency-free, and fully optional: without JS the page is
- * already complete (reveal elements just stay visible via the no-JS path).
- * https://github.com/MattFor/MattFor.github.io
- */
 (() =>
 {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -91,7 +85,6 @@
         sections.forEach((s) => navObserver.observe(s));
     }
 
-    /* ---- Command tooltips (mirrors what =help shows) ------------------ */
     const data = window.RELAXY_COMMANDS;
     const chips = document.querySelectorAll('.chip[data-cmd]');
     if (data && chips.length)
@@ -217,23 +210,23 @@
                 clearPin();
             }
         });
-        document.addEventListener("keydown", (e) =>
+        document.addEventListener('keydown', (e) =>
         {
-            if (e.key === "Escape")
+            if (e.key === 'Escape')
             {
                 clearPin();
-                tip.classList.remove("is-open");
+                tip.classList.remove('is-open');
             }
         });
-        window.addEventListener("scroll", () =>
+        window.addEventListener('scroll', () =>
         {
             if (pinned)
             {
                 place(pinned);
             }
-            else if (tip.classList.contains("is-open"))
+            else if (tip.classList.contains('is-open'))
             {
-                tip.classList.remove("is-open");
+                tip.classList.remove('is-open');
             }
         }, { passive: true });
     }

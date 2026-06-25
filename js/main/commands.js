@@ -17,7 +17,7 @@ window.RELAXY_COMMANDS = {
     },
     'customboostmessage': {
         'u': '=customboostmessage',
-        'd': 'If on, Relaxy will send a custom message that you can set whenever:\n- someone boosts the server\n- the boost switches the server boost level (1, 2, 3)\n\nTo change the message, simply type (command) boost/level_1/level_2/level_3 after that either type text or `embed`\nYou can also set whether or not to delete the discord system message with the argument `delete_original` (once the feature has been turned on)\n\nReplacers - if you input the following special texts, they will be converted to the following:\n- |U| - user who boosted\n- |G| - name of the server\n- |C| - channel in which the boost appeared in'
+        'd': 'If on, Relaxy! will send a custom message that you can set whenever:\n- someone boosts the server\n- the boost switches the server boost level (1, 2, 3)\n\nTo change the message, simply type (command) boost/level_1/level_2/level_3 after that either type text or `embed`\nYou can also set whether or not to delete the discord system message with the argument `delete_original` (once the feature has been turned on)\n\nReplacers - if you input the following special texts, they will be converted to the following:\n- |U| - user who boosted\n- |G| - name of the server\n- |C| - channel in which the boost appeared in'
     },
     'dice': {
         'u': '=dice number',
@@ -25,19 +25,19 @@ window.RELAXY_COMMANDS = {
     },
     'heartboard': {
         'u': '=heartboard (existing channel (optional)) number (optional)',
-        'd': 'Relaxy creates a heartboard channel for you.\nShould any message that Relaxy can see get 3 special reactions (default is :heart: but can be changed, the initiator is the first one from the provided list), it will is going to get put on the heartboard.\nIf a message returns back to 0 special reactions, it\'s going to get deleted.\n## After the heartboard is enabled\nYou can type either:\n- `colour` - after that type a hex code. This is wha the colour of the embed will be.\n- `emojis` - after that a list of 5 emojis, first one will be the required reaction.\n- `off` - turns off the heartboard.\n\nYou can create multiple heart board channels, to change settings of a specific one simply type the channel as the first argument and the rest as normal.'
+        'd': 'Relaxy! creates a heartboard channel for you.\nShould any message that Relaxy! can see get 3 special reactions (default is :heart: but can be changed, the initiator is the first one from the provided list), it will is going to get put on the heartboard.\nIf a message returns back to 0 special reactions, it\'s going to get deleted.\n## After the heartboard is enabled\nYou can type either:\n- `colour` - after that type a hex code. This is wha the colour of the embed will be.\n- `emojis` - after that a list of 5 emojis, first one will be the required reaction.\n- `off` - turns off the heartboard.\n\nYou can create multiple heart board channels, to change settings of a specific one simply type the channel as the first argument and the rest as normal.'
     },
     'inventory': {
         'u': '=inventory user (optional)',
-        'd': 'Shows your or the specified user\'s Relaxy inventory!\nThe numbers in front of the items represent the internal position of the item in the inventory.\nAfter doing **`=inventory`** you can say **equip/unequip/discard/scrap ITEM_ID** to do the action with the item.\nScrapping any item will gain you 100 money!'
+        'd': 'Shows your or the specified user\'s Relaxy! inventory!\nThe numbers in front of the items represent the internal position of the item in the inventory.\nAfter doing **`=inventory`** you can say **equip/unequip/discard/scrap ITEM_ID** to do the action with the item.\nScrapping any item will gain you 100 money!'
     },
     'leaderboard': {
         'u': '=leaderboard',
-        'd': 'React with 🔠 to show the top 15 people message count wise (since Relaxy joined the server),\n react with 🔢 to show the top 15 people level wise.\nReact with ⏹️ to return to the main page.'
+        'd': 'React with 🔠 to show the top 15 people message count wise (since Relaxy! joined the server),\n react with 🔢 to show the top 15 people level wise.\nReact with ⏹️ to return to the main page.'
     },
     'leveling': {
         'u': '=leveling type (optional)',
-        'd': 'Relaxy on leveling on the server.\nTypes of leveling are:\n**1** - Shows messages on levelup along with cards,\n**2** - Shows only messages on levelup,\n**3** - Shows only levelup cards,\n**4** - Doesn\'t show anything.\nEnabling leveling gives access to the `=leaderboard` and `=level` commands.'
+        'd': 'Relaxy! on leveling on the server.\nTypes of leveling are:\n**1** - Shows messages on levelup along with cards,\n**2** - Shows only messages on levelup,\n**3** - Shows only levelup cards,\n**4** - Doesn\'t show anything.\nEnabling leveling gives access to the `=leaderboard` and `=level` commands.'
     },
     'lovemeter': {
         'u': '=lovemeter user user',
@@ -61,7 +61,7 @@ window.RELAXY_COMMANDS = {
     },
     'profile': {
         'u': '=profile',
-        'd': 'View your Relaxy profile.'
+        'd': 'View your Relaxy! profile.'
     },
     'rep+': {
         'u': '=rep+ userDb',
@@ -69,7 +69,7 @@ window.RELAXY_COMMANDS = {
     },
     'shop': {
         'u': '=shop',
-        'd': '**Show the Relaxy shop!**'
+        'd': '**Show the Relaxy! shop!**'
     },
     'snake': {
         'u': '=snake',
@@ -225,7 +225,7 @@ window.RELAXY_COMMANDS = {
     },
     'fetch': {
         'u': '=fetch filename',
-        'd': 'Relaxy returns the file you saved with filename.'
+        'd': 'Relaxy! returns the file you saved with filename.'
     },
     'files': {
         'u': '=files',
@@ -233,7 +233,7 @@ window.RELAXY_COMMANDS = {
     },
     'forum': {
         'u': '=forum #channel (roles / emoji / option arguments)',
-        'd': 'Creates a configurable forum channel where members with a role will either allow or reject posts.\n**Roles** - optional argument to instantly set the roles that will be able to manage posts (without relaxy setting one up himself)\n**Emoji** - the emoji that will be used when creating posts.\nTo check the settings of an already existing forum channel, simply type =forum #channel.\nTo go more in depth, type f.e =forum #channel response/match.\nThings to configure:\n\n```fix\nmatch\n```Type =forum #channel match `(keywords/sentences with spaces replaced by -)`\nThis will make it so that any post with the requested phrase/words will automatically be rejected.\n\n```fix\nsensitive\n```Type =forum #channel sensitive #channel2\nPosts made on the original channel will be instantly deleted and piped onto the second channel.\n\n```fix\nhide\n```Simply will hide the channel for everyone without sufficient permissions when Relaxy is unavailable (useful when paired with the sensitive option)\n\n```fix\nresponse\n```Type =forum #channel response [Match keyword] sentence to reply with, remember that |U| will be replaced with the user, |T| with the thread name and |G| with the guild.\nThere are 3 options you cannot delete, 2 of which are set to default: len, reject, accept.\n\n```fix\nlength\n```Type =forum #channel length number / -number\nIf the number is negative, it will delete posts under the desired length, otherwise it will delete posts over the desired length.\n\nTo turn off Relaxy functionality in a forum channel type =forum #channel off. imeout - seconds\n`attachment_exception` - do not take length into account when attachment is present.\n`raw_search` - crude search algorithm will be used in place of advanced one.\n`original_message_deleted` - delete thread if original message is gone\n`attachment_length / body_length / title_length` - if number is negative then check for less than, if positive, check over.\n`spam` - delete posts considered spam by Relaxy!'
+        'd': 'Creates a configurable forum channel where members with a role will either allow or reject posts.\n**Roles** - optional argument to instantly set the roles that will be able to manage posts (without relaxy setting one up himself)\n**Emoji** - the emoji that will be used when creating posts.\nTo check the settings of an already existing forum channel, simply type =forum #channel.\nTo go more in depth, type f.e =forum #channel response/match.\nThings to configure:\n\n```fix\nmatch\n```Type =forum #channel match `(keywords/sentences with spaces replaced by -)`\nThis will make it so that any post with the requested phrase/words will automatically be rejected.\n\n```fix\nsensitive\n```Type =forum #channel sensitive #channel2\nPosts made on the original channel will be instantly deleted and piped onto the second channel.\n\n```fix\nhide\n```Simply will hide the channel for everyone without sufficient permissions when Relaxy! is unavailable (useful when paired with the sensitive option)\n\n```fix\nresponse\n```Type =forum #channel response [Match keyword] sentence to reply with, remember that |U| will be replaced with the user, |T| with the thread name and |G| with the guild.\nThere are 3 options you cannot delete, 2 of which are set to default: len, reject, accept.\n\n```fix\nlength\n```Type =forum #channel length number / -number\nIf the number is negative, it will delete posts under the desired length, otherwise it will delete posts over the desired length.\n\nTo turn off Relaxy! functionality in a forum channel type =forum #channel off. imeout - seconds\n`attachment_exception` - do not take length into account when attachment is present.\n`raw_search` - crude search algorithm will be used in place of advanced one.\n`original_message_deleted` - delete thread if original message is gone\n`attachment_length / body_length / title_length` - if number is negative then check for less than, if positive, check over.\n`spam` - delete posts considered spam by Relaxy!'
     },
     'getemoji': {
         'u': '=getemoji [multiple] emojis/stickers',
@@ -281,11 +281,11 @@ window.RELAXY_COMMANDS = {
     },
     'privatechannel': {
         'u': '=privatechannel person_limit_number kbps_value channel(Only when editing existing private channels)',
-        'd': 'Create a channel with a (Default 2) person limit.\nWhen people join that chat they are given the ability to edit the number of people who can join and the kbps value. You do that by just saying =privatechannel personlimit kbps (optional, voice region).\nTo edit the channel name, type the new name in "quotes" and that\'s what it wil be renamed to.\nRelaxy will autodetect the channel you\'re in and edit it as requested.\nWhen everyone leaves it will reset back to the default value provided.\n\nWhen trying to edit a channel simply # it at the end of the command to edit it.\n**To delete a private channel:**\nEither delete it yourself normally through discord or type =privatechannel channel.\n```diff\n- warning-\n```When selecting the channel name when editing, when it has spaces replace them with `-`.\nF.e when wanting to edit #Private 1, type Private-1\n\nREQUIRED PERMISSION TO CREATE CHANNELS: `MANAGE_CHANNELS`'
+        'd': 'Create a channel with a (Default 2) person limit.\nWhen people join that chat they are given the ability to edit the number of people who can join and the kbps value. You do that by just saying =privatechannel personlimit kbps (optional, voice region).\nTo edit the channel name, type the new name in "quotes" and that\'s what it wil be renamed to.\nRelaxy! will autodetect the channel you\'re in and edit it as requested.\nWhen everyone leaves it will reset back to the default value provided.\n\nWhen trying to edit a channel simply # it at the end of the command to edit it.\n**To delete a private channel:**\nEither delete it yourself normally through discord or type =privatechannel channel.\n```diff\n- warning-\n```When selecting the channel name when editing, when it has spaces replace them with `-`.\nF.e when wanting to edit #Private 1, type Private-1\n\nREQUIRED PERMISSION TO CREATE CHANNELS: `MANAGE_CHANNELS`'
     },
     'record': {
         'u': '=record',
-        'd': 'Relaxy starts recording the current voice channel, doesn\'t work if any music is playing.'
+        'd': 'Relaxy! starts recording the current voice channel, doesn\'t work if any music is playing.'
     },
     'redirect': {
         'u': '=redirect option channel',
@@ -297,11 +297,11 @@ window.RELAXY_COMMANDS = {
     },
     'remindme': {
         'u': '=remindme 1 [minute / hour / day / week / month / year] about [thing]',
-        'd': 'Relaxy will remind you about the thing you requested after the specified amount of time.'
+        'd': 'Relaxy! will remind you about the thing you requested after the specified amount of time.'
     },
     'reminds': {
         'u': '=reminds',
-        'd': 'Show all of your active Relaxy reminds! If you want to remove a remind type =erase (remind number from the list).'
+        'd': 'Show all of your active Relaxy! reminds! If you want to remove a remind type =erase (remind number from the list).'
     },
     'rename': {
         'u': '=rename channel/user/role',
@@ -325,7 +325,7 @@ window.RELAXY_COMMANDS = {
     },
     'status': {
         'u': '=status',
-        'd': 'Show information about Relaxy\'s clusters.\n\nIf \'Low Performance\' mode is on, Relaxy is running on a small server and thus some services are unavailable.'
+        'd': 'Show information about Relaxy\'s clusters.\n\nIf \'Low Performance\' mode is on, Relaxy! is running on a small server and thus some services are unavailable.'
     },
     'steamgame': {
         'u': '=steamgame name/gameId',
@@ -377,7 +377,7 @@ window.RELAXY_COMMANDS = {
     },
     'banmessage': {
         'u': '=banmessage text/file',
-        'd': 'Construct a Relaxy Embed message that is sent to a user before they are banned from your server.'
+        'd': 'Construct a Relaxy! Embed message that is sent to a user before they are banned from your server.'
     },
     'censor': {
         'u': '=censor words',
@@ -401,7 +401,7 @@ window.RELAXY_COMMANDS = {
     },
     'exempt': {
         'u': '=exempt users / roles',
-        'd': 'Disables ALL danger checks for ALL Relaxy commands for a specified user / role.\nDon\'t input anything to show current exemptions.'
+        'd': 'Disables ALL danger checks for ALL Relaxy! commands for a specified user / role.\nDon\'t input anything to show current exemptions.'
     },
     'fetchban': {
         'u': '=unban userId',
@@ -421,7 +421,7 @@ window.RELAXY_COMMANDS = {
     },
     'modlog': {
         'u': '=modlog',
-        'd': 'Relaxy creates a modlog channel for you.\nEvery important server change/interaction is going to be logged there in detail.\nTo view the options, simply type =modlog again. To turn off the modlog, do =modlog off.\nTo change something, simply type =modlog (event number, take it from the list by simply doing =modlog) (channel, if you want to redirect it somewhere else or simply nothing to turn it off).\nYou can also say =modlog all (channel) to turn on everything and push it to the desired channel.\nType \'lowspam\' to turn off events that rapidly appear.'
+        'd': 'Relaxy! creates a modlog channel for you.\nEvery important server change/interaction is going to be logged there in detail.\nTo view the options, simply type =modlog again. To turn off the modlog, do =modlog off.\nTo change something, simply type =modlog (event number, take it from the list by simply doing =modlog) (channel, if you want to redirect it somewhere else or simply nothing to turn it off).\nYou can also say =modlog all (channel) to turn on everything and push it to the desired channel.\nType \'lowspam\' to turn off events that rapidly appear.'
     },
     'mute': {
         'u': '=mute user time (optional)',
@@ -449,7 +449,7 @@ window.RELAXY_COMMANDS = {
     },
     'remake': {
         'u': '=remake channel',
-        'd': 'Replace the channel with a clean copy of itself.\nRemoves Relaxy functions.'
+        'd': 'Replace the channel with a clean copy of itself.\nRemoves Relaxy! functions.'
     },
     'restrain': {
         'u': '=restrain type [roles1] from [roles2]',
@@ -457,7 +457,7 @@ window.RELAXY_COMMANDS = {
     },
     'restrict': {
         'u': '=restrict channels',
-        'd': 'Turn off Relaxy in a desired channel.\nType bind as a first argument to make Relaxy only usable in the channel the command was called in or input a channel after bind to set it to that one.\nType unbind to completely clear all restricted channels.'
+        'd': 'Turn off Relaxy! in a desired channel.\nType bind as a first argument to make Relaxy! only usable in the channel the command was called in or input a channel after bind to set it to that one.\nType unbind to completely clear all restricted channels.'
     },
     'setslowmode': {
         'u': '=setslowmode channel number (seconds)',
@@ -509,7 +509,7 @@ window.RELAXY_COMMANDS = {
     },
     'join': {
         'u': '=join',
-        'd': 'Makes Relaxy join a voice channel.'
+        'd': 'Makes Relaxy! join a voice channel.'
     },
     'jump': {
         'u': '=jump (track number)',

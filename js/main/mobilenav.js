@@ -7,9 +7,12 @@
     const drawerNav = document.getElementById('drawerNav');
     const topnav = document.getElementById('topnav');
 
-    if (!toggle || !drawer) return;
+    if (!toggle || !drawer)
+    {
+        return;
+    }
 
-    // Mirror topnav into the drawer — subpagebar.js already ran (it's listed first in the scripts)
+    // Mirror topnav into the drawer - subpagebar.js already ran (it's listed first in the scripts)
     if (topnav && drawerNav)
     {
         const children = Array.from(topnav.children);
@@ -23,8 +26,14 @@
             return el;
         };
 
-        if (hasSep) drawerNav.appendChild(makeLabel('Sections'));
-        else if (children.length) drawerNav.appendChild(makeLabel('Pages'));
+        if (hasSep)
+        {
+            drawerNav.appendChild(makeLabel('Sections'));
+        }
+        else if (children.length)
+        {
+            drawerNav.appendChild(makeLabel('Pages'));
+        }
 
         children.forEach(child =>
         {
@@ -64,6 +73,9 @@
 
     document.addEventListener('keydown', e =>
     {
-        if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
+        if (e.key === 'Escape' && drawer.classList.contains('is-open'))
+        {
+            closeDrawer();
+        }
     });
 })();
