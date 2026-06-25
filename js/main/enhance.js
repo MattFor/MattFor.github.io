@@ -24,8 +24,8 @@
                 {
                     return;
                 }
-                entry.target.style.transitionDelay =
-                    (entry.target.dataset.revealDelay || '0') + 'ms';
+
+                entry.target.style.transitionDelay = (entry.target.dataset.revealDelay || '0') + 'ms';
                 entry.target.classList.add('is-visible');
                 obs.unobserve(entry.target);
             });
