@@ -399,7 +399,7 @@
 ### Progress
 
 - Relaxy! is alive again!
-- Relaxy!'ss support server is also alive again! Get on with =invite!
+- Relaxy!'s support server is also alive again! Get on with =invite!
 - Internal files have been renamed to their actual specifications
 
 ### Fixed
@@ -967,7 +967,7 @@
 - =asciify -> moved to =toolkit asciify
 - =calc -> moved to =toolkit calculate
 
-## =ping -> =status | CHECK IT OUT, MASSIVE UPGRADE, all of Relaxy!'ss important information at the palm of your hand
+## =ping -> =status | CHECK IT OUT, MASSIVE UPGRADE, all of Relaxy!'s important information at the palm of your hand
 
 # Additions
 
@@ -1161,7 +1161,7 @@ It will only accept files on "server storage" saved with the prefix "server-"
 
 ## Internal
 
-- added =console - interact with Relaxy!'ss console through Discord
+- added =console - interact with Relaxy!'s console through Discord
 - =gdsc, =gpsc - delete and post slash commands on the fly
 - changed how console output is handled, created mode to disable ALL logging
 
