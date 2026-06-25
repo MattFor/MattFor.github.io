@@ -233,7 +233,16 @@
         {
             if (pinned)
             {
-                place(pinned);
+                const r = pinned.getBoundingClientRect();
+                const offscreen = r.bottom < -80 || r.top > window.innerHeight + 80;
+                if (offscreen)
+                {
+                    clearPin();
+                }
+                else
+                {
+                    place(pinned);
+                }
             }
             else if (tip.classList.contains('is-open'))
             {
