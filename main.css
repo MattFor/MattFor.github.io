@@ -1074,6 +1074,14 @@ body.nav-open {
     opacity: 1;
     transform: none;
     pointer-events: auto;
+    /* Springy pop-in so the bubble is noticed when it first appears. */
+    animation: coach-pop-in 0.6s var(--ease) both;
+}
+
+@keyframes coach-pop-in {
+    0% { opacity: 0; transform: translateY(26px) scale(0.7); }
+    60% { opacity: 1; transform: translateY(-6px) scale(1.05); }
+    100% { transform: none; }
 }
 
 .relaxy-coach-panel {
@@ -1090,15 +1098,27 @@ body.nav-open {
 
 /* When the search is open the panel widens into a full lookup card. */
 .relaxy-coach.is-open .relaxy-coach-panel {
-    width: min(380px, calc(100vw - 110px));
-    max-width: min(380px, calc(100vw - 110px));
+    width: min(440px, calc(100vw - 110px));
+    max-width: min(440px, calc(100vw - 110px));
+}
+
+/* On desktop, once a command is shown, the lookup card can be drag-resized from
+   its top-left corner - growing up and to the left, away from the screen edge. */
+@media (min-width: 721px) {
+    .relaxy-coach.is-open .relaxy-coach-panel {
+        max-width: min(640px, calc(100vw - 140px));
+    }
+
+    .relaxy-coach.is-open.has-result .relaxy-coach-resize {
+        display: block;
+    }
 }
 
 .relaxy-coach-hint {
     margin: 0;
     padding-right: var(--space-4);
-    font-size: 0.86rem;
-    line-height: 1.45;
+    font-size: 0.98rem;
+    line-height: 1.5;
     color: var(--text);
     cursor: pointer;
 }
@@ -1137,6 +1157,40 @@ body.nav-open {
     outline: none;
     border-color: var(--accent);
     box-shadow: 0 0 0 2px var(--accent-ring);
+}
+
+/* Live autocomplete suggestions shown as the user types. */
+.relaxy-coach-suggest {
+    display: none;
+    list-style: none;
+    margin: var(--space-2) 0 0;
+    padding: var(--space-1, 0.25rem);
+    max-height: 220px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: var(--bg-inset);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+}
+
+.relaxy-coach-suggest.is-open {
+    display: block;
+}
+
+.relaxy-coach-suggest-item {
+    padding: var(--space-2) var(--space-3);
+    font-family: var(--mono);
+    font-size: 0.84rem;
+    color: var(--text);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
+
+/* A single highlight, driven by is-active (kept in sync with hover via JS) so
+   the keyboard and mouse never light up two rows at once. */
+.relaxy-coach-suggest-item.is-active {
+    background: var(--accent-soft);
+    color: var(--accent);
 }
 
 .relaxy-coach-result {
@@ -1194,14 +1248,42 @@ body.nav-open {
     color: var(--accent);
 }
 
+/* Top-left drag grip - only revealed on desktop while a command is shown. */
+.relaxy-coach-resize {
+    display: none;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 16px;
+    height: 16px;
+    color: var(--text-muted);
+    cursor: nwse-resize;
+    touch-action: none;
+}
+
+.relaxy-coach-resize::before {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    border-top: 2px solid currentColor;
+    border-left: 2px solid currentColor;
+    border-radius: 3px 0 0 0;
+    opacity: 0.7;
+}
+
+.relaxy-coach-resize:hover {
+    color: var(--accent);
+}
+
 .relaxy-coach-avatar {
     flex: none;
-    width: 64px;
-    height: 64px;
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
     object-fit: cover;
     cursor: pointer;
     filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
+    transition: width var(--t-fast), height var(--t-fast);
     animation: coach-bob 2.6s var(--ease) infinite;
 }
 
@@ -1210,8 +1292,42 @@ body.nav-open {
     50% { transform: translateY(-5px); }
 }
 
+/* When flashed for attention the avatar glows a few times and the bubble pops,
+   then it settles back into the idle bob. */
+.relaxy-coach.is-flashing .relaxy-coach-avatar {
+    animation: coach-bob 2.6s var(--ease) infinite,
+    coach-attention 1s var(--ease) 0.1s 3;
+}
+
+.relaxy-coach.is-flashing .relaxy-coach-panel {
+    animation: coach-panel-pop 0.55s var(--ease);
+}
+
+@keyframes coach-attention {
+    0%, 100% { filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35)); }
+    50% { filter: drop-shadow(0 0 16px var(--accent)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35)); }
+}
+
+@keyframes coach-panel-pop {
+    0% { transform: scale(0.92); }
+    55% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+/* Tucked away: the panel hides and Relaxy shrinks into a re-openable launcher. */
+.relaxy-coach.is-tucked .relaxy-coach-panel {
+    display: none;
+}
+
+.relaxy-coach.is-tucked .relaxy-coach-avatar {
+    width: 60px;
+    height: 60px;
+}
+
 @media (prefers-reduced-motion: reduce) {
-    .relaxy-coach-avatar {
+    .relaxy-coach-avatar,
+    .relaxy-coach.is-flashing .relaxy-coach-avatar,
+    .relaxy-coach.is-flashing .relaxy-coach-panel {
         animation: none;
     }
 }
@@ -1334,6 +1450,22 @@ body.nav-open {
 .centered-text {
     text-align: center;
     margin-top: var(--space-5);
+}
+
+/* Ko-fi call-to-action: one line on desktop, stacked into two on phones so the
+   "Support on Ko-fi!" half no longer wraps mid-word. */
+.kofi-cta-line {
+    display: inline;
+}
+
+@media (max-width: 480px) {
+    .kofi-cta {
+        line-height: 1.3;
+    }
+
+    .kofi-cta-line {
+        display: block;
+    }
 }
 
 .owner-grid {
@@ -1553,6 +1685,12 @@ body.nav-open {
     transform: translateY(-2px);
 }
 
+/* On pages with the floating scroll buttons, lift the coach to sit above the
+   stacked pair instead of overlapping them. */
+body:has(#scrollToTop) .relaxy-coach {
+    bottom: calc(20px + var(--space-7) + var(--space-7));
+}
+
 /* ============================================================= Footer / subpages bar */
 #subpages-bar {
     text-align: center;
@@ -1678,11 +1816,12 @@ html.js .reveal.is-visible {
     }
 
     .footer {
-        text-align: left;
-        /* Relaxy sits above the footer so no right padding needed here */
+        /* Relaxy perches above the footer, so the copyright can sit centred. */
+        text-align: center;
     }
 
     .footer p {
+        margin-inline: auto;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -1694,6 +1833,21 @@ html.js .reveal.is-visible {
         bottom: 100%;
         width: clamp(88px, 30vw, 120px);
         transform: translateY(-38%);
+    }
+
+    /* Trim the coach back down a touch so it doesn't crowd small screens. */
+    .relaxy-coach-avatar {
+        width: 76px;
+        height: 76px;
+    }
+
+    .relaxy-coach.is-tucked .relaxy-coach-avatar {
+        width: 56px;
+        height: 56px;
+    }
+
+    .relaxy-coach-hint {
+        font-size: 0.9rem;
     }
 }
 

@@ -156,8 +156,10 @@
     // also consumed by the Relaxy coach search.
     let cmdHelp = null;
 
+    // Built whenever command data is present - the chip hover tooltips are an
+    // optional extra (main page only); the coach search works on every page.
     const chips = document.querySelectorAll('.chip[data-cmd]');
-    if (data && chips.length)
+    if (data)
     {
         const tip = document.createElement('div');
         tip.className = 'cmd-tip';
@@ -168,32 +170,23 @@
         const elHint = tip.querySelector('.cmd-hint');
         document.body.appendChild(tip);
 
-        // A datalist powers the lookup field with every command name and alias.
-        const datalist = document.createElement('datalist');
-        datalist.id = 'cmd-search-list';
-
         // canonical-name + alias -> canonical name, so a typed alias resolves.
+        // Powers both the coach's resolve() and its autocomplete suggestions.
         const lookup = Object.create(null);
         const chipByName = new Map();
         chips.forEach((c) => chipByName.set(c.dataset.cmd, c));
 
-        const dlOptions = [];
         Object.keys(data).forEach((name) =>
         {
             lookup[name.toLowerCase()] = name;
-            dlOptions.push('=' + name);
             (data[name].a || []).forEach((alias) =>
             {
                 if (!(alias.toLowerCase() in lookup))
                 {
                     lookup[alias.toLowerCase()] = name;
                 }
-                dlOptions.push('=' + alias);
             });
         });
-        datalist.innerHTML = dlOptions
-        .map((o) => '<option value="' + o + '"></option>').join('');
-        document.body.appendChild(datalist);
 
         /* ---- Discord-flavoured markdown -> HTML --------------------------- */
         const escapeHtml = (s) => String(s)
@@ -436,10 +429,40 @@
             return html;
         };
 
-        // Expose the full-help renderer + alias resolver for the Relaxy coach.
+        // Each command searched by its name and any aliases, for autocomplete.
+        const suggestSource = Object.keys(data).map((name) => ({
+            name,
+            hay: (name + ' ' + (data[name].a || []).join(' ')).toLowerCase()
+        }));
+
+        // Expose the full-help renderer, alias resolver and autocomplete for the
+        // Relaxy coach.
         cmdHelp = {
             renderFull: (name) => (data[name] ? buildBody(name, data[name], true) : ''),
-            resolve: (q) => lookup[String(q).trim().toLowerCase().replace(/^=/, '')]
+            resolve: (q) => lookup[String(q).trim().toLowerCase().replace(/^=/, '')],
+            suggest: (q) =>
+            {
+                const s = String(q).trim().toLowerCase().replace(/^=/, '');
+                if (!s)
+                {
+                    return [];
+                }
+                // Prefix matches first, then looser substring matches.
+                const starts = [];
+                const contains = [];
+                for (const item of suggestSource)
+                {
+                    if (item.name.startsWith(s))
+                    {
+                        starts.push(item.name);
+                    }
+                    else if (item.hay.indexOf(s) > -1)
+                    {
+                        contains.push(item.name);
+                    }
+                }
+                return starts.concat(contains).slice(0, 8);
+            }
         };
 
         let pinned = null;   // the chip currently pinned, if any
@@ -629,50 +652,93 @@
     const coach = document.getElementById('relaxyCoach');
     if (coach)
     {
-        const STORAGE_KEY = 'relaxyCoachDismissed';
-        let dismissed = false;
+        const STORAGE_KEY = 'relaxyCoachState';
+        const LEGACY_KEY = 'relaxyCoachDismissed';
+        // The coach always starts as the small tucked launcher. We only remember
+        // whether the visitor *manually* tucked it - if so, it stays put and we
+        // never auto-pop the hint at them again.
+        let manuallyTucked = false;
         try
         {
-            dismissed = localStorage.getItem(STORAGE_KEY) === '1';
+            // Previously dismissed users get the new re-openable launcher instead.
+            if (localStorage.getItem(LEGACY_KEY) === '1')
+            {
+                localStorage.removeItem(LEGACY_KEY);
+                localStorage.setItem(STORAGE_KEY, 'tucked');
+            }
+            manuallyTucked = localStorage.getItem(STORAGE_KEY) === 'tucked';
         }
         catch (e)
         {
-            // storage unavailable so we just treat the tip as not yet dismissed
+            // storage unavailable so we just treat the coach as never dismissed
         }
 
+        let flashTimer = 0;
+
+        const panel = coach.querySelector('.relaxy-coach-panel');
         const hint = coach.querySelector('.relaxy-coach-hint');
         const avatar = coach.querySelector('.relaxy-coach-avatar');
         const closeBtn = coach.querySelector('.relaxy-coach-close');
+        const resizeHandle = coach.querySelector('.relaxy-coach-resize');
         const input = coach.querySelector('.relaxy-coach-input');
         const result = coach.querySelector('.relaxy-coach-result');
 
-        // The coach stays put until explicitly dismissed - no auto-hide.
+        // Brief attention animation - the avatar glows and the bubble pops.
+        const flash = () =>
+        {
+            coach.classList.remove('is-flashing');
+            void coach.offsetWidth;   // reflow so the animation restarts cleanly
+            coach.classList.add('is-flashing');
+            window.clearTimeout(flashTimer);
+            flashTimer = window.setTimeout(() => coach.classList.remove('is-flashing'), 4000);
+        };
+
+        // First paint: the coach appears as the small tucked launcher.
         const reveal = () =>
         {
-            if (dismissed || !coach.hidden)
+            if (!coach.hidden)
             {
                 return;
             }
             coach.hidden = false;
+            coach.classList.add('is-tucked');
             requestAnimationFrame(() => coach.classList.add('is-visible'));
         };
 
-        const dismiss = () =>
+        // Closing doesn't remove the coach - it shrinks into a launcher Relaxy,
+        // and is remembered so we don't pop the hint open again unprompted.
+        const tuck = () =>
         {
-            dismissed = true;
-            coach.classList.remove('is-visible', 'is-open');
+            manuallyTucked = true;
+            closeSearch();
+            coach.classList.add('is-tucked');
             try
             {
-                localStorage.setItem(STORAGE_KEY, '1');
+                localStorage.setItem(STORAGE_KEY, 'tucked');
             }
             catch (e)
             {
-                // ignore - dismissal just won't persist across reloads
+                // ignore - the tucked state just won't persist across reloads
             }
-            setTimeout(() =>
+        };
+
+        const untuck = () =>
+        {
+            if (!coach.classList.contains('is-tucked'))
             {
-                coach.hidden = true;
-            }, 320);
+                return;
+            }
+            coach.classList.remove('is-tucked');
+            try
+            {
+                localStorage.removeItem(STORAGE_KEY);
+            }
+            catch (e)
+            {
+                // ignore - nothing to persist
+            }
+            // Flash + show the hint so the restored coach gets noticed.
+            flash();
         };
 
         const openSearch = () =>
@@ -688,7 +754,34 @@
             }
         };
 
-        const closeSearch = () => coach.classList.remove('is-open');
+        // Drop any user-dragged dimensions back to the content-sized default.
+        const resetSize = () =>
+        {
+            if (panel)
+            {
+                panel.style.width = '';
+                panel.style.maxWidth = '';
+            }
+            if (result)
+            {
+                result.style.maxHeight = '';
+            }
+        };
+
+        const closeSearch = () =>
+        {
+            coach.classList.remove('is-open', 'has-result');
+            resetSize();
+            closeSuggest();
+            if (input)
+            {
+                input.value = '';
+            }
+            if (result)
+            {
+                result.innerHTML = '';
+            }
+        };
 
         const runSearch = () =>
         {
@@ -699,19 +792,160 @@
             const name = cmdHelp.resolve(input.value);
             if (!name)
             {
+                // No match keeps the card compact - only a real result expands it.
                 result.innerHTML = input.value.trim() ? '<p class="relaxy-coach-empty">No command by that name — try another!</p>' : '';
+                coach.classList.remove('has-result');
+                resetSize();
                 return;
             }
             result.innerHTML = '<p class="cmd-name">=' + name + '</p>' + cmdHelp.renderFull(name);
             input.value = '=' + name;
+            coach.classList.add('has-result');
+            closeSuggest();
         };
+
+        // Custom top-left resize: the card is pinned bottom-right, so dragging up
+        // and to the left is the natural way to make it bigger.
+        if (resizeHandle && panel && result)
+        {
+            let startX = 0, startY = 0, startW = 0, startH = 0;
+
+            const onMove = (e) =>
+            {
+                const maxW = Math.min(640, window.innerWidth - 140);
+                const maxH = Math.round(window.innerHeight * 0.7);
+                const w = Math.min(Math.max(startW + (startX - e.clientX), 320), maxW);
+                const h = Math.min(Math.max(startH + (startY - e.clientY), 120), maxH);
+                panel.style.width = w + 'px';
+                panel.style.maxWidth = w + 'px';
+                result.style.maxHeight = h + 'px';
+            };
+
+            const onUp = (e) =>
+            {
+                if (resizeHandle.releasePointerCapture)
+                {
+                    resizeHandle.releasePointerCapture(e.pointerId);
+                }
+                window.removeEventListener('pointermove', onMove);
+                window.removeEventListener('pointerup', onUp);
+            };
+
+            resizeHandle.addEventListener('pointerdown', (e) =>
+            {
+                e.preventDefault();
+                startX = e.clientX;
+                startY = e.clientY;
+                startW = panel.getBoundingClientRect().width;
+                startH = result.getBoundingClientRect().height;
+                if (resizeHandle.setPointerCapture)
+                {
+                    resizeHandle.setPointerCapture(e.pointerId);
+                }
+                window.addEventListener('pointermove', onMove);
+                window.addEventListener('pointerup', onUp);
+            });
+        }
+
+        // ---- Live autocomplete dropdown under the search input -------------
+        let activeIdx = -1;
+        let suggestBox = null;
+        if (input && input.parentNode)
+        {
+            suggestBox = document.createElement('ul');
+            suggestBox.className = 'relaxy-coach-suggest';
+            suggestBox.setAttribute('role', 'listbox');
+            input.insertAdjacentElement('afterend', suggestBox);
+        }
+
+        const closeSuggest = () =>
+        {
+            activeIdx = -1;
+            if (suggestBox)
+            {
+                suggestBox.innerHTML = '';
+                suggestBox.classList.remove('is-open');
+            }
+        };
+
+        const setActiveSuggest = (idx) =>
+        {
+            if (!suggestBox)
+            {
+                return;
+            }
+            const items = suggestBox.children;
+            if (!items.length)
+            {
+                return;
+            }
+            activeIdx = (idx + items.length) % items.length;
+            for (let i = 0; i < items.length; i++)
+            {
+                items[i].classList.toggle('is-active', i === activeIdx);
+            }
+            items[activeIdx].scrollIntoView({ block: 'nearest' });
+        };
+
+        const renderSuggest = () =>
+        {
+            if (!suggestBox || !cmdHelp || !cmdHelp.suggest)
+            {
+                return;
+            }
+            const names = cmdHelp.suggest(input.value);
+            if (!names.length)
+            {
+                closeSuggest();
+                return;
+            }
+            suggestBox.innerHTML = names
+            .map((n) => '<li class="relaxy-coach-suggest-item" role="option" data-name="' + n + '">=' + n + '</li>')
+            .join('');
+            suggestBox.classList.add('is-open');
+            // Pre-select the top match so Enter/Tab commits it without arrowing.
+            setActiveSuggest(0);
+        };
+
+        const chooseSuggest = (name) =>
+        {
+            input.value = '=' + name;
+            closeSuggest();
+            runSearch();
+            input.focus();
+        };
+
+        if (suggestBox)
+        {
+            // mousedown (not click) so picking an item beats the input losing focus.
+            suggestBox.addEventListener('mousedown', (e) =>
+            {
+                const li = e.target.closest('.relaxy-coach-suggest-item');
+                if (li)
+                {
+                    e.preventDefault();
+                    chooseSuggest(li.dataset.name);
+                }
+            });
+
+            // Hovering moves the single highlight, so mouse and keyboard never
+            // show two selected items at once.
+            suggestBox.addEventListener('mousemove', (e) =>
+            {
+                const li = e.target.closest('.relaxy-coach-suggest-item');
+                if (li)
+                {
+                    setActiveSuggest(Array.prototype.indexOf.call(suggestBox.children, li));
+                }
+            });
+        }
 
         if (closeBtn)
         {
             closeBtn.addEventListener('click', (e) =>
             {
                 e.stopPropagation();
-                dismiss();
+                tuck();
             });
         }
 
@@ -722,18 +956,55 @@
 
         if (avatar)
         {
-            avatar.addEventListener('click', () => (coach.classList.contains('is-open') ? closeSearch() : openSearch()));
+            avatar.addEventListener('click', () =>
+            {
+                if (coach.classList.contains('is-tucked'))
+                {
+                    untuck();
+                    return;
+                }
+                coach.classList.contains('is-open') ? closeSearch() : openSearch();
+            });
         }
 
         if (input)
         {
-            input.addEventListener('change', runSearch);
+            input.addEventListener('input', renderSuggest);
             input.addEventListener('keydown', (e) =>
             {
-                if (e.key === 'Enter')
+                const items = suggestBox ? suggestBox.children : [];
+                const open = !!(suggestBox && suggestBox.classList.contains('is-open') && items.length);
+
+                if (e.key === 'ArrowDown' && open)
                 {
                     e.preventDefault();
-                    runSearch();
+                    setActiveSuggest(activeIdx + 1);
+                }
+                else if (e.key === 'ArrowUp' && open)
+                {
+                    e.preventDefault();
+                    setActiveSuggest(activeIdx - 1);
+                }
+                else if (e.key === 'Enter' || e.key === 'Tab')
+                {
+                    // Enter or Tab commits the highlighted suggestion (the top
+                    // match by default), so a half-typed name still resolves.
+                    if (open && activeIdx > -1)
+                    {
+                        e.preventDefault();
+                        chooseSuggest(items[activeIdx].dataset.name);
+                    }
+                    else if (e.key === 'Enter')
+                    {
+                        e.preventDefault();
+                        runSearch();
+                    }
+                }
+                else if (e.key === 'Escape' && open)
+                {
+                    // First Escape just closes the suggestions; a second closes search.
+                    e.stopPropagation();
+                    closeSuggest();
                 }
             });
         }
@@ -755,23 +1026,24 @@
             }
         });
 
+        // Show the tucked launcher immediately on every page load.
+        reveal();
+
+        // If the visitor hasn't dismissed it, pop the hint open with a flash once
+        // they scroll near the commands section (main page only).
         const commandsSection = document.getElementById('commands');
-        if (!dismissed && commandsSection && 'IntersectionObserver' in window)
+        if (!manuallyTucked && commandsSection && 'IntersectionObserver' in window)
         {
             const coachObserver = new IntersectionObserver((entries, obs) =>
             {
                 if (entries.some((e) => e.isIntersecting))
                 {
-                    reveal();
+                    untuck();
                     obs.disconnect();
                 }
             }, { rootMargin: '0px 0px -25% 0px' });
 
             coachObserver.observe(commandsSection);
-        }
-        else if (!dismissed)
-        {
-            reveal();
         }
     }
 })();

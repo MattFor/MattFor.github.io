@@ -356,18 +356,19 @@
 
 <aside class="relaxy-coach" id="relaxyCoach" hidden>
     <div class="relaxy-coach-panel">
+        <span class="relaxy-coach-resize" aria-hidden="true"></span>
         <button class="relaxy-coach-close" type="button" aria-label="Dismiss tip">×</button>
-        <p class="relaxy-coach-hint">Psst! <strong>Hover</strong> over any command to peek at what it does or
-            <strong>click me</strong> to search every command!</p>
+        <p class="relaxy-coach-hint">Psst! <strong>Hover</strong> over any command to peek at what it does, click on it to make sure it doesn't disappear. Or
+            <strong>click me</strong> to quickly search for a specific command!</p>
         <div class="relaxy-coach-search">
             <input class="relaxy-coach-input" type="text" autocomplete="off" spellcheck="false"
-                   list="cmd-search-list" aria-label="Search commands"
-                   placeholder="Type a command for its full help…">
+                   aria-label="Search commands"
+                   placeholder="Type a command name to learn more about it...">
             <div class="relaxy-coach-result cmd-help" aria-live="polite"></div>
         </div>
     </div>
-    <img class="relaxy-coach-avatar" alt="Relaxy!" decoding="async" height="480" width="480"
-         src="/resources/relaxy-cute.webp">
+    <img class="relaxy-coach-avatar" alt="Relaxy!" title="Search Relaxy!'s commands" decoding="async"
+         height="480" width="480" src="/resources/relaxy-cute.webp">
 </aside>
 
 <footer class="footer">
