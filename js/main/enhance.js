@@ -793,7 +793,7 @@
             if (!name)
             {
                 // No match keeps the card compact - only a real result expands it.
-                result.innerHTML = input.value.trim() ? '<p class="relaxy-coach-empty">No command by that name — try another!</p>' : '';
+                result.innerHTML = input.value.trim() ? '<p class="relaxy-coach-empty">Invalid command name, try again!</p>' : '';
                 coach.classList.remove('has-result');
                 resetSize();
                 return;
