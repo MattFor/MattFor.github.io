@@ -837,7 +837,7 @@ body.nav-open {
 .cmd-tip {
     position: fixed;
     z-index: 200;
-    max-width: min(340px, 92vw);
+    max-width: min(440px, 94vw);
     overflow-y: auto;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
@@ -852,6 +852,10 @@ body.nav-open {
     pointer-events: none;
 }
 
+.cmd-tip.is-full {
+    max-width: min(520px, 94vw);
+}
+
 .cmd-tip.is-open {
     opacity: 1;
     transform: none;
@@ -861,9 +865,9 @@ body.nav-open {
     pointer-events: auto;
 }
 
-/* Sticky name keeps the command visible while a long description scrolls.
-   It is full-bleed and fully opaque so scrolled text never peeks behind it. */
-.cmd-tip .cmd-name {
+/* Sticky header keeps the command (and the lookup field) reachable while a
+   long help page scrolls. It is full-bleed and opaque so text never peeks. */
+.cmd-tip-head {
     position: sticky;
     top: 0;
     z-index: 1;
@@ -872,19 +876,23 @@ body.nav-open {
     background: var(--bg-elevated);
     border-bottom: 1px solid var(--border);
     border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+
+.cmd-name {
+    margin: 0;
     font-family: var(--mono);
-    font-size: 0.95rem;
+    font-size: 1.02rem;
     font-weight: 700;
     letter-spacing: 0.01em;
     color: var(--accent);
 }
 
-.cmd-tip .cmd-usage {
+.cmd-help .cmd-usage {
     display: block;
-    margin: 0 0 var(--space-2);
+    margin: 0 0 var(--space-3);
     padding: var(--space-2) var(--space-3);
     font-family: var(--mono);
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     color: var(--text);
     background: var(--bg-inset);
     border-radius: 6px;
@@ -892,19 +900,320 @@ body.nav-open {
     word-break: break-word;
 }
 
-.cmd-tip .cmd-desc {
-    margin: 0;
+/* Metadata rows: aliases, category, permissions, cooldown, examples. */
+.cmd-field {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2);
+    margin: 0 0 var(--space-2);
+    font-size: 0.8rem;
+}
+
+.cmd-field-label {
+    flex: none;
+    min-width: 84px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.66rem;
+    font-weight: 700;
+}
+
+.cmd-field-val {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    min-width: 0;
+}
+
+.cmd-field-val code {
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    padding: 2px var(--space-2);
+    border-radius: var(--radius-pill);
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: 1px solid var(--accent-ring);
+}
+
+.cmd-pill {
+    font-size: 0.74rem;
+    font-weight: 600;
+    padding: 2px var(--space-2);
+    border-radius: var(--radius-pill);
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: 1px solid var(--accent-ring);
+}
+
+.cmd-pill-warn {
+    background: color-mix(in srgb, #ed4245 18%, transparent);
+    color: #ed4245;
+    border-color: color-mix(in srgb, #ed4245 45%, transparent);
+}
+
+/* ---- Rendered description (Discord-flavoured markdown) ---- */
+.cmd-desc {
+    margin: var(--space-2) 0 0;
     font-size: 0.86rem;
     line-height: 1.5;
     color: var(--text-muted);
-    white-space: pre-wrap;
 }
 
+.cmd-desc .cmd-para {
+    margin: 0 0 var(--space-2);
+}
+
+.cmd-desc .cmd-para:last-child {
+    margin-bottom: 0;
+}
+
+.cmd-desc .cmd-h {
+    margin: var(--space-3) 0 var(--space-2);
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--text);
+}
+
+.cmd-desc .cmd-h:first-child {
+    margin-top: 0;
+}
+
+.cmd-desc .cmd-h1 { font-size: 1.02rem; }
+.cmd-desc .cmd-h2 { font-size: 0.94rem; }
+.cmd-desc .cmd-h3 { font-size: 0.88rem; }
+
+.cmd-desc .cmd-list {
+    margin: 0 0 var(--space-2);
+    padding-left: 1.15em;
+}
+
+.cmd-desc .cmd-list li {
+    margin: 0 0 3px;
+}
+
+.cmd-desc code {
+    font-family: var(--mono);
+    font-size: 0.82em;
+    padding: 1px 5px;
+    border-radius: 5px;
+    background: var(--bg-inset);
+    color: var(--text);
+}
+
+.cmd-desc a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+/* Fenced blocks. ```fix becomes a gold-accented label block, like Discord. */
+.cmd-desc .cmd-code {
+    margin: 0 0 var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    background: var(--bg-inset);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+}
+
+.cmd-desc .cmd-code code {
+    padding: 0;
+    background: none;
+    font-size: inherit;
+}
+
+.cmd-desc .cmd-code-fix {
+    border-left: 3px solid #e3a008;
+    color: #e3a008;
+    font-weight: 600;
+}
+
+.cmd-desc .cmd-code-diff .diff-row {
+    display: block;
+}
+
+.cmd-desc .cmd-code-diff .diff-add { color: #3ba55d; }
+.cmd-desc .cmd-code-diff .diff-del { color: #ed4245; }
+.cmd-desc .cmd-code-diff .diff-ctx { color: var(--text-muted); }
+
 .cmd-tip .cmd-hint {
-    margin: var(--space-2) 0 0;
+    margin: var(--space-3) 0 0;
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--border);
     font-size: 0.72rem;
     color: var(--text-muted);
-    opacity: 0.7;
+    opacity: 0.8;
+}
+
+/* ============================================================= Relaxy coach bubble */
+.relaxy-coach {
+    position: fixed;
+    right: clamp(12px, 4vw, 28px);
+    bottom: clamp(12px, 4vw, 28px);
+    z-index: 250;
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-2);
+    max-width: calc(100vw - 24px);
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+    transform-origin: bottom right;
+    transition: opacity 0.28s var(--ease), transform 0.28s var(--ease);
+}
+
+.relaxy-coach.is-visible {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+}
+
+.relaxy-coach-panel {
+    position: relative;
+    width: max-content;
+    max-width: min(300px, calc(100vw - 110px));
+    padding: var(--space-3) var(--space-4);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    transition: max-width var(--t-fast);
+}
+
+/* When the search is open the panel widens into a full lookup card. */
+.relaxy-coach.is-open .relaxy-coach-panel {
+    width: min(380px, calc(100vw - 110px));
+    max-width: min(380px, calc(100vw - 110px));
+}
+
+.relaxy-coach-hint {
+    margin: 0;
+    padding-right: var(--space-4);
+    font-size: 0.86rem;
+    line-height: 1.45;
+    color: var(--text);
+    cursor: pointer;
+}
+
+.relaxy-coach-hint strong {
+    color: var(--accent);
+}
+
+/* Hint collapses once the search card is showing. */
+.relaxy-coach.is-open .relaxy-coach-hint {
+    display: none;
+}
+
+.relaxy-coach-search {
+    display: none;
+}
+
+.relaxy-coach.is-open .relaxy-coach-search {
+    display: block;
+}
+
+.relaxy-coach-input {
+    width: 100%;
+    appearance: none;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    padding: var(--space-2) var(--space-3);
+    color: var(--text);
+    background: var(--bg-inset);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    transition: border-color var(--t-fast), box-shadow var(--t-fast);
+}
+
+.relaxy-coach-input:focus-visible {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-ring);
+}
+
+.relaxy-coach-result {
+    max-height: min(46vh, 360px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+.relaxy-coach-result:not(:empty) {
+    margin-top: var(--space-3);
+}
+
+.relaxy-coach-result .cmd-name {
+    margin-bottom: var(--space-2);
+}
+
+.relaxy-coach-empty {
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+/* Little speech-bubble tail pointing toward Relaxy. */
+.relaxy-coach-panel::after {
+    content: "";
+    position: absolute;
+    right: -7px;
+    bottom: 16px;
+    width: 13px;
+    height: 13px;
+    background: var(--bg-elevated);
+    border-right: 1px solid var(--border-strong);
+    border-bottom: 1px solid var(--border-strong);
+    transform: rotate(-45deg);
+}
+
+.relaxy-coach-close {
+    position: absolute;
+    top: 2px;
+    right: 4px;
+    appearance: none;
+    border: none;
+    background: none;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1;
+    padding: 2px 4px;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: color var(--t-fast);
+}
+
+.relaxy-coach-close:hover, .relaxy-coach-close:focus-visible {
+    color: var(--accent);
+}
+
+.relaxy-coach-avatar {
+    flex: none;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
+    animation: coach-bob 2.6s var(--ease) infinite;
+}
+
+@keyframes coach-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .relaxy-coach-avatar {
+        animation: none;
+    }
 }
 
 /* ============================================================= Patreon / support */
