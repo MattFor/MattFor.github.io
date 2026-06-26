@@ -41,12 +41,10 @@
     const navLinks = Array.from(document.querySelectorAll('.site-nav a[href^=\'#\']'));
     if (navLinks.length && 'IntersectionObserver' in window)
     {
-        const byId = new Map(
-            navLinks.map((a) => [
-                a.getAttribute('href').slice(1),
-                a
-            ])
-        );
+        const byId = new Map(navLinks.map((a) => [
+            a.getAttribute('href').slice(1),
+            a
+        ]));
         const sections = navLinks
         .map((a) => document.getElementById(a.getAttribute('href').slice(1)))
         .filter(Boolean);
@@ -164,12 +162,7 @@
         const tip = document.createElement('div');
         tip.className = 'cmd-tip';
         tip.setAttribute('role', 'tooltip');
-        tip.innerHTML =
-            '<div class="cmd-tip-head">' +
-                '<p class="cmd-name"></p>' +
-            '</div>' +
-            '<div class="cmd-body cmd-help"></div>' +
-            '<p class="cmd-hint"></p>';
+        tip.innerHTML = '<div class="cmd-tip-head">' + '<p class="cmd-name"></p>' + '</div>' + '<div class="cmd-body cmd-help"></div>' + '<p class="cmd-hint"></p>';
         const elName = tip.querySelector('.cmd-name');
         const elBody = tip.querySelector('.cmd-body');
         const elHint = tip.querySelector('.cmd-hint');
@@ -207,8 +200,7 @@
         .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
         const renderInline = (s) => escapeHtml(s)
-        .replace(/\[([^\]]+)]\((https?:\/\/[^)\s]+)\)/g,
-            '<a href="$2" target="_blank" rel="noopener">$1</a>')
+        .replace(/\[([^\]]+)]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
         .replace(/`([^`]+)`/g, '<code>$1</code>')
         .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
         .replace(/__([^_]+)__/g, '<u>$1</u>')
@@ -227,9 +219,7 @@
                 const rows = escapeHtml(code).split('\n').map((l) =>
                 {
                     const t = l.replace(/^\s+/, '');
-                    const cls = t.startsWith('+')
-                        ? 'diff-add'
-                        : (t.startsWith('-') ? 'diff-del' : 'diff-ctx');
+                    const cls = t.startsWith('+') ? 'diff-add' : (t.startsWith('-') ? 'diff-del' : 'diff-ctx');
                     return '<span class="diff-row ' + cls + '">' + (l === '' ? ' ' : l) + '</span>';
                 }).join('');
                 return '<pre class="cmd-code cmd-code-diff">' + rows + '</pre>';
@@ -272,8 +262,7 @@
                 {
                     flushPara();
                     closeList();
-                    out += '<p class="cmd-h cmd-h' + heading[1].length + '">' +
-                        renderInline(heading[2]) + '</p>';
+                    out += '<p class="cmd-h cmd-h' + heading[1].length + '">' + renderInline(heading[2]) + '</p>';
                 }
                 else if (bullet)
                 {
@@ -332,11 +321,47 @@
         // commands.js currently carries c/a/u/d; permissions, cooldown and
         // examples are planned, so render any of them that show up.
         const metaFields = [
-            { keys: ['p', 'perms', 'permissions'], label: 'Permissions', pills: true },
-            { keys: ['up', 'userPermissions'], label: 'You need', pills: true },
-            { keys: ['bp', 'botPermissions'], label: 'Relaxy needs', pills: true },
-            { keys: ['cd', 'cooldown'], label: 'Cooldown', cooldown: true },
-            { keys: ['e', 'examples'], label: 'Examples', code: true }
+            {
+                keys: [
+                    'p',
+                    'perms',
+                    'permissions'
+                ],
+                label: 'Permissions',
+                pills: true
+            },
+            {
+                keys: [
+                    'up',
+                    'userPermissions'
+                ],
+                label: 'You need',
+                pills: true
+            },
+            {
+                keys: [
+                    'bp',
+                    'botPermissions'
+                ],
+                label: 'Relaxy needs',
+                pills: true
+            },
+            {
+                keys: [
+                    'cd',
+                    'cooldown'
+                ],
+                label: 'Cooldown',
+                cooldown: true
+            },
+            {
+                keys: [
+                    'e',
+                    'examples'
+                ],
+                label: 'Examples',
+                code: true
+            }
         ];
         const firstDefined = (info, keys) =>
         {
@@ -351,11 +376,8 @@
         };
         const toArray = (v) => (Array.isArray(v) ? v : [v]);
         const catLabel = (c) => (c ? c.charAt(0).toUpperCase() + c.slice(1) : '');
-        const field = (label, valueHtml) =>
-            '<div class="cmd-field"><span class="cmd-field-label">' + label +
-            '</span><span class="cmd-field-val">' + valueHtml + '</span></div>';
-        const pill = (text, cls) =>
-            '<span class="cmd-pill' + (cls ? ' ' + cls : '') + '">' + escapeHtml(String(text)) + '</span>';
+        const field = (label, valueHtml) => '<div class="cmd-field"><span class="cmd-field-label">' + label + '</span><span class="cmd-field-val">' + valueHtml + '</span></div>';
+        const pill = (text, cls) => '<span class="cmd-pill' + (cls ? ' ' + cls : '') + '">' + escapeHtml(String(text)) + '</span>';
 
         const renderMeta = (info) =>
         {
@@ -437,13 +459,8 @@
             // screen area outside the tooltip to initiate a page scroll. The
             // pinned full-help page gets a little more room than a hover card.
             const mobileShare = tip.classList.contains('is-full') ? 0.72 : 0.58;
-            const viewportCap = window.innerWidth <= 720
-                ? Math.floor(window.innerHeight * mobileShare)
-                : window.innerHeight - margin * 2;
-            const avail = Math.min(
-                Math.max(below ? spaceBelow : spaceAbove, 140),
-                viewportCap
-            );
+            const viewportCap = window.innerWidth <= 720 ? Math.floor(window.innerHeight * mobileShare) : window.innerHeight - margin * 2;
+            const avail = Math.min(Math.max(below ? spaceBelow : spaceAbove, 140), viewportCap);
             tip.style.maxHeight = avail + 'px';
 
             tip.style.left = '0';
@@ -461,9 +478,7 @@
             elName.textContent = '=' + name;
             elBody.innerHTML = buildBody(name, info, full);
             tip.classList.toggle('is-full', !!full);
-            elHint.textContent = full
-                ? 'Press Esc or click away to close'
-                : 'Click to keep this open';
+            elHint.textContent = full ? 'Press Esc or click away to close' : 'Click to keep this open';
         };
 
         // Compact card shown on hover/focus.
@@ -654,7 +669,10 @@
             {
                 // ignore - dismissal just won't persist across reloads
             }
-            setTimeout(() => { coach.hidden = true; }, 320);
+            setTimeout(() =>
+            {
+                coach.hidden = true;
+            }, 320);
         };
 
         const openSearch = () =>
@@ -681,9 +699,7 @@
             const name = cmdHelp.resolve(input.value);
             if (!name)
             {
-                result.innerHTML = input.value.trim()
-                    ? '<p class="relaxy-coach-empty">No command by that name — try another!</p>'
-                    : '';
+                result.innerHTML = input.value.trim() ? '<p class="relaxy-coach-empty">No command by that name — try another!</p>' : '';
                 return;
             }
             result.innerHTML = '<p class="cmd-name">=' + name + '</p>' + cmdHelp.renderFull(name);
@@ -698,15 +714,17 @@
                 dismiss();
             });
         }
+
         if (hint)
         {
             hint.addEventListener('click', openSearch);
         }
+
         if (avatar)
         {
-            avatar.addEventListener('click', () =>
-                (coach.classList.contains('is-open') ? closeSearch() : openSearch()));
+            avatar.addEventListener('click', () => (coach.classList.contains('is-open') ? closeSearch() : openSearch()));
         }
+
         if (input)
         {
             input.addEventListener('change', runSearch);
@@ -728,6 +746,7 @@
                 closeSearch();
             }
         });
+
         document.addEventListener('keydown', (e) =>
         {
             if (e.key === 'Escape')
@@ -747,6 +766,7 @@
                     obs.disconnect();
                 }
             }, { rootMargin: '0px 0px -25% 0px' });
+
             coachObserver.observe(commandsSection);
         }
         else if (!dismissed)

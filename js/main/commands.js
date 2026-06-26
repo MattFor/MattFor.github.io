@@ -13,158 +13,965 @@
 
 const RELAXY_COMMANDS = {
     // ===== FUN =====
-    "8ball": { "c": "fun", "a": ["8b"], "u": "=8ball <question>", "d": "Ask the magic 8-ball a yes/no question and receive a randomised answer." },
-    "buy": { "c": "fun", "a": null, "u": "=buy <category> [item]", "d": "Buy an item from the Relaxy! shop. Browse what is on offer with `=shop` and preview an item with `=preview`. **category** is the item category (e.g. `color`, a title category number, or a background category) and **item** is the specific item within it (a hex code for `color`)." },
-    "coinflip": { "c": "fun", "a": ["cf","coinftoss"], "u": "=coinflip <heads|tails> <bet>", "d": "Bet on the outcome of a coin flip. **bet** is how much money you want to wager." },
-    "customboostmessage": { "c": "fun", "a": ["customnitromessage","nitromessage","boostmessage","cbm"], "u": "=customboostmessage [boost|level_1|level_2|level_3|all|channel|off|delete_original] [args]", "d": "When enabled, Relaxy! sends a custom message whenever:\n- someone boosts the server, or\n- a boost moves the server to a new boost level (1, 2 or 3).\n\nTo set a message, type the command followed by `boost`, `level_1`, `level_2` or `level_3`, then either plain text or `embed` to build an embedded message. Use `all` to set the same message for every type, `channel` to set the destination channel, `off` to disable (append `clean` to also wipe settings) and `delete_original` to toggle deletion of Discord's own boost system message.\nAppend `view` after a type to preview it.\n\n**Replacers** - these are substituted automatically:\n- `|U|` - the user who boosted\n- `|G|` - the server name\n- `|C|` - the channel the boost appeared in" },
-    "dice": { "c": "fun", "a": ["d"], "u": "=dice <number>", "d": "Roll a random number from 1 up to the number you specify (max 1,000,000)." },
-    "heartboard": { "c": "fun", "a": null, "u": "=heartboard [#channel] [count]", "d": "Creates a heartboard channel. When any message Relaxy! can see reaches the required number of special reactions (3 by default, :heart: by default), it is reposted to the heartboard. If a post falls back to 0 special reactions, it is removed.\nPass a number when creating one to set the reaction requirement (between 2 and 10).\n## Configuring a heartboard\nRun the command again with the heartboard channel as the first argument to open its settings panel, where buttons let you:\n- set the embed colour,\n- set the reaction emojis (5 emojis; the first is the required one),\n- set the name display mode (usernames, display names or nicknames),\n- set the reaction requirement (between 2 and 10),\n- delete the heartboard.\n\nYou can create multiple heartboards, each configured independently." },
-    "inventory": { "c": "fun", "a": null, "u": "=inventory [user]", "d": "Shows your (or another user's) Relaxy! inventory. The number in front of each item is its internal slot.\nAfter running `=inventory`, you can type `equip`, `unequip`, `discard` or `scrap` followed by an item ID to act on it. Scrapping any item gives you 100 money." },
-    "leaderboard": { "c": "fun", "a": ["lb"], "u": "=leaderboard", "d": "Shows the server leaderboard.\nReact with 🔠 for the top 15 by message count (since Relaxy! joined), 🔢 for the top 15 by level, and ⏹️ to return to the main page." },
-    "leveling": { "c": "fun", "a": ["lvling"], "u": "=leveling [type]", "d": "Toggle leveling on the server and set how level-ups are displayed.\nWith leveling off, running it enables it; with leveling on, running it without a type disables it.\nTypes of leveling are:\n**1** - Shows messages on levelup along with cards,\n**2** - Shows only messages on levelup,\n**3** - Shows only levelup cards,\n**4** - Doesn't show anything.\nEnabling leveling gives access to the `=leaderboard` and `=level` commands." },
-    "lovemeter": { "c": "fun", "a": null, "u": "=lovemeter <user> [other]", "d": "Gives back a percentage of 'love' you have for that user.\nThe first user is required; if a second user is given, it measures the love between the two of them instead." },
-    "lvl": { "c": "fun", "a": ["level"], "u": "=lvl [user]", "d": "Gives a level / rank card of you or another user.\nWorks only if =leveling is on." },
-    "minesweeper": { "c": "fun", "a": ["mine"], "u": "=minesweeper [rows] [columns] [mines] [classic_start]", "d": "Play a game of minesweeper!\nDefault options:\n- 9 rows,\n- 9 columns,\n- 25 mines,\n- doesn't show first cell,\nClassic start (pass `yes` as the fourth argument) reveals the first cell when starting the game." },
-    "poll": { "c": "fun", "a": null, "u": "=poll", "d": "After initiating the command, press any of the first 5 buttons to edit the poll's properties.\n**To start the poll, press the button 'Post Poll'.**" },
-    "preview": { "c": "fun", "a": null, "u": "=preview <category> [item]", "d": "Preview an item from the Relaxy! shop. **category** is the item category (e.g. `color`, a title category number, or a background category) and **item** is the specific item within it (a hex code for `color`)." },
-    "profile": { "c": "fun", "a": null, "u": "=profile [user]", "d": "View your (or another user's) Relaxy profile." },
-    "rep+": { "c": "fun", "a": ["rep"], "u": "=rep+ <user>", "d": "Give someone an arbitrary reputation point **(some money and xp too)**!" },
-    "shop": { "c": "fun", "a": null, "u": "=shop", "d": "**Show the Relaxy shop!**" },
-    "snake": { "c": "fun", "a": ["snek"], "u": "=snake", "d": "Get to play a game of snake.\nPlease do not spam the reactions. `(refresh time once per 0.5 seconds)`\nEnds when:\n- You drive the snake into itself,\n- Are idle for some time." },
-    "trade": { "c": "fun", "a": null, "u": "=trade <user> <your_item_id> <their_item_id|money amount>", "d": "Trade an item with another user (mention or ID only)! Follow one of these command structures:\n**=trade MattFor 1 2**\n`OR`\n**=trade MattFor 1 money 300**\nPro tip: should you want to trade for nothing, just do money0 ;)" },
-    "translate": { "c": "fun", "a": null, "u": "=translate <from> <to> <text>", "d": "Translates text from one language to another.\n**from** and **to** are language names or `ISO 639-1` codes, and **text** is the text to translate." },
-    "welcomechannel": { "c": "fun", "a": ["wcl","entrance"], "u": "=welcomechannel [type] [welcome|leave] [message]", "d": "Adds a channel where Relaxy! will send welcome/goodbye messages when people join/leave your server.\n**type** is the card style (1-16, defaults to 7), and you can optionally pass `welcome` or `leave` followed by a custom message.\n## After it is used, use it again to configure how the welcome messages function / look" },
+    '8ball': {
+        'c': 'fun',
+        'a': ['8b'],
+        'u': '=8ball <question>',
+        'd': 'Ask the magic 8-ball a yes/no question and receive a randomised answer.'
+    },
+    'buy': {
+        'c': 'fun',
+        'a': null,
+        'u': '=buy <category> [item]',
+        'd': 'Buy an item from the Relaxy! shop. Browse what is on offer with `=shop` and preview an item with `=preview`. **category** is the item category (e.g. `color`, a title category number, or a background category) and **item** is the specific item within it (a hex code for `color`).'
+    },
+    'coinflip': {
+        'c': 'fun',
+        'a': [
+            'cf',
+            'coinftoss'
+        ],
+        'u': '=coinflip <heads|tails> <bet>',
+        'd': 'Bet on the outcome of a coin flip. **bet** is how much money you want to wager.'
+    },
+    'customboostmessage': {
+        'c': 'fun',
+        'a': [
+            'customnitromessage',
+            'nitromessage',
+            'boostmessage',
+            'cbm'
+        ],
+        'u': '=customboostmessage [boost|level_1|level_2|level_3|all|channel|off|delete_original] [args]',
+        'd': 'When enabled, Relaxy! sends a custom message whenever:\n- someone boosts the server, or\n- a boost moves the server to a new boost level (1, 2 or 3).\n\nTo set a message, type the command followed by `boost`, `level_1`, `level_2` or `level_3`, then either plain text or `embed` to build an embedded message. Use `all` to set the same message for every type, `channel` to set the destination channel, `off` to disable (append `clean` to also wipe settings) and `delete_original` to toggle deletion of Discord\'s own boost system message.\nAppend `view` after a type to preview it.\n\n**Replacers** - these are substituted automatically:\n- `|U|` - the user who boosted\n- `|G|` - the server name\n- `|C|` - the channel the boost appeared in'
+    },
+    'dice': {
+        'c': 'fun',
+        'a': ['d'],
+        'u': '=dice <number>',
+        'd': 'Roll a random number from 1 up to the number you specify (max 1,000,000).'
+    },
+    'heartboard': {
+        'c': 'fun',
+        'a': null,
+        'u': '=heartboard [#channel] [count]',
+        'd': 'Creates a heartboard channel. When any message Relaxy! can see reaches the required number of special reactions (3 by default, :heart: by default), it is reposted to the heartboard. If a post falls back to 0 special reactions, it is removed.\nPass a number when creating one to set the reaction requirement (between 2 and 10).\n## Configuring a heartboard\nRun the command again with the heartboard channel as the first argument to open its settings panel, where buttons let you:\n- set the embed colour,\n- set the reaction emojis (5 emojis; the first is the required one),\n- set the name display mode (usernames, display names or nicknames),\n- set the reaction requirement (between 2 and 10),\n- delete the heartboard.\n\nYou can create multiple heartboards, each configured independently.'
+    },
+    'inventory': {
+        'c': 'fun',
+        'a': null,
+        'u': '=inventory [user]',
+        'd': 'Shows your (or another user\'s) Relaxy! inventory. The number in front of each item is its internal slot.\nAfter running `=inventory`, you can type `equip`, `unequip`, `discard` or `scrap` followed by an item ID to act on it. Scrapping any item gives you 100 money.'
+    },
+    'leaderboard': {
+        'c': 'fun',
+        'a': ['lb'],
+        'u': '=leaderboard',
+        'd': 'Shows the server leaderboard.\nReact with 🔠 for the top 15 by message count (since Relaxy! joined), 🔢 for the top 15 by level, and ⏹️ to return to the main page.'
+    },
+    'leveling': {
+        'c': 'fun',
+        'a': ['lvling'],
+        'u': '=leveling [type]',
+        'd': 'Toggle leveling on the server and set how level-ups are displayed.\nWith leveling off, running it enables it; with leveling on, running it without a type disables it.\nTypes of leveling are:\n**1** - Shows messages on levelup along with cards,\n**2** - Shows only messages on levelup,\n**3** - Shows only levelup cards,\n**4** - Doesn\'t show anything.\nEnabling leveling gives access to the `=leaderboard` and `=level` commands.'
+    },
+    'lovemeter': {
+        'c': 'fun',
+        'a': null,
+        'u': '=lovemeter <user> [other]',
+        'd': 'Gives back a percentage of \'love\' you have for that user.\nThe first user is required; if a second user is given, it measures the love between the two of them instead.'
+    },
+    'lvl': {
+        'c': 'fun',
+        'a': ['level'],
+        'u': '=lvl [user]',
+        'd': 'Gives a level / rank card of you or another user.\nWorks only if =leveling is on.'
+    },
+    'minesweeper': {
+        'c': 'fun',
+        'a': ['mine'],
+        'u': '=minesweeper [rows] [columns] [mines] [classic_start]',
+        'd': 'Play a game of minesweeper!\nDefault options:\n- 9 rows,\n- 9 columns,\n- 25 mines,\n- doesn\'t show first cell,\nClassic start (pass `yes` as the fourth argument) reveals the first cell when starting the game.'
+    },
+    'poll': {
+        'c': 'fun',
+        'a': null,
+        'u': '=poll',
+        'd': 'After initiating the command, press any of the first 5 buttons to edit the poll\'s properties.\n**To start the poll, press the button \'Post Poll\'.**'
+    },
+    'preview': {
+        'c': 'fun',
+        'a': null,
+        'u': '=preview <category> [item]',
+        'd': 'Preview an item from the Relaxy! shop. **category** is the item category (e.g. `color`, a title category number, or a background category) and **item** is the specific item within it (a hex code for `color`).'
+    },
+    'profile': {
+        'c': 'fun',
+        'a': null,
+        'u': '=profile [user]',
+        'd': 'View your (or another user\'s) Relaxy profile.'
+    },
+    'rep+': {
+        'c': 'fun',
+        'a': ['rep'],
+        'u': '=rep+ <user>',
+        'd': 'Give someone an arbitrary reputation point **(some money and xp too)**!'
+    },
+    'shop': {
+        'c': 'fun',
+        'a': null,
+        'u': '=shop',
+        'd': '**Show the Relaxy shop!**'
+    },
+    'snake': {
+        'c': 'fun',
+        'a': ['snek'],
+        'u': '=snake',
+        'd': 'Get to play a game of snake.\nPlease do not spam the reactions. `(refresh time once per 0.5 seconds)`\nEnds when:\n- You drive the snake into itself,\n- Are idle for some time.'
+    },
+    'trade': {
+        'c': 'fun',
+        'a': null,
+        'u': '=trade <user> <your_item_id> <their_item_id|money amount>',
+        'd': 'Trade an item with another user (mention or ID only)! Follow one of these command structures:\n**=trade MattFor 1 2**\n`OR`\n**=trade MattFor 1 money 300**\nPro tip: should you want to trade for nothing, just do money0 ;)'
+    },
+    'translate': {
+        'c': 'fun',
+        'a': null,
+        'u': '=translate <from> <to> <text>',
+        'd': 'Translates text from one language to another.\n**from** and **to** are language names or `ISO 639-1` codes, and **text** is the text to translate.'
+    },
+    'welcomechannel': {
+        'c': 'fun',
+        'a': [
+            'wcl',
+            'entrance'
+        ],
+        'u': '=welcomechannel [type] [welcome|leave] [message]',
+        'd': 'Adds a channel where Relaxy! will send welcome/goodbye messages when people join/leave your server.\n**type** is the card style (1-16, defaults to 7), and you can optionally pass `welcome` or `leave` followed by a custom message.\n## After it is used, use it again to configure how the welcome messages function / look'
+    },
 
     // ===== IMAGE =====
-    "banner": { "c": "image", "a": null, "u": "=banner [user|server]", "d": "Shows your or another user's banner image. Pass `server` to show the server banner instead." },
-    "caption": { "c": "image", "a": null, "u": "=caption <text>", "d": "Add a white bar with a caption to a gif/png/jpg. Reply to a message that has an attachment to caption that image instead." },
-    "changemymind": { "c": "image", "a": ["cmm"], "u": "=changemymind <text>", "d": "Place your text onto the \"change my mind\" meme template." },
-    "circlepfp": { "c": "image", "a": ["circle"], "u": "=circlepfp [user]", "d": "Shows a large, circular crop of your or the specified user's avatar." },
-    "confusedstonks": { "c": "image", "a": null, "u": "=confusedstonks [user]", "d": "Place your or the specified user's avatar onto the \"confused stonks\" meme template." },
-    "delete": { "c": "image", "a": null, "u": "=delete [user]", "d": "Place your or the specified user's avatar onto the \"delete this\" meme template." },
-    "doesntaffect": { "c": "image", "a": ["affect"], "u": "=doesntaffect [user]", "d": "Place your or the specified user's avatar onto the \"this does not affect my baby\" meme template." },
-    "drip": { "c": "image", "a": null, "u": "=drip [user]", "d": "Place your or the specified user's avatar onto the \"drip\" meme template." },
-    "execute": { "c": "image", "a": ["kill"], "u": "=execute <user> [user]", "d": "Place the specified user's avatar onto an execution meme template, with you (or a second user) as the executioner." },
-    "gay": { "c": "image", "a": ["gae"], "u": "=gay [user]", "d": "Overlay a pride flag onto your or the specified user's avatar." },
-    "hug": { "c": "image", "a": null, "u": "=hug <user> [user]", "d": "Hug someone! Optionally pass a second user to make the first user hug them." },
-    "kiss": { "c": "image", "a": ["kissie"], "u": "=kiss <user> [user]", "d": "Kiss someone! Pass a second user to kiss them with the first user instead of yourself." },
-    "myman": { "c": "image", "a": null, "u": "=myman <user> [user]", "d": "Place your and the specified user's avatars onto the \"my man\" meme template." },
-    "pat": { "c": "image", "a": null, "u": "=pat <user> [user]", "d": "Pat someone! Optionally pass a second user to make the first user pat them." },
-    "payrespect": { "c": "image", "a": ["respect","f"], "u": "=payrespect <user>", "d": "Place your or the specified user's avatar onto the \"press f to pay respects\" meme template." },
-    "perfect": { "c": "image", "a": null, "u": "=perfect [user]", "d": "Place your or the specified user's avatar onto the \"this, this is beautiful\" meme template." },
-    "pfp": { "c": "image", "a": ["avatar"], "u": "=pfp [user|server] [raw]", "d": "Show a profile picture. Pass **server** to show the server icon, or **raw** to show the user's global avatar instead of their server avatar." },
-    "phub": { "c": "image", "a": null, "u": "=phub <text>", "d": "Falsifies a pornhub comment." },
-    "picture": { "c": "image", "a": ["pic"], "u": "=picture <keywords>", "d": "Search a gif/image on google with the keywords specified.\nIf used in an nsfw channel or by a user with administrator access with the argument 'nsfw' then it will return nsfw results" },
-    "present": { "c": "image", "a": null, "u": "=present <text>", "d": "Place your text onto the Lisa presentation meme template." },
-    "putin": { "c": "image", "a": ["meeting"], "u": "=putin [user]", "d": "Place your or the specified user's avatar onto the framed picture in Putin's meeting room." },
-    "reddit": { "c": "image", "a": null, "u": "=reddit <subreddit>", "d": "Get a random post from a specified subreddit." },
-    "ross": { "c": "image", "a": ["saint"], "u": "=ross [user]", "d": "Place your or the specified user's avatar onto a Bob Ross painting." },
-    "sakify": { "c": "image", "a": null, "u": "=sakify [user]", "d": "Overlay the sakify template onto your or the specified user's avatar, or onto an attached image." },
-    "slap": { "c": "image", "a": null, "u": "=slap <user> [user]", "d": "Slap someone! Pass a second user to make them the one doing the slapping instead of you." },
-    "spank": { "c": "image", "a": null, "u": "=spank <user> [user]", "d": "Spank someone! Pass a second user to make them the one doing the spanking instead of you." },
-    "stonks": { "c": "image", "a": null, "u": "=stonks [user]", "d": "Place your or the specified user's avatar onto the \"stonks\" meme template." },
-    "sus": { "c": "image", "a": null, "u": "=sus [user]", "d": "I fucking hate this command don't use it." },
-    "trash": { "c": "image", "a": null, "u": "=trash [user]", "d": "Place your or the specified user's avatar onto the \"delete this trash\" meme template." },
-    "triggered": { "c": "image", "a": ["trigger"], "u": "=triggered [user]", "d": "Place your or the specified user's avatar onto the \"triggered\" meme template." },
+    'banner': {
+        'c': 'image',
+        'a': null,
+        'u': '=banner [user|server]',
+        'd': 'Shows your or another user\'s banner image. Pass `server` to show the server banner instead.'
+    },
+    'caption': {
+        'c': 'image',
+        'a': null,
+        'u': '=caption <text>',
+        'd': 'Add a white bar with a caption to a gif/png/jpg. Reply to a message that has an attachment to caption that image instead.'
+    },
+    'changemymind': {
+        'c': 'image',
+        'a': ['cmm'],
+        'u': '=changemymind <text>',
+        'd': 'Place your text onto the "change my mind" meme template.'
+    },
+    'circlepfp': {
+        'c': 'image',
+        'a': ['circle'],
+        'u': '=circlepfp [user]',
+        'd': 'Shows a large, circular crop of your or the specified user\'s avatar.'
+    },
+    'confusedstonks': {
+        'c': 'image',
+        'a': null,
+        'u': '=confusedstonks [user]',
+        'd': 'Place your or the specified user\'s avatar onto the "confused stonks" meme template.'
+    },
+    'delete': {
+        'c': 'image',
+        'a': null,
+        'u': '=delete [user]',
+        'd': 'Place your or the specified user\'s avatar onto the "delete this" meme template.'
+    },
+    'doesntaffect': {
+        'c': 'image',
+        'a': ['affect'],
+        'u': '=doesntaffect [user]',
+        'd': 'Place your or the specified user\'s avatar onto the "this does not affect my baby" meme template.'
+    },
+    'drip': {
+        'c': 'image',
+        'a': null,
+        'u': '=drip [user]',
+        'd': 'Place your or the specified user\'s avatar onto the "drip" meme template.'
+    },
+    'execute': {
+        'c': 'image',
+        'a': ['kill'],
+        'u': '=execute <user> [user]',
+        'd': 'Place the specified user\'s avatar onto an execution meme template, with you (or a second user) as the executioner.'
+    },
+    'gay': {
+        'c': 'image',
+        'a': ['gae'],
+        'u': '=gay [user]',
+        'd': 'Overlay a pride flag onto your or the specified user\'s avatar.'
+    },
+    'hug': {
+        'c': 'image',
+        'a': null,
+        'u': '=hug <user> [user]',
+        'd': 'Hug someone! Optionally pass a second user to make the first user hug them.'
+    },
+    'kiss': {
+        'c': 'image',
+        'a': ['kissie'],
+        'u': '=kiss <user> [user]',
+        'd': 'Kiss someone! Pass a second user to kiss them with the first user instead of yourself.'
+    },
+    'myman': {
+        'c': 'image',
+        'a': null,
+        'u': '=myman <user> [user]',
+        'd': 'Place your and the specified user\'s avatars onto the "my man" meme template.'
+    },
+    'pat': {
+        'c': 'image',
+        'a': null,
+        'u': '=pat <user> [user]',
+        'd': 'Pat someone! Optionally pass a second user to make the first user pat them.'
+    },
+    'payrespect': {
+        'c': 'image',
+        'a': [
+            'respect',
+            'f'
+        ],
+        'u': '=payrespect <user>',
+        'd': 'Place your or the specified user\'s avatar onto the "press f to pay respects" meme template.'
+    },
+    'perfect': {
+        'c': 'image',
+        'a': null,
+        'u': '=perfect [user]',
+        'd': 'Place your or the specified user\'s avatar onto the "this, this is beautiful" meme template.'
+    },
+    'pfp': {
+        'c': 'image',
+        'a': ['avatar'],
+        'u': '=pfp [user|server] [raw]',
+        'd': 'Show a profile picture. Pass **server** to show the server icon, or **raw** to show the user\'s global avatar instead of their server avatar.'
+    },
+    'phub': {
+        'c': 'image',
+        'a': null,
+        'u': '=phub <text>',
+        'd': 'Falsifies a pornhub comment.'
+    },
+    'picture': {
+        'c': 'image',
+        'a': ['pic'],
+        'u': '=picture <keywords>',
+        'd': 'Search a gif/image on google with the keywords specified.\nIf used in an nsfw channel or by a user with administrator access with the argument \'nsfw\' then it will return nsfw results'
+    },
+    'present': {
+        'c': 'image',
+        'a': null,
+        'u': '=present <text>',
+        'd': 'Place your text onto the Lisa presentation meme template.'
+    },
+    'putin': {
+        'c': 'image',
+        'a': ['meeting'],
+        'u': '=putin [user]',
+        'd': 'Place your or the specified user\'s avatar onto the framed picture in Putin\'s meeting room.'
+    },
+    'reddit': {
+        'c': 'image',
+        'a': null,
+        'u': '=reddit <subreddit>',
+        'd': 'Get a random post from a specified subreddit.'
+    },
+    'ross': {
+        'c': 'image',
+        'a': ['saint'],
+        'u': '=ross [user]',
+        'd': 'Place your or the specified user\'s avatar onto a Bob Ross painting.'
+    },
+    'sakify': {
+        'c': 'image',
+        'a': null,
+        'u': '=sakify [user]',
+        'd': 'Overlay the sakify template onto your or the specified user\'s avatar, or onto an attached image.'
+    },
+    'slap': {
+        'c': 'image',
+        'a': null,
+        'u': '=slap <user> [user]',
+        'd': 'Slap someone! Pass a second user to make them the one doing the slapping instead of you.'
+    },
+    'spank': {
+        'c': 'image',
+        'a': null,
+        'u': '=spank <user> [user]',
+        'd': 'Spank someone! Pass a second user to make them the one doing the spanking instead of you.'
+    },
+    'stonks': {
+        'c': 'image',
+        'a': null,
+        'u': '=stonks [user]',
+        'd': 'Place your or the specified user\'s avatar onto the "stonks" meme template.'
+    },
+    'sus': {
+        'c': 'image',
+        'a': null,
+        'u': '=sus [user]',
+        'd': 'I fucking hate this command don\'t use it.'
+    },
+    'trash': {
+        'c': 'image',
+        'a': null,
+        'u': '=trash [user]',
+        'd': 'Place your or the specified user\'s avatar onto the "delete this trash" meme template.'
+    },
+    'triggered': {
+        'c': 'image',
+        'a': ['trigger'],
+        'u': '=triggered [user]',
+        'd': 'Place your or the specified user\'s avatar onto the "triggered" meme template.'
+    },
 
     // ===== MISCELLANEOUS =====
-    "customizewelcome": { "c": "miscellaneous", "a": null, "u": "=customizewelcome <option> <text>", "d": "Customise welcome/goodbye messages. **option** must be one of:\n- `join_message`\n- `leave_message`\n- `join_top`\n- `leave_top`\n- `join_bottom`\n- `leave_bottom`\n\nIn `join_message`/`leave_message`, `|U|` is replaced with the joining/leaving user and `|G|` with the server name.\nYou can use `=embed` formatting to send an embedded message - because embed code can get large, this only works when supplied as a text file.\nIf a welcome option uses an image, it appears in the embed's large image field." },
-    "devlog": { "c": "miscellaneous", "a": ["dev"], "u": "=devlog", "d": "Show the features MattFor has been working on recently." },
-    "dmout": { "c": "miscellaneous", "a": null, "u": "=dmout", "d": "Toggle opting out of DM welcome/leave messages when joining or leaving a server." },
-    "embed": { "c": "miscellaneous", "a": null, "u": "=embed <embed object>", "d": "Send an embed like a bot would, as to how you should format it, please refer to the image below.\nFor more information, use **[this lovely link](https://discordjs.guide/popular-topics/embeds.html#using-an-embed-object)**. Instead of writing `'` in a word like `don't`, please write `|`, f.e `don|t`.\nSame goes for `:`, please replace that with `;;`. (unless using a link) \nReplace `,` with `<>`, when wanting to do `enter`, instead of just pressing enter, please type `~=` instead.\nWhen intending on having spaces in text please use \"\" instead of ''\nWhen writing in a text field surrounded by \"\" please double any brackets f.e ( becomes (( and } becomes }}.\nShould the embed you want to build exceed the discord message size limit, please send a text file instead.\n\n**I know this is hard to get a hold of but it offers full customization of embeds.**\nYes, even more. If you want to edit an existing embed, type '=embed edit [channel] [message id]' you will be prompted to do the rest.\n## Should you have any server files that you want to appear outside of the embed, simply type \"attachment://attachmentName.extension\"." },
-    "fetch": { "c": "miscellaneous", "a": null, "u": "=fetch <filename>", "d": "Return the file you previously saved under the given filename." },
-    "files": { "c": "miscellaneous", "a": null, "u": "=files [server]", "d": "Get a list of all of your files saved with =save. To delete files click the button and then input the appropriate index or range (index1 - index2).\n\nType 'server' as the first argument to access the server's files. Requires the `ManageGuild` permission." },
-    "forum": { "c": "miscellaneous", "a": null, "u": "=forum <#channel> [roles] [emoji] [option]", "d": "Creates a configurable forum channel where members with a role will either allow or reject posts.\n**Roles** - optional argument to instantly set the roles that will be able to manage posts (without relaxy setting one up himself)\n**Emoji** - the emoji that will be used when creating posts.\nTo check the settings of an already existing forum channel, simply type =forum #channel.\nTo go more in depth, type f.e =forum #channel response/match.\nThings to configure:\n\n```fix\nmatch\n```Type =forum #channel match `(keywords/sentences with spaces replaced by -)`\nThis will make it so that any post with the requested phrase/words will automatically be rejected.\n\n```fix\nsensitive\n```Type =forum #channel sensitive #channel2\nPosts made on the original channel will be instantly deleted and piped onto the second channel.\n\n```fix\nhide\n```Simply will hide the channel for everyone without sufficient permissions when Relaxy is unavailable (useful when paired with the sensitive option)\n\n```fix\nresponse\n```Type =forum #channel response [Match keyword] sentence to reply with, remember that |U| will be replaced with the user, |T| with the thread name and |G| with the guild.\nThere are 3 options you cannot delete, 2 of which are set to default: len, reject, accept.\n\n```fix\nlength\n```Type =forum #channel length number / -number\nIf the number is negative, it will delete posts under the desired length, otherwise it will delete posts over the desired length.\n\nTo turn off Relaxy functionality in a forum channel type =forum #channel off.\timeout - seconds\n`attachment_exception` - do not take length into account when attachment is present.\n`raw_search` - crude search algorithm will be used in place of advanced one.\n`original_message_deleted` - delete thread if original message is gone\n`attachment_length / body_length / title_length` - if number is negative then check for less than, if positive, check over.\n`spam` - delete posts considered spam by Relaxy!" },
-    "getemoji": { "c": "miscellaneous", "a": ["emoji","getsticker","sticker"], "u": "=getemoji [multiple] <emoji|sticker>", "d": "Get the image or link of the provided emoji(s) or sticker(s). Type \"multiple\" as the first argument to list several emojis/stickers at once (they will be listed as links, not displayed as images)." },
-    "halt": { "c": "miscellaneous", "a": null, "u": "=halt", "d": "Stop recording with Relaxy!\nRecording also stops when you kick Relaxy! or all users leave a channel." },
-    "help": { "c": "miscellaneous", "a": ["commands"], "u": "=help [commandname]", "d": "Get a list of all commands or information about a single command." },
-    "invite": { "c": "miscellaneous", "a": null, "u": "=invite", "d": "Get links to the support server, Relaxy!'s invite, the vote page and the donation page." },
-    "jointocreate": { "c": "miscellaneous", "a": null, "u": "=jointocreate [#channel] [grant-manage]", "d": "Creates a channel, which when joined will spawn a Relaxy! Private Channel which each member of can control according to his needs. To delete a Relaxy! Join to Create channel, just do =jointocreate channel.\nIf you want users to automatically get ManageChannel permissions, type anything after the command." },
-    "levelout": { "c": "miscellaneous", "a": ["lvlout","lout"], "u": "=levelout", "d": "Toggle opting out of leveling. While opted out you won't appear on =leaderboard and others can't =level @you." },
-    "mixemoji": { "c": "miscellaneous", "a": ["emojimix"], "u": "=mixemoji <emoji1> <emoji2>", "d": "```diff\n- Nitro emojis not supported -\n```Merge multiple emojis into one, some do not work.\nIf you use the \"wand\" emoji, you will the get the \"blob\" version." },
-    "musicoptions": { "c": "miscellaneous", "a": ["rmo"], "u": "=musicoptions [option_number] [args]", "d": "## Shows the Relaxy! music options on your server.\nThere are 4 types of options, to change them simply type =musicoptions [option_number] (additional arguments)\n**1.** Set whether the bot should leave or not after calling =stop.\n**2.** Set whether the bot should leave the channel after music stops.\n**3.** Set how long Relaxy! will buffer music before it plays (in MS). May impact quality.\n**4.** Set the initial volume of the bot. Default: `10`" },
-    "prefix": { "c": "miscellaneous", "a": ["prefixadd","newprefix"], "u": "=prefix [set] [prefix...]", "d": "Add one or more prefixes for Relaxy! on this server. Type =prefix set <prefix> to erase all others and keep only one. Type nothing to view the server prefixes." },
-    "privatechannel": { "c": "miscellaneous", "a": ["privatevc"], "u": "=privatechannel [limit] [kbps] [region] [\"new name\"] [#channel]", "d": "Create a channel with a (Default 2) person limit.\nWhen people join that chat they are given the ability to edit the number of people who can join and the kbps value. You do that by just saying =privatechannel personlimit kbps (optional, voice region).\nTo edit the channel name, type the new name in \"quotes\" and that's what it wil be renamed to.\nRelaxy will autodetect the channel you're in and edit it as requested.\nWhen everyone leaves it will reset back to the default value provided.\n\nWhen trying to edit a channel simply # it at the end of the command to edit it.\n**To delete a private channel:**\nEither delete it yourself normally through discord or type =privatechannel channel.\n```diff\n- warning-\n```When selecting the channel name when editing, when it has spaces replace them with `-`.\nF.e when wanting to edit #Private 1, type Private-1\n\nREQUIRED PERMISSION TO CREATE CHANNELS: `MANAGE_CHANNELS`" },
-    "record": { "c": "miscellaneous", "a": ["rec","startrecord","startrec"], "u": "=record", "d": "Start recording the current voice channel; does not work while music is playing." },
-    "redirect": { "c": "miscellaneous", "a": ["switch"], "u": "=redirect <option> <#channel>", "d": "Redirect a Relaxy! function to a given channel.\nF.e **=redirect leveling #bot-actions**\nAvailable redirectors:\n- leveling\n- modlog\n- heartboard\n- censoring\n- achievements\n- welcomes\n- leaves\n- forum (special: =redirect forum #(current forum channel) #(new forum channel)" },
-    "relaxytime": { "c": "miscellaneous", "a": null, "u": "=relaxytime", "d": "Show Relaxy!'s internal clock." },
-    "remindme": { "c": "miscellaneous", "a": ["remind"], "u": "=remindme <time> about <thing>", "d": "Relaxy will remind you about the thing you requested after the specified amount of time." },
-    "reminds": { "c": "miscellaneous", "a": null, "u": "=reminds", "d": "Show all of your active Relaxy reminds! If you want to remove a remind type =erase (remind number from the list)." },
-    "rename": { "c": "miscellaneous", "a": null, "u": "=rename <channel|user|role> [name]", "d": "Rename a channel, member or role. **name** is the new name; if omitted a random name is assigned." },
-    "request": { "c": "miscellaneous", "a": null, "u": "=request <request>", "d": "Request a feature to be added to Relaxy! or report a bug." },
-    "roleinfo": { "c": "miscellaneous", "a": null, "u": "=roleinfo <role>", "d": "Get general information about a role." },
-    "save": { "c": "miscellaneous", "a": null, "u": "=save <filename> <file|text>", "d": "Filename is the 'codename' of the file you want to save.\nThe file can be either text, or any other kind of file! (except .txt)\n\n# You can save files to server storage.\nOnly people with the `ManageGuild` permission are able to do it.\nTo save a file to server storage simply prefix the file name with 'server-'.\nThose files can later be used within embeds, custom nitro messages and more on that server." },
-    "stats": { "c": "miscellaneous", "a": ["guildstats","serverstats"], "u": "=stats", "d": "Show an enormous amount of information about the server you're on." },
-    "status": { "c": "miscellaneous", "a": ["ping"], "u": "=status", "d": "Show information about Relaxy's clusters.\n\nIf 'Low Performance' mode is on, Relaxy is running on a small server and thus some services are unavailable." },
-    "steamgame": { "c": "miscellaneous", "a": null, "u": "=steamgame <name/gameId>", "d": "Get the information of any Steam game by name or app ID." },
-    "thanks": { "c": "miscellaneous", "a": ["credits"], "u": "=thanks", "d": "Show the page listing the people who helped make the bot, along with what they contributed." },
-    "ticketsystem": { "c": "miscellaneous", "a": ["ticketchannel"], "u": "=ticketsystem [#channel] [message id]", "d": "Create and manage a server-wide ticket system. Members open tickets by pressing buttons on a message; each ticket is delivered to the channels / staff you choose, while the member who opened it keeps a private copy in their DMs.\n\n**Setup**\n`=ticketsystem` - create a brand new ticket channel with a starter message and a single \"Create Ticket\" button.\n`=ticketsystem #channel` - add another ticket system message to an existing text channel.\n`=ticketsystem [message id]` - open the editor for a ticket message in the current channel.\n`=ticketsystem #channel [message id]` - open the editor for a ticket message in another channel.\n\n**The editor** lets you fully customise a message. Use the two dropdowns to pick which **button** and which **form** (modal question) you are editing, then:\n```fix\nEdit\n```Change the selected button (title, modal title, colour, emoji, X/Y position) or the selected form (key, title, style, placeholder, min/max length). Moving a button onto an occupied slot swaps the two buttons.\n\n```fix\nRemove\n```Delete the selected button or form. A message must always keep at least one button, and a button at least one form.\n\n```fix\nInputs\n```Restrict who may open this ticket - mention or paste the IDs of the allowed users / roles. Leave empty to allow everyone.\n\n```fix\nOutputs\n```Choose where submitted tickets are delivered - mention or paste the IDs of the destination channels / users. Defaults to the ticket channel itself.\n\n```fix\nControl Panel\n```Toggle the moderator control panel (Claim / Completed / Private Chat / Close / Close with Answer) attached to delivered tickets.\n\n```fix\nEdit Ticket System Message Design\n```Replace the message itself with an =embed formatted message or text file.\n\n```fix\nAdd New Button / Form\n```Add another button (up to 25 in a 5x5 grid) or another form question (up to 5 per button).\n\n**Forms:** a form whose key starts with `req` is a required field. `short` forms allow up to 100 characters, `long` forms up to 4000.\n\n**Submitting:** a member presses a button, fills in the form, and the ticket is sent to every configured output plus a private copy in their DMs. Both sides follow the ticket through the buttons attached to it." },
-    "toolkit": { "c": "miscellaneous", "a": ["toolbox","utilities","tools"], "u": "=toolkit [tool] [arguments]", "d": "Wide arrangement of random tools.\nRun with no arguments to show a list of available tools." },
-    "visusage": { "c": "miscellaneous", "a": null, "u": "=visusage", "d": "Visualize command usage on a graph." },
-    "vote": { "c": "miscellaneous", "a": null, "u": "=vote", "d": "Get the link to vote for the bot on top.gg." },
-    "whois": { "c": "miscellaneous", "a": ["lookup"], "u": "=whois [user]", "d": "Get general information about a user, or yourself if no argument is provided." },
-    "youtubesearch": { "c": "miscellaneous", "a": ["yts"], "u": "=youtubesearch <keywords>", "d": "Return a YouTube video URL from the given keywords." },
+    'customizewelcome': {
+        'c': 'miscellaneous',
+        'a': null,
+        'u': '=customizewelcome <option> <text>',
+        'd': 'Customise welcome/goodbye messages. **option** must be one of:\n- `join_message`\n- `leave_message`\n- `join_top`\n- `leave_top`\n- `join_bottom`\n- `leave_bottom`\n\nIn `join_message`/`leave_message`, `|U|` is replaced with the joining/leaving user and `|G|` with the server name.\nYou can use `=embed` formatting to send an embedded message - because embed code can get large, this only works when supplied as a text file.\nIf a welcome option uses an image, it appears in the embed\'s large image field.'
+    },
+    'devlog': {
+        'c': 'miscellaneous',
+        'a': ['dev'],
+        'u': '=devlog',
+        'd': 'Show the features MattFor has been working on recently.'
+    },
+    'dmout': {
+        'c': 'miscellaneous',
+        'a': null,
+        'u': '=dmout',
+        'd': 'Toggle opting out of DM welcome/leave messages when joining or leaving a server.'
+    },
+    'embed': {
+        'c': 'miscellaneous',
+        'a': null,
+        'u': '=embed <embed object>',
+        'd': 'Send an embed like a bot would, as to how you should format it, please refer to the image below.\nFor more information, use **[this lovely link](https://discordjs.guide/popular-topics/embeds.html#using-an-embed-object)**. Instead of writing `\'` in a word like `don\'t`, please write `|`, f.e `don|t`.\nSame goes for `:`, please replace that with `;;`. (unless using a link) \nReplace `,` with `<>`, when wanting to do `enter`, instead of just pressing enter, please type `~=` instead.\nWhen intending on having spaces in text please use "" instead of \'\'\nWhen writing in a text field surrounded by "" please double any brackets f.e ( becomes (( and } becomes }}.\nShould the embed you want to build exceed the discord message size limit, please send a text file instead.\n\n**I know this is hard to get a hold of but it offers full customization of embeds.**\nYes, even more. If you want to edit an existing embed, type \'=embed edit [channel] [message id]\' you will be prompted to do the rest.\n## Should you have any server files that you want to appear outside of the embed, simply type "attachment://attachmentName.extension".'
+    },
+    'fetch': {
+        'c': 'miscellaneous',
+        'a': null,
+        'u': '=fetch <filename>',
+        'd': 'Return the file you previously saved under the given filename.'
+    },
+    'files': {
+        'c': 'miscellaneous',
+        'a': null,
+        'u': '=files [server]',
+        'd': 'Get a list of all of your files saved with =save. To delete files click the button and then input the appropriate index or range (index1 - index2).\n\nType \'server\' as the first argument to access the server\'s files. Requires the `ManageGuild` permission.'
+    },
+    'forum': {
+        'c': 'miscellaneous',
+        'a': null,
+        'u': '=forum <#channel> [roles] [emoji] [option]',
+        'd': 'Creates a configurable forum channel where members with a role will either allow or reject posts.\n**Roles** - optional argument to instantly set the roles that will be able to manage posts (without relaxy setting one up himself)\n**Emoji** - the emoji that will be used when creating posts.\nTo check the settings of an already existing forum channel, simply type =forum #channel.\nTo go more in depth, type f.e =forum #channel response/match.\nThings to configure:\n\n```fix\nmatch\n```Type =forum #channel match `(keywords/sentences with spaces replaced by -)`\nThis will make it so that any post with the requested phrase/words will automatically be rejected.\n\n```fix\nsensitive\n```Type =forum #channel sensitive #channel2\nPosts made on the original channel will be instantly deleted and piped onto the second channel.\n\n```fix\nhide\n```Simply will hide the channel for everyone without sufficient permissions when Relaxy is unavailable (useful when paired with the sensitive option)\n\n```fix\nresponse\n```Type =forum #channel response [Match keyword] sentence to reply with, remember that |U| will be replaced with the user, |T| with the thread name and |G| with the guild.\nThere are 3 options you cannot delete, 2 of which are set to default: len, reject, accept.\n\n```fix\nlength\n```Type =forum #channel length number / -number\nIf the number is negative, it will delete posts under the desired length, otherwise it will delete posts over the desired length.\n\nTo turn off Relaxy functionality in a forum channel type =forum #channel off.\timeout - seconds\n`attachment_exception` - do not take length into account when attachment is present.\n`raw_search` - crude search algorithm will be used in place of advanced one.\n`original_message_deleted` - delete thread if original message is gone\n`attachment_length / body_length / title_length` - if number is negative then check for less than, if positive, check over.\n`spam` - delete posts considered spam by Relaxy!'
+    },
+    'getemoji': {
+        'c': 'miscellaneous',
+        'a': [
+            'emoji',
+            'getsticker',
+            'sticker'
+        ],
+        'u': '=getemoji [multiple] <emoji|sticker>',
+        'd': 'Get the image or link of the provided emoji(s) or sticker(s). Type "multiple" as the first argument to list several emojis/stickers at once (they will be listed as links, not displayed as images).'
+    },
+    'halt': {
+        'c': 'miscellaneous',
+        'a': null,
+        'u': '=halt',
+        'd': 'Stop recording with Relaxy!\nRecording also stops when you kick Relaxy! or all users leave a channel.'
+    },
+    'help': {
+        'c': 'miscellaneous',
+        'a': ['commands'],
+        'u': '=help [commandname]',
+        'd': 'Get a list of all commands or information about a single command.'
+    },
+    'invite': {
+        'c': 'miscellaneous',
+        'a': null,
+        'u': '=invite',
+        'd': 'Get links to the support server, Relaxy!\'s invite, the vote page and the donation page.'
+    },
+    'jointocreate': {
+        'c': 'miscellaneous',
+        'a': null,
+        'u': '=jointocreate [#channel] [grant-manage]',
+        'd': 'Creates a channel, which when joined will spawn a Relaxy! Private Channel which each member of can control according to his needs. To delete a Relaxy! Join to Create channel, just do =jointocreate channel.\nIf you want users to automatically get ManageChannel permissions, type anything after the command.'
+    },
+    'levelout': {
+        'c': 'miscellaneous',
+        'a': [
+            'lvlout',
+            'lout'
+        ],
+        'u': '=levelout',
+        'd': 'Toggle opting out of leveling. While opted out you won\'t appear on =leaderboard and others can\'t =level @you.'
+    },
+    'mixemoji': {
+        'c': 'miscellaneous',
+        'a': ['emojimix'],
+        'u': '=mixemoji <emoji1> <emoji2>',
+        'd': '```diff\n- Nitro emojis not supported -\n```Merge multiple emojis into one, some do not work.\nIf you use the "wand" emoji, you will the get the "blob" version.'
+    },
+    'musicoptions': {
+        'c': 'miscellaneous',
+        'a': ['rmo'],
+        'u': '=musicoptions [option_number] [args]',
+        'd': '## Shows the Relaxy! music options on your server.\nThere are 4 types of options, to change them simply type =musicoptions [option_number] (additional arguments)\n**1.** Set whether the bot should leave or not after calling =stop.\n**2.** Set whether the bot should leave the channel after music stops.\n**3.** Set how long Relaxy! will buffer music before it plays (in MS). May impact quality.\n**4.** Set the initial volume of the bot. Default: `10`'
+    },
+    'prefix': {
+        'c': 'miscellaneous',
+        'a': [
+            'prefixadd',
+            'newprefix'
+        ],
+        'u': '=prefix [set] [prefix...]',
+        'd': 'Add one or more prefixes for Relaxy! on this server. Type =prefix set <prefix> to erase all others and keep only one. Type nothing to view the server prefixes.'
+    },
+    'privatechannel': {
+        'c': 'miscellaneous',
+        'a': ['privatevc'],
+        'u': '=privatechannel [limit] [kbps] [region] ["new name"] [#channel]',
+        'd': 'Create a channel with a (Default 2) person limit.\nWhen people join that chat they are given the ability to edit the number of people who can join and the kbps value. You do that by just saying =privatechannel personlimit kbps (optional, voice region).\nTo edit the channel name, type the new name in "quotes" and that\'s what it wil be renamed to.\nRelaxy will autodetect the channel you\'re in and edit it as requested.\nWhen everyone leaves it will reset back to the default value provided.\n\nWhen trying to edit a channel simply # it at the end of the command to edit it.\n**To delete a private channel:**\nEither delete it yourself normally through discord or type =privatechannel channel.\n```diff\n- warning-\n```When selecting the channel name when editing, when it has spaces replace them with `-`.\nF.e when wanting to edit #Private 1, type Private-1\n\nREQUIRED PERMISSION TO CREATE CHANNELS: `MANAGE_CHANNELS`'
+    },
+    'record': {
+        'c': 'miscellaneous',
+        'a': [
+            'rec',
+            'startrecord',
+            'startrec'
+        ],
+        'u': '=record',
+        'd': 'Start recording the current voice channel; does not work while music is playing.'
+    },
+    'redirect': {
+        'c': 'miscellaneous',
+        'a': ['switch'],
+        'u': '=redirect <option> <#channel>',
+        'd': 'Redirect a Relaxy! function to a given channel.\nF.e **=redirect leveling #bot-actions**\nAvailable redirectors:\n- leveling\n- modlog\n- heartboard\n- censoring\n- achievements\n- welcomes\n- leaves\n- forum (special: =redirect forum #(current forum channel) #(new forum channel)'
+    },
+    'relaxytime': {
+        'c': 'miscellaneous',
+        'a': null,
+        'u': '=relaxytime',
+        'd': 'Show Relaxy!\'s internal clock.'
+    },
+    'remindme': {
+        'c': 'miscellaneous',
+        'a': ['remind'],
+        'u': '=remindme <time> about <thing>',
+        'd': 'Relaxy will remind you about the thing you requested after the specified amount of time.'
+    },
+    'reminds': {
+        'c': 'miscellaneous',
+        'a': null,
+        'u': '=reminds',
+        'd': 'Show all of your active Relaxy reminds! If you want to remove a remind type =erase (remind number from the list).'
+    },
+    'rename': {
+        'c': 'miscellaneous',
+        'a': null,
+        'u': '=rename <channel|user|role> [name]',
+        'd': 'Rename a channel, member or role. **name** is the new name; if omitted a random name is assigned.'
+    },
+    'request': {
+        'c': 'miscellaneous',
+        'a': null,
+        'u': '=request <request>',
+        'd': 'Request a feature to be added to Relaxy! or report a bug.'
+    },
+    'roleinfo': {
+        'c': 'miscellaneous',
+        'a': null,
+        'u': '=roleinfo <role>',
+        'd': 'Get general information about a role.'
+    },
+    'save': {
+        'c': 'miscellaneous',
+        'a': null,
+        'u': '=save <filename> <file|text>',
+        'd': 'Filename is the \'codename\' of the file you want to save.\nThe file can be either text, or any other kind of file! (except .txt)\n\n# You can save files to server storage.\nOnly people with the `ManageGuild` permission are able to do it.\nTo save a file to server storage simply prefix the file name with \'server-\'.\nThose files can later be used within embeds, custom nitro messages and more on that server.'
+    },
+    'stats': {
+        'c': 'miscellaneous',
+        'a': [
+            'guildstats',
+            'serverstats'
+        ],
+        'u': '=stats',
+        'd': 'Show an enormous amount of information about the server you\'re on.'
+    },
+    'status': {
+        'c': 'miscellaneous',
+        'a': ['ping'],
+        'u': '=status',
+        'd': 'Show information about Relaxy\'s clusters.\n\nIf \'Low Performance\' mode is on, Relaxy is running on a small server and thus some services are unavailable.'
+    },
+    'steamgame': {
+        'c': 'miscellaneous',
+        'a': null,
+        'u': '=steamgame <name/gameId>',
+        'd': 'Get the information of any Steam game by name or app ID.'
+    },
+    'thanks': {
+        'c': 'miscellaneous',
+        'a': ['credits'],
+        'u': '=thanks',
+        'd': 'Show the page listing the people who helped make the bot, along with what they contributed.'
+    },
+    'ticketsystem': {
+        'c': 'miscellaneous',
+        'a': ['ticketchannel'],
+        'u': '=ticketsystem [#channel] [message id]',
+        'd': 'Create and manage a server-wide ticket system. Members open tickets by pressing buttons on a message; each ticket is delivered to the channels / staff you choose, while the member who opened it keeps a private copy in their DMs.\n\n**Setup**\n`=ticketsystem` - create a brand new ticket channel with a starter message and a single "Create Ticket" button.\n`=ticketsystem #channel` - add another ticket system message to an existing text channel.\n`=ticketsystem [message id]` - open the editor for a ticket message in the current channel.\n`=ticketsystem #channel [message id]` - open the editor for a ticket message in another channel.\n\n**The editor** lets you fully customise a message. Use the two dropdowns to pick which **button** and which **form** (modal question) you are editing, then:\n```fix\nEdit\n```Change the selected button (title, modal title, colour, emoji, X/Y position) or the selected form (key, title, style, placeholder, min/max length). Moving a button onto an occupied slot swaps the two buttons.\n\n```fix\nRemove\n```Delete the selected button or form. A message must always keep at least one button, and a button at least one form.\n\n```fix\nInputs\n```Restrict who may open this ticket - mention or paste the IDs of the allowed users / roles. Leave empty to allow everyone.\n\n```fix\nOutputs\n```Choose where submitted tickets are delivered - mention or paste the IDs of the destination channels / users. Defaults to the ticket channel itself.\n\n```fix\nControl Panel\n```Toggle the moderator control panel (Claim / Completed / Private Chat / Close / Close with Answer) attached to delivered tickets.\n\n```fix\nEdit Ticket System Message Design\n```Replace the message itself with an =embed formatted message or text file.\n\n```fix\nAdd New Button / Form\n```Add another button (up to 25 in a 5x5 grid) or another form question (up to 5 per button).\n\n**Forms:** a form whose key starts with `req` is a required field. `short` forms allow up to 100 characters, `long` forms up to 4000.\n\n**Submitting:** a member presses a button, fills in the form, and the ticket is sent to every configured output plus a private copy in their DMs. Both sides follow the ticket through the buttons attached to it.'
+    },
+    'toolkit': {
+        'c': 'miscellaneous',
+        'a': [
+            'toolbox',
+            'utilities',
+            'tools'
+        ],
+        'u': '=toolkit [tool] [arguments]',
+        'd': 'Wide arrangement of random tools.\nRun with no arguments to show a list of available tools.'
+    },
+    'visusage': {
+        'c': 'miscellaneous',
+        'a': null,
+        'u': '=visusage',
+        'd': 'Visualize command usage on a graph.'
+    },
+    'vote': {
+        'c': 'miscellaneous',
+        'a': null,
+        'u': '=vote',
+        'd': 'Get the link to vote for the bot on top.gg.'
+    },
+    'whois': {
+        'c': 'miscellaneous',
+        'a': ['lookup'],
+        'u': '=whois [user]',
+        'd': 'Get general information about a user, or yourself if no argument is provided.'
+    },
+    'youtubesearch': {
+        'c': 'miscellaneous',
+        'a': ['yts'],
+        'u': '=youtubesearch <keywords>',
+        'd': 'Return a YouTube video URL from the given keywords.'
+    },
 
     // ===== MODERATION =====
-    "autoban": { "c": "moderation", "a": null, "u": "=autoban [number]", "d": "Set the autoban threshold for the server (only works while `=censor` is on). The number is how many warnings a member may receive before being banned (1-100). Run with no number to use the default of 3, or to deactivate autobans if one is already set.\n```fix\nDoes not affect admins or members with ban permissions.\n```" },
-    "autoname": { "c": "moderation", "a": null, "u": "=autoname", "d": "```diff\n- Only works while censoring is enabled -\n```Toggle automatic name censoring. While on, anyone with a censored word in their name is automatically renamed to something like \"Renamed(random numbers)\"." },
-    "autorole": { "c": "moderation", "a": null, "u": "=autorole [roles|off]", "d": "Maintain a list of roles automatically given to anyone joining the server. Listing a role that is already present removes it.\nPass 'off' to disable, or nothing to view the current autoroles." },
-    "ban": { "c": "moderation", "a": ["vanish","disappear"], "u": "=ban <user> [time] [reason]", "d": "Ban a member from the server. **time** sets how far back their messages are deleted (e.g. \"1d\", up to 7 days), and can be placed before or after the reason.\nMentioning the **@everyone** role bans every member (requires the ADMINISTRATOR permission)." },
-    "banmessage": { "c": "moderation", "a": ["bmsg"], "u": "=banmessage <message|no>", "d": "Construct a Relaxy Embed message that is sent to a user before they are banned from your server. Pass 'no' to clear the current ban message." },
-    "censor": { "c": "moderation", "a": null, "u": "=censor [words|clear|off]", "d": "Censor every message that includes any of the words mentioned, unlocks =autoname and =autoban.\nType first argument as 'clear' to remove all censored words, 'off' to turn censoring off and type nothing to show the words.\nP.S typing '+default' after already having it on without the default pool will add it. Similarly, typing -default will remove the default list.\nIf you add 'links' then ALL links will be censored.\nIf you add `scams` all common Discord scam links will be censored.\nIf you add 'invites' all discord invites will be censored.\nAdd 'spam' to censor messages Relaxy! considers spam.\nAdd 'spammessages' to censor similar messages that are spammed in a short period of time.\n\nIf an argument is in italics (starts and ends with a *) then all `-` (dashes) will be checked as if they were spaces." },
-    "censortest": { "c": "moderation", "a": ["censorcheck","cc"], "u": "=censortest <word>", "d": "Check whether the given word would be flagged by this server's censor system.\nFun fact: former bot owner only command." },
-    "clearingchannel": { "c": "moderation", "a": null, "u": "=clearingchannel [show|channels]", "d": "Create a new channel whose messages are wiped every 3 minutes, or pass existing channels to remove them from the clearing list.\nType 'show' as the only argument to list all current clearing channels." },
-    "disable": { "c": "moderation", "a": null, "u": "=disable [commands|categories]", "d": "Disable individual commands or whole categories of commands.\nAvailable categories:\n- fun\n- image\n- miscellaneous\n- moderation\n- music\nIf you do not provide any arguments it will show a list of currently disabled commands." },
-    "disconnect": { "c": "moderation", "a": null, "u": "=disconnect <user>", "d": "Disconnect someone from their voice channel." },
-    "dmwelcome": { "c": "moderation", "a": null, "u": "=dmwelcome <welcome|leave> [text]", "d": "Set a message that will be DMed to a user who joins (welcome) or leaves your server.\nYou can provide a text file with the =embed formatting to have the message be an embed (when doing that just type `=dmwelcome <welcome|leave>` and attach the file to the message).\n**People can opt out with `=dmout`**\n```diff\n- leave messages only visible for users who are also with relaxy on other servers\n```Provide no arguments to turn DM join/leave messages off. Messages must not exceed 1950 characters." },
-    "exempt": { "c": "moderation", "a": null, "u": "=exempt [users|roles]", "d": "Toggle exemption from ALL danger checks for ALL Relaxy commands for the given users / roles.\nDon't input anything to show current exemptions." },
-    "fetchban": { "c": "moderation", "a": ["getban"], "u": "=fetchban <userId>", "d": "Fetch the ban record for a user by their ID." },
-    "free": { "c": "moderation", "a": null, "u": "=free <user|all> [index] [tier]", "d": "Remove all of the specified user's warnings.\nIf the first argument is 'all' then all server warnings will be removed (requires ManageGuild).\nProvide a warning **index** to remove a single warning, or an **index** and a **tier** (0 - 30) to change that warning's tier instead." },
-    "kick": { "c": "moderation", "a": null, "u": "=kick <member> [reason]", "d": "Kick someone from the server with the specified reason (optional)." },
-    "lockdown": { "c": "moderation", "a": null, "u": "=lockdown", "d": "Toggle lockdown mode. While active, @everyone is denied sending messages, adding reactions, speaking and connecting in every channel." },
-    "modlog": { "c": "moderation", "a": null, "u": "=modlog [event|off|all|lowspam] [channel]", "d": "Relaxy creates a modlog channel for you.\nEvery important server change/interaction is going to be logged there in detail.\nTo view the options, simply type =modlog again. To turn off the modlog, do =modlog off.\nTo change something, simply type =modlog (event number, take it from the list by simply doing =modlog) (channel, if you want to redirect it somewhere else or simply nothing to turn it off).\nYou can also say =modlog all (channel) to turn on everything and push it to the desired channel.\nType 'lowspam' to turn off events that rapidly appear." },
-    "mute": { "c": "moderation", "a": ["m"], "u": "=mute <user> [time] [reason]", "d": "Mute a member for an unspecified or specified amount of time (time can include the keywords: minute, hour, day, week, month, year to multiply time)\n\n### If the only argument is 'muterole' the bot will update all channels and the role itself to use the most up to date settings.\n\n## If no time is specified, user will be muted indefinitely." },
-    "mutes": { "c": "moderation", "a": ["muted","mutelist","mutedlist"], "u": "=mutes", "d": "Show all people on the server who are muted." },
-    "purge": { "c": "moderation", "a": null, "u": "=purge [amount] [channel] [messageId1] [messageId2] [below|after|new] [user] [embeds|links|images] [regex]", "d": "Delete any amount of messages.\nYou can type:\n- (number) - how many messages you want deleted\n- messageId1 - which message to anchor onto\n- below/after/new/newerthan - switch the deletion mode to after (only works if messageId1 is present)\n- channel - which channel to delete the messages from\n## You can also delete a range from one `messageId1` to another `messageId2`\n### To do this provide 2 `messageIds` as the only arguments\n- JavaScript RegExp is also accepted as an argument to only delete matching messages.\n\n### Default deletion mode: `before` (older, above)\n```diff\nYou NEED to use mentions for the command to work when filtering by user / selecting another channel\n- if the requested amount is above 100 the command may be a little slow to initiate -\n```" },
-    "purgereactions": { "c": "moderation", "a": ["deletereactions","pr"], "u": "=purgereactions <amount> [channel]", "d": "Delete all reactions from a selected number of messages. The optional **channel** lets you clear reactions in a channel other than the one the command is used in." },
-    "reactionpanel": { "c": "moderation", "a": ["emojimanager","emojipanel","epanel","ep","rp"], "u": "=reactionpanel <messageId> [channelId]", "d": "Open an emoji panel that lets you:\n- remove all emojis\n- delete the message\n- remove all occurrences of a specific reaction\n- remove one occurrence of a specific reaction from a specific user\n- remove all controversial reactions (flags, letters, anything within the relaxy censor list)\nOnly type the channelId if the message is outside of the channel where the command is called." },
-    "reactionrole": { "c": "moderation", "a": ["rr","reactionroles"], "u": "=reactionrole [channel] [messageId]", "d": "Bind reaction roles to an existing message or send a new one. Accepts =embed formatting.\nTo bind to an existing message simply input the channel mention/id as the first argument and the message id as the second.\nTo construct a new one either type a normal message or an =embed formatted file." },
-    "remake": { "c": "moderation", "a": ["nuke"], "u": "=remake [channel]", "d": "Replace the channel with a clean copy of itself.\nRemoves Relaxy functions." },
-    "restrain": { "c": "moderation", "a": null, "u": "=restrain <type> <roles1> from <roles2>", "d": "**Type**:\n`1` - if you DO have [roles2] you cannot have [roles1]\n`2` - if you DON'T have [roles1] you cannot have [roles2]\n`3` - if you DO have [roles2] you can have [roles1]\n`4` - if you DON'T have [roles2] you can have [roles1]\n\n[roles1] or [roles2] is just a list of roles separated by spaces, can be either a role id, an @ or the role name." },
-    "restrict": { "c": "moderation", "a": ["lock"], "u": "=restrict [channels|bind|unbind]", "d": "Turn off Relaxy in a desired channel.\nType bind as a first argument to make Relaxy only usable in the channel the command was called in or input a channel after bind to set it to that one.\nType unbind to completely clear all restricted channels." },
-    "setslowmode": { "c": "moderation", "a": ["slowmode","cooldown","setcooldown"], "u": "=setslowmode [channel] <time|off>", "d": "Set a slowmode for a channel (defaults to the current one). To turn slowmode off instead of a duration type 'off'." },
-    "tempban": { "c": "moderation", "a": ["tban"], "u": "=tempban <user> <time> [reason]", "d": "Temporarily ban a member from the server, deleting their last week of messages. **time** is how long the ban lasts (e.g. \"1d\"); the optional **reason** can be placed before or after the duration. The member is automatically unbanned when the time elapses." },
-    "unban": { "c": "moderation", "a": null, "u": "=unban <userId> [reason]", "d": "Unban a user from the server by their user ID. Optionally specify a reason for the unban." },
-    "unmute": { "c": "moderation", "a": ["um"], "u": "=unmute <user> [reason]", "d": "Unmute a member, restoring the roles they had before being muted. Optionally include a reason for the modlog." },
-    "user": { "c": "moderation", "a": ["allow"], "u": "=user <user/role>", "d": "Toggle users or roles on the allow list. While the list has at least one entry, only those users (and members with a listed role) are allowed to use Relaxy." },
-    "warning": { "c": "moderation", "a": ["warn"], "u": "=warning <user> [reason] [tierN]", "d": "Warn a member and emit the event to the modlog; the reason is capped at 258 characters.\nAssign a tier by including 'tierX' (X being 0 to 30, e.g. tier5), written lowercase and joined — it is stripped from the reason and added to the member's threat level.\nA warning whose tier is above half the highest tier on the server counts towards an autoban when autobanning is enabled." },
-    "warnings": { "c": "moderation", "a": ["warns"], "u": "=warnings [user]", "d": "List members who have warnings, or mention a user to show their warnings in particular.\nThe numbers mean, in order: warning count, critical warning count (contributes to autoban), and threat level (the highest warning tier ever received)." },
+    'autoban': {
+        'c': 'moderation',
+        'a': null,
+        'u': '=autoban [number]',
+        'd': 'Set the autoban threshold for the server (only works while `=censor` is on). The number is how many warnings a member may receive before being banned (1-100). Run with no number to use the default of 3, or to deactivate autobans if one is already set.\n```fix\nDoes not affect admins or members with ban permissions.\n```'
+    },
+    'autoname': {
+        'c': 'moderation',
+        'a': null,
+        'u': '=autoname',
+        'd': '```diff\n- Only works while censoring is enabled -\n```Toggle automatic name censoring. While on, anyone with a censored word in their name is automatically renamed to something like "Renamed(random numbers)".'
+    },
+    'autorole': {
+        'c': 'moderation',
+        'a': null,
+        'u': '=autorole [roles|off]',
+        'd': 'Maintain a list of roles automatically given to anyone joining the server. Listing a role that is already present removes it.\nPass \'off\' to disable, or nothing to view the current autoroles.'
+    },
+    'ban': {
+        'c': 'moderation',
+        'a': [
+            'vanish',
+            'disappear'
+        ],
+        'u': '=ban <user> [time] [reason]',
+        'd': 'Ban a member from the server. **time** sets how far back their messages are deleted (e.g. "1d", up to 7 days), and can be placed before or after the reason.\nMentioning the **@everyone** role bans every member (requires the ADMINISTRATOR permission).'
+    },
+    'banmessage': {
+        'c': 'moderation',
+        'a': ['bmsg'],
+        'u': '=banmessage <message|no>',
+        'd': 'Construct a Relaxy Embed message that is sent to a user before they are banned from your server. Pass \'no\' to clear the current ban message.'
+    },
+    'censor': {
+        'c': 'moderation',
+        'a': null,
+        'u': '=censor [words|clear|off]',
+        'd': 'Censor every message that includes any of the words mentioned, unlocks =autoname and =autoban.\nType first argument as \'clear\' to remove all censored words, \'off\' to turn censoring off and type nothing to show the words.\nP.S typing \'+default\' after already having it on without the default pool will add it. Similarly, typing -default will remove the default list.\nIf you add \'links\' then ALL links will be censored.\nIf you add `scams` all common Discord scam links will be censored.\nIf you add \'invites\' all discord invites will be censored.\nAdd \'spam\' to censor messages Relaxy! considers spam.\nAdd \'spammessages\' to censor similar messages that are spammed in a short period of time.\n\nIf an argument is in italics (starts and ends with a *) then all `-` (dashes) will be checked as if they were spaces.'
+    },
+    'censortest': {
+        'c': 'moderation',
+        'a': [
+            'censorcheck',
+            'cc'
+        ],
+        'u': '=censortest <word>',
+        'd': 'Check whether the given word would be flagged by this server\'s censor system.\nFun fact: former bot owner only command.'
+    },
+    'clearingchannel': {
+        'c': 'moderation',
+        'a': null,
+        'u': '=clearingchannel [show|channels]',
+        'd': 'Create a new channel whose messages are wiped every 3 minutes, or pass existing channels to remove them from the clearing list.\nType \'show\' as the only argument to list all current clearing channels.'
+    },
+    'disable': {
+        'c': 'moderation',
+        'a': null,
+        'u': '=disable [commands|categories]',
+        'd': 'Disable individual commands or whole categories of commands.\nAvailable categories:\n- fun\n- image\n- miscellaneous\n- moderation\n- music\nIf you do not provide any arguments it will show a list of currently disabled commands.'
+    },
+    'disconnect': {
+        'c': 'moderation',
+        'a': null,
+        'u': '=disconnect <user>',
+        'd': 'Disconnect someone from their voice channel.'
+    },
+    'dmwelcome': {
+        'c': 'moderation',
+        'a': null,
+        'u': '=dmwelcome <welcome|leave> [text]',
+        'd': 'Set a message that will be DMed to a user who joins (welcome) or leaves your server.\nYou can provide a text file with the =embed formatting to have the message be an embed (when doing that just type `=dmwelcome <welcome|leave>` and attach the file to the message).\n**People can opt out with `=dmout`**\n```diff\n- leave messages only visible for users who are also with relaxy on other servers\n```Provide no arguments to turn DM join/leave messages off. Messages must not exceed 1950 characters.'
+    },
+    'exempt': {
+        'c': 'moderation',
+        'a': null,
+        'u': '=exempt [users|roles]',
+        'd': 'Toggle exemption from ALL danger checks for ALL Relaxy commands for the given users / roles.\nDon\'t input anything to show current exemptions.'
+    },
+    'fetchban': {
+        'c': 'moderation',
+        'a': ['getban'],
+        'u': '=fetchban <userId>',
+        'd': 'Fetch the ban record for a user by their ID.'
+    },
+    'free': {
+        'c': 'moderation',
+        'a': null,
+        'u': '=free <user|all> [index] [tier]',
+        'd': 'Remove all of the specified user\'s warnings.\nIf the first argument is \'all\' then all server warnings will be removed (requires ManageGuild).\nProvide a warning **index** to remove a single warning, or an **index** and a **tier** (0 - 30) to change that warning\'s tier instead.'
+    },
+    'kick': {
+        'c': 'moderation',
+        'a': null,
+        'u': '=kick <member> [reason]',
+        'd': 'Kick someone from the server with the specified reason (optional).'
+    },
+    'lockdown': {
+        'c': 'moderation',
+        'a': null,
+        'u': '=lockdown',
+        'd': 'Toggle lockdown mode. While active, @everyone is denied sending messages, adding reactions, speaking and connecting in every channel.'
+    },
+    'modlog': {
+        'c': 'moderation',
+        'a': null,
+        'u': '=modlog [event|off|all|lowspam] [channel]',
+        'd': 'Relaxy creates a modlog channel for you.\nEvery important server change/interaction is going to be logged there in detail.\nTo view the options, simply type =modlog again. To turn off the modlog, do =modlog off.\nTo change something, simply type =modlog (event number, take it from the list by simply doing =modlog) (channel, if you want to redirect it somewhere else or simply nothing to turn it off).\nYou can also say =modlog all (channel) to turn on everything and push it to the desired channel.\nType \'lowspam\' to turn off events that rapidly appear.'
+    },
+    'mute': {
+        'c': 'moderation',
+        'a': ['m'],
+        'u': '=mute <user> [time] [reason]',
+        'd': 'Mute a member for an unspecified or specified amount of time (time can include the keywords: minute, hour, day, week, month, year to multiply time)\n\n### If the only argument is \'muterole\' the bot will update all channels and the role itself to use the most up to date settings.\n\n## If no time is specified, user will be muted indefinitely.'
+    },
+    'mutes': {
+        'c': 'moderation',
+        'a': [
+            'muted',
+            'mutelist',
+            'mutedlist'
+        ],
+        'u': '=mutes',
+        'd': 'Show all people on the server who are muted.'
+    },
+    'purge': {
+        'c': 'moderation',
+        'a': null,
+        'u': '=purge [amount] [channel] [messageId1] [messageId2] [below|after|new] [user] [embeds|links|images] [regex]',
+        'd': 'Delete any amount of messages.\nYou can type:\n- (number) - how many messages you want deleted\n- messageId1 - which message to anchor onto\n- below/after/new/newerthan - switch the deletion mode to after (only works if messageId1 is present)\n- channel - which channel to delete the messages from\n## You can also delete a range from one `messageId1` to another `messageId2`\n### To do this provide 2 `messageIds` as the only arguments\n- JavaScript RegExp is also accepted as an argument to only delete matching messages.\n\n### Default deletion mode: `before` (older, above)\n```diff\nYou NEED to use mentions for the command to work when filtering by user / selecting another channel\n- if the requested amount is above 100 the command may be a little slow to initiate -\n```'
+    },
+    'purgereactions': {
+        'c': 'moderation',
+        'a': [
+            'deletereactions',
+            'pr'
+        ],
+        'u': '=purgereactions <amount> [channel]',
+        'd': 'Delete all reactions from a selected number of messages. The optional **channel** lets you clear reactions in a channel other than the one the command is used in.'
+    },
+    'reactionpanel': {
+        'c': 'moderation',
+        'a': [
+            'emojimanager',
+            'emojipanel',
+            'epanel',
+            'ep',
+            'rp'
+        ],
+        'u': '=reactionpanel <messageId> [channelId]',
+        'd': 'Open an emoji panel that lets you:\n- remove all emojis\n- delete the message\n- remove all occurrences of a specific reaction\n- remove one occurrence of a specific reaction from a specific user\n- remove all controversial reactions (flags, letters, anything within the relaxy censor list)\nOnly type the channelId if the message is outside of the channel where the command is called.'
+    },
+    'reactionrole': {
+        'c': 'moderation',
+        'a': [
+            'rr',
+            'reactionroles'
+        ],
+        'u': '=reactionrole [channel] [messageId]',
+        'd': 'Bind reaction roles to an existing message or send a new one. Accepts =embed formatting.\nTo bind to an existing message simply input the channel mention/id as the first argument and the message id as the second.\nTo construct a new one either type a normal message or an =embed formatted file.'
+    },
+    'remake': {
+        'c': 'moderation',
+        'a': ['nuke'],
+        'u': '=remake [channel]',
+        'd': 'Replace the channel with a clean copy of itself.\nRemoves Relaxy functions.'
+    },
+    'restrain': {
+        'c': 'moderation',
+        'a': null,
+        'u': '=restrain <type> <roles1> from <roles2>',
+        'd': '**Type**:\n`1` - if you DO have [roles2] you cannot have [roles1]\n`2` - if you DON\'T have [roles1] you cannot have [roles2]\n`3` - if you DO have [roles2] you can have [roles1]\n`4` - if you DON\'T have [roles2] you can have [roles1]\n\n[roles1] or [roles2] is just a list of roles separated by spaces, can be either a role id, an @ or the role name.'
+    },
+    'restrict': {
+        'c': 'moderation',
+        'a': ['lock'],
+        'u': '=restrict [channels|bind|unbind]',
+        'd': 'Turn off Relaxy in a desired channel.\nType bind as a first argument to make Relaxy only usable in the channel the command was called in or input a channel after bind to set it to that one.\nType unbind to completely clear all restricted channels.'
+    },
+    'setslowmode': {
+        'c': 'moderation',
+        'a': [
+            'slowmode',
+            'cooldown',
+            'setcooldown'
+        ],
+        'u': '=setslowmode [channel] <time|off>',
+        'd': 'Set a slowmode for a channel (defaults to the current one). To turn slowmode off instead of a duration type \'off\'.'
+    },
+    'tempban': {
+        'c': 'moderation',
+        'a': ['tban'],
+        'u': '=tempban <user> <time> [reason]',
+        'd': 'Temporarily ban a member from the server, deleting their last week of messages. **time** is how long the ban lasts (e.g. "1d"); the optional **reason** can be placed before or after the duration. The member is automatically unbanned when the time elapses.'
+    },
+    'unban': {
+        'c': 'moderation',
+        'a': null,
+        'u': '=unban <userId> [reason]',
+        'd': 'Unban a user from the server by their user ID. Optionally specify a reason for the unban.'
+    },
+    'unmute': {
+        'c': 'moderation',
+        'a': ['um'],
+        'u': '=unmute <user> [reason]',
+        'd': 'Unmute a member, restoring the roles they had before being muted. Optionally include a reason for the modlog.'
+    },
+    'user': {
+        'c': 'moderation',
+        'a': ['allow'],
+        'u': '=user <user/role>',
+        'd': 'Toggle users or roles on the allow list. While the list has at least one entry, only those users (and members with a listed role) are allowed to use Relaxy.'
+    },
+    'warning': {
+        'c': 'moderation',
+        'a': ['warn'],
+        'u': '=warning <user> [reason] [tierN]',
+        'd': 'Warn a member and emit the event to the modlog; the reason is capped at 258 characters.\nAssign a tier by including \'tierX\' (X being 0 to 30, e.g. tier5), written lowercase and joined — it is stripped from the reason and added to the member\'s threat level.\nA warning whose tier is above half the highest tier on the server counts towards an autoban when autobanning is enabled.'
+    },
+    'warnings': {
+        'c': 'moderation',
+        'a': ['warns'],
+        'u': '=warnings [user]',
+        'd': 'List members who have warnings, or mention a user to show their warnings in particular.\nThe numbers mean, in order: warning count, critical warning count (contributes to autoban), and threat level (the highest warning tier ever received).'
+    },
 
     // ===== MUSIC =====
-    "back": { "c": "music", "a": ["prev","previous","last"], "u": "=back", "d": "Play the previous song in the queue." },
-    "bitrate": { "c": "music", "a": null, "u": "=bitrate <bitrate>", "d": "Set the bitrate of Relaxy!'s music (the maximum depends on the server's boost level). This command is currently temporarily disabled." },
-    "clear": { "c": "music", "a": ["qclear","clearq"], "u": "=clear [history]", "d": "Clear the queue. Pass any argument to also clear the queue history." },
-    "filter": { "c": "music", "a": null, "u": "=filter [filter]", "d": "Apply an audio filter to the currently playing song and everything queued after it. Run with no argument to see the active filters.\n**Available filters:** `Bassboost`, `8D`, `Vaporwave`, `Nightcore`, `Phaser`, `Tremolo`, `Vibrato`, `Reverse`, `Treble`, `Normalizer`, `Surrounding`, `Pulsator`, `Subboost`, `Karaoke`, `Flanger`, `Gate`, `Haas`, `Mcompand`, `Mono`, `Mstlr`, `Mstrr`, `compressor`, `Expander`, `Softlimiter`, `Chorus`, `Chorus2d`, `Chorus2d`, `Fadein`.\nThis feature is currently temporarily disabled." },
-    "goto": { "c": "music", "a": ["seek"], "u": "=goto <time>", "d": "Seek to a specific timestamp in the current song. **time** is in HH:MM:SS, MM:SS or seconds." },
-    "join": { "c": "music", "a": ["vcjoin","summon"], "u": "=join", "d": "Make Relaxy! join your voice channel." },
-    "jump": { "c": "music", "a": ["hop","jumpto","hopto"], "u": "=jump <index>", "d": "Jump to and play a specific track in the queue. **index** is its position shown in =queue." },
-    "loop": { "c": "music", "a": ["lp"], "u": "=loop", "d": "Toggle looping of the entire queue." },
-    "lyrics": { "c": "music", "a": null, "u": "=lyrics [song name]", "d": "Tries to show the accurate lyrics of a song (and some artist info).\nIf a song is playing on Relaxy! and you don't provide any title it will autosearch the current song title.\n`DISCLAIMER:` **this usually doesn't work as the title's too complicated for the search engine.**" },
-    "pause": { "c": "music", "a": null, "u": "=pause", "d": "Pauses the currently playing song." },
-    "play": { "c": "music", "a": ["p"], "u": "=play <keywords/link/attachment>", "d": "Play Youtube, Soundcloud, Spotify music, playlist or an attachment." },
-    "pskip": { "c": "music", "a": ["playskip"], "u": "=pskip <keywords/link>", "d": "Works exactly like **`=p`**, difference is that =pskip doesn't add the track to the end of the queue but instead replaces the currently playing track. Accepts mp3/4/mov/webm s." },
-    "queue": { "c": "music", "a": ["showqueue","q","showq"], "u": "=queue", "d": "Show the current song queue." },
-    "remove": { "c": "music", "a": ["r"], "u": "=remove <index>", "d": "Remove a song from the queue by its index. **index** corresponds to the number shown in =queue." },
-    "repeat": { "c": "music", "a": ["repeater"], "u": "=repeat", "d": "Toggle repeating of the currently playing song." },
-    "resume": { "c": "music", "a": null, "u": "=resume", "d": "Resumes the currently playing song." },
-    "reverse": { "c": "music", "a": null, "u": "=reverse", "d": "Reverses the tracks in the queue. Requires at least 2 tracks in the non-playing queue." },
-    "search": { "c": "music", "a": null, "u": "=search <keywords>", "d": "Search for a Youtube video. Returns multiple results that you can pick from." },
-    "shuffle": { "c": "music", "a": ["mix"], "u": "=shuffle", "d": "Shuffles the queue randomly." },
-    "skip": { "c": "music", "a": null, "u": "=skip [amount]", "d": "Skip the current song, or the **amount** of songs specified." },
-    "song": { "c": "music", "a": ["track","nowplaying"], "u": "=song", "d": "Shows information about the currently playing song." },
-    "stop": { "c": "music", "a": ["disconnect","leave","end","die"], "u": "=stop", "d": "Stop the music queue and make Relaxy! leave the voice channel he's in." },
-    "swap": { "c": "music", "a": null, "u": "=swap <index_1> <index_2>", "d": "Swap places of 2 songs within the music queue by their indices.\nDoes not work on the current song." },
-    "volume": { "c": "music", "a": ["vol"], "u": "=volume [volume]", "d": "Number: `1 - 100`\nChange the volume of music that Relaxy!' playing.\nTo see the queue volume simply do =volume." },
+    'back': {
+        'c': 'music',
+        'a': [
+            'prev',
+            'previous',
+            'last'
+        ],
+        'u': '=back',
+        'd': 'Play the previous song in the queue.'
+    },
+    'bitrate': {
+        'c': 'music',
+        'a': null,
+        'u': '=bitrate <bitrate>',
+        'd': 'Set the bitrate of Relaxy!\'s music (the maximum depends on the server\'s boost level). This command is currently temporarily disabled.'
+    },
+    'clear': {
+        'c': 'music',
+        'a': [
+            'qclear',
+            'clearq'
+        ],
+        'u': '=clear [history]',
+        'd': 'Clear the queue. Pass any argument to also clear the queue history.'
+    },
+    'filter': {
+        'c': 'music',
+        'a': null,
+        'u': '=filter [filter]',
+        'd': 'Apply an audio filter to the currently playing song and everything queued after it. Run with no argument to see the active filters.\n**Available filters:** `Bassboost`, `8D`, `Vaporwave`, `Nightcore`, `Phaser`, `Tremolo`, `Vibrato`, `Reverse`, `Treble`, `Normalizer`, `Surrounding`, `Pulsator`, `Subboost`, `Karaoke`, `Flanger`, `Gate`, `Haas`, `Mcompand`, `Mono`, `Mstlr`, `Mstrr`, `compressor`, `Expander`, `Softlimiter`, `Chorus`, `Chorus2d`, `Chorus2d`, `Fadein`.\nThis feature is currently temporarily disabled.'
+    },
+    'goto': {
+        'c': 'music',
+        'a': ['seek'],
+        'u': '=goto <time>',
+        'd': 'Seek to a specific timestamp in the current song. **time** is in HH:MM:SS, MM:SS or seconds.'
+    },
+    'join': {
+        'c': 'music',
+        'a': [
+            'vcjoin',
+            'summon'
+        ],
+        'u': '=join',
+        'd': 'Make Relaxy! join your voice channel.'
+    },
+    'jump': {
+        'c': 'music',
+        'a': [
+            'hop',
+            'jumpto',
+            'hopto'
+        ],
+        'u': '=jump <index>',
+        'd': 'Jump to and play a specific track in the queue. **index** is its position shown in =queue.'
+    },
+    'loop': {
+        'c': 'music',
+        'a': ['lp'],
+        'u': '=loop',
+        'd': 'Toggle looping of the entire queue.'
+    },
+    'lyrics': {
+        'c': 'music',
+        'a': null,
+        'u': '=lyrics [song name]',
+        'd': 'Tries to show the accurate lyrics of a song (and some artist info).\nIf a song is playing on Relaxy! and you don\'t provide any title it will autosearch the current song title.\n`DISCLAIMER:` **this usually doesn\'t work as the title\'s too complicated for the search engine.**'
+    },
+    'pause': {
+        'c': 'music',
+        'a': null,
+        'u': '=pause',
+        'd': 'Pauses the currently playing song.'
+    },
+    'play': {
+        'c': 'music',
+        'a': ['p'],
+        'u': '=play <keywords/link/attachment>',
+        'd': 'Play Youtube, Soundcloud, Spotify music, playlist or an attachment.'
+    },
+    'pskip': {
+        'c': 'music',
+        'a': ['playskip'],
+        'u': '=pskip <keywords/link>',
+        'd': 'Works exactly like **`=p`**, difference is that =pskip doesn\'t add the track to the end of the queue but instead replaces the currently playing track. Accepts mp3/4/mov/webm s.'
+    },
+    'queue': {
+        'c': 'music',
+        'a': [
+            'showqueue',
+            'q',
+            'showq'
+        ],
+        'u': '=queue',
+        'd': 'Show the current song queue.'
+    },
+    'remove': {
+        'c': 'music',
+        'a': ['r'],
+        'u': '=remove <index>',
+        'd': 'Remove a song from the queue by its index. **index** corresponds to the number shown in =queue.'
+    },
+    'repeat': {
+        'c': 'music',
+        'a': ['repeater'],
+        'u': '=repeat',
+        'd': 'Toggle repeating of the currently playing song.'
+    },
+    'resume': {
+        'c': 'music',
+        'a': null,
+        'u': '=resume',
+        'd': 'Resumes the currently playing song.'
+    },
+    'reverse': {
+        'c': 'music',
+        'a': null,
+        'u': '=reverse',
+        'd': 'Reverses the tracks in the queue. Requires at least 2 tracks in the non-playing queue.'
+    },
+    'search': {
+        'c': 'music',
+        'a': null,
+        'u': '=search <keywords>',
+        'd': 'Search for a Youtube video. Returns multiple results that you can pick from.'
+    },
+    'shuffle': {
+        'c': 'music',
+        'a': ['mix'],
+        'u': '=shuffle',
+        'd': 'Shuffles the queue randomly.'
+    },
+    'skip': {
+        'c': 'music',
+        'a': null,
+        'u': '=skip [amount]',
+        'd': 'Skip the current song, or the **amount** of songs specified.'
+    },
+    'song': {
+        'c': 'music',
+        'a': [
+            'track',
+            'nowplaying'
+        ],
+        'u': '=song',
+        'd': 'Shows information about the currently playing song.'
+    },
+    'stop': {
+        'c': 'music',
+        'a': [
+            'disconnect',
+            'leave',
+            'end',
+            'die'
+        ],
+        'u': '=stop',
+        'd': 'Stop the music queue and make Relaxy! leave the voice channel he\'s in.'
+    },
+    'swap': {
+        'c': 'music',
+        'a': null,
+        'u': '=swap <index_1> <index_2>',
+        'd': 'Swap places of 2 songs within the music queue by their indices.\nDoes not work on the current song.'
+    },
+    'volume': {
+        'c': 'music',
+        'a': ['vol'],
+        'u': '=volume [volume]',
+        'd': 'Number: `1 - 100`\nChange the volume of music that Relaxy!\' playing.\nTo see the queue volume simply do =volume.'
+    }
 };
 
 if (typeof window !== 'undefined')
