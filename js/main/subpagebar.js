@@ -35,6 +35,11 @@
             name: 'Credits',
             short: 'Credits',
             link: '/subpages/credits.html'
+        },
+        {
+            name: 'Technical Breakdown',
+            short: 'Technical',
+            link: '/subpages/technical.html'
         }
     ];
 

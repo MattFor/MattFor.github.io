@@ -1635,7 +1635,7 @@ body.nav-open {
 
 #changelog-content {
     max-width: var(--measure);
-    margin-inline: auto;
+    margin-inline: 0;
     text-align: left;
 }
 
@@ -1933,4 +1933,122 @@ html.js .reveal.is-visible {
     .about-relaxy {
         display: none;
     }
+}
+
+/* ============================================================= Technical breakdown page */
+.tech-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--space-4);
+}
+
+.tech-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-4);
+    background: var(--bg-inset);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+}
+
+.tech-stat .num {
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--accent);
+}
+
+.tech-stat .label {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.tech-stack-group {
+    margin-bottom: var(--space-5);
+}
+
+.tech-stack-group:last-child {
+    margin-bottom: 0;
+}
+
+.tech-stack-group h3 {
+    text-align: left;
+    color: var(--accent);
+    margin-bottom: var(--space-3);
+}
+
+.tech-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    line-height: 1.4;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-pill);
+    background: var(--bg-inset);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+}
+
+.tech-tree {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: var(--text-muted);
+    background: var(--bg-inset);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: var(--space-4);
+    overflow-x: auto;
+    white-space: pre;
+}
+
+.tech-tree .dir {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.tech-tree .cmt {
+    color: color-mix(in srgb, var(--text-muted) 70%, transparent);
+}
+
+.host-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-4);
+}
+
+.host-card {
+    background: var(--bg-inset);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: var(--space-5);
+}
+
+.host-card h3 {
+    color: var(--accent);
+    margin: 0 0 var(--space-2);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.host-card .host-tag {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    padding: 1px 8px;
+}
+
+.host-card p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    margin: var(--space-2) 0 0;
 }
