@@ -981,9 +981,17 @@ body.nav-open {
     margin-top: 0;
 }
 
-.cmd-desc .cmd-h1 { font-size: 1.02rem; }
-.cmd-desc .cmd-h2 { font-size: 0.94rem; }
-.cmd-desc .cmd-h3 { font-size: 0.88rem; }
+.cmd-desc .cmd-h1 {
+    font-size: 1.02rem;
+}
+
+.cmd-desc .cmd-h2 {
+    font-size: 0.94rem;
+}
+
+.cmd-desc .cmd-h3 {
+    font-size: 0.88rem;
+}
 
 .cmd-desc .cmd-list {
     margin: 0 0 var(--space-2);
@@ -1040,9 +1048,17 @@ body.nav-open {
     display: block;
 }
 
-.cmd-desc .cmd-code-diff .diff-add { color: #3ba55d; }
-.cmd-desc .cmd-code-diff .diff-del { color: #ed4245; }
-.cmd-desc .cmd-code-diff .diff-ctx { color: var(--text-muted); }
+.cmd-desc .cmd-code-diff .diff-add {
+    color: #3ba55d;
+}
+
+.cmd-desc .cmd-code-diff .diff-del {
+    color: #ed4245;
+}
+
+.cmd-desc .cmd-code-diff .diff-ctx {
+    color: var(--text-muted);
+}
 
 .cmd-tip .cmd-hint {
     margin: var(--space-3) 0 0;
@@ -1079,9 +1095,17 @@ body.nav-open {
 }
 
 @keyframes coach-pop-in {
-    0% { opacity: 0; transform: translateY(26px) scale(0.7); }
-    60% { opacity: 1; transform: translateY(-6px) scale(1.05); }
-    100% { transform: none; }
+    0% {
+        opacity: 0;
+        transform: translateY(26px) scale(0.7);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(-6px) scale(1.05);
+    }
+    100% {
+        transform: none;
+    }
 }
 
 .relaxy-coach-panel {
@@ -1288,8 +1312,12 @@ body.nav-open {
 }
 
 @keyframes coach-bob {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
 }
 
 /* When flashed for attention the avatar glows a few times and the bubble pops,
@@ -1304,14 +1332,24 @@ body.nav-open {
 }
 
 @keyframes coach-attention {
-    0%, 100% { filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35)); }
-    50% { filter: drop-shadow(0 0 16px var(--accent)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35)); }
+    0%, 100% {
+        filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
+    }
+    50% {
+        filter: drop-shadow(0 0 16px var(--accent)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
+    }
 }
 
 @keyframes coach-panel-pop {
-    0% { transform: scale(0.92); }
-    55% { transform: scale(1.03); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(0.92);
+    }
+    55% {
+        transform: scale(1.03);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 /* Tucked away: the panel hides and Relaxy shrinks into a re-openable launcher. */
