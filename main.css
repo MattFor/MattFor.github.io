@@ -841,7 +841,7 @@ body.nav-open {
 .cmd-tip {
     position: fixed;
     z-index: 200;
-    max-width: min(440px, 94vw);
+    width: min(440px, 94vw);
     overflow-y: auto;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
@@ -854,10 +854,6 @@ body.nav-open {
     transform: translateY(6px);
     transition: opacity 0.16s var(--ease), transform 0.16s var(--ease);
     pointer-events: none;
-}
-
-.cmd-tip.is-full {
-    max-width: min(520px, 94vw);
 }
 
 .cmd-tip.is-open {
@@ -1734,11 +1730,11 @@ body.nav-open {
     transition: color var(--t-fast), border-color var(--t-fast), transform var(--t-fast);
 }
 
-#scrollToBottom {
+#scrollToTop {
     bottom: calc(20px + var(--space-7));
 }
 
-#scrollToTop {
+#scrollToBottom {
     bottom: 20px;
 }
 
@@ -1868,7 +1864,7 @@ html.js .reveal.is-visible {
 
     /* On phones the tooltip behaves as a tap-to-open, self-scrolling card. */
     .cmd-tip {
-        max-width: min(420px, 94vw);
+        width: min(420px, 94vw);
     }
 
     /* Footer: links compress left; Relaxy perches on the footer's top-right edge. */

@@ -427,8 +427,8 @@
                 {
                     html += field('Category', pill(catLabel(info.c)));
                 }
-                html += renderMeta(info);
             }
+            html += renderMeta(info);
             html += '<div class="cmd-desc">' + mdToHtml(info.d || 'No description.') + '</div>';
             return html;
         };
