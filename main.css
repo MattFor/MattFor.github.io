@@ -659,6 +659,10 @@ body.nav-open {
     margin-bottom: var(--space-6);
 }
 
+#old-changelog {
+    margin-top: var(--space-8);
+}
+
 .section > p {
     color: var(--text-muted);
 }

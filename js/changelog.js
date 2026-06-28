@@ -50,6 +50,13 @@ if (changelogContent)
     loadMarkdown(mainUrl, changelogContent, 1);
 }
 
+const oldChangelogContent = document.getElementById('old-changelog-content');
+
+if (oldChangelogContent)
+{
+    loadMarkdown('/resources/text/changelog-old.md', oldChangelogContent, 1);
+}
+
 const upcomingContent = document.getElementById('upcoming-content');
 
 if (upcomingContent)
