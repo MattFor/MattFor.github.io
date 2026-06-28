@@ -95,7 +95,7 @@
         <div class="eng-grid">
             <div class="host-card">
                 <h3>Manager</h3>
-                <p><code>bot/Manager.js</code> &rarr; <code>src/Manager/Manager.js</code>. The supervisor. It never
+                <p><code>src/Manager/Manager.js</code>. The supervisor. It never
                     connects to Discord itself, instead it spawns <strong>Clusters</strong>, watches their heartbeats,
                     and
                     reclusters or respawns dead workers. Hosts the cross-process rate limiter and the console command
@@ -103,7 +103,7 @@
             </div>
             <div class="host-card">
                 <h3>Cluster / Client</h3>
-                <p><code>bot/Client.js</code> &rarr; <code>src/Client/Relaxy.js</code>. Each cluster is a child process
+                <p><code>src/Client/Relaxy.js</code>. Each cluster is a child process
                     running one <code>Relaxy</code> client that owns one or more <strong>shards</strong>. The actual
                     gateway connections to Discord, where commands and events are handled.</p>
             </div>

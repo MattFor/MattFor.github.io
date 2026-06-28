@@ -1633,16 +1633,30 @@ body.nav-open {
     color: var(--text-muted);
 }
 
-#changelog-content {
+#changelog-content,
+#upcoming-content {
     max-width: var(--measure);
     margin-inline: 0;
     text-align: left;
 }
 
+#changelog-content > :first-child,
+#upcoming-content > :first-child {
+    margin-top: 0;
+}
+
+#upcoming {
+    margin-top: var(--space-5);
+}
+
 #changelog-content h1,
 #changelog-content h2,
 #changelog-content h3,
-#changelog-content h4 {
+#changelog-content h4,
+#upcoming-content h1,
+#upcoming-content h2,
+#upcoming-content h3,
+#upcoming-content h4 {
     text-align: left;
     color: var(--accent);
     margin: 1.6em 0 0.6em;
@@ -1650,25 +1664,30 @@ body.nav-open {
     border-bottom: 1px solid var(--border);
 }
 
-#changelog-content p {
+#changelog-content p,
+#upcoming-content p {
     margin: 0.5em 0;
     color: var(--text-muted);
 }
 
-#changelog-content ul {
+#changelog-content ul,
+#upcoming-content ul {
     margin: 0.5em 0 1em 1.2em;
     color: var(--text-muted);
 }
 
-#changelog-content li {
+#changelog-content li,
+#upcoming-content li {
     margin: 0.25em 0;
 }
 
-#changelog-content a {
+#changelog-content a,
+#upcoming-content a {
     word-break: break-word;
 }
 
-#changelog-content pre {
+#changelog-content pre,
+#upcoming-content pre {
     background: var(--bg-inset);
     border: 1px solid var(--border);
     padding: 1em;
@@ -1676,7 +1695,8 @@ body.nav-open {
     overflow-x: auto;
 }
 
-#changelog-content code {
+#changelog-content code,
+#upcoming-content code {
     font-family: var(--mono);
     font-size: 0.9em;
     background: var(--bg-inset);
@@ -1684,7 +1704,8 @@ body.nav-open {
     border-radius: 5px;
 }
 
-#changelog-content pre code {
+#changelog-content pre code,
+#upcoming-content pre code {
     background: none;
     padding: 0;
 }

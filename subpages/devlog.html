@@ -40,7 +40,10 @@
         <img alt="" decoding="async" height="56" src="../resources/relaxy.png" width="56">
         <span>Relaxy!</span>
     </a>
-    <nav aria-label="Pages" class="site-nav" id="topnav"></nav>
+    <nav aria-label="Sections" class="site-nav" id="topnav">
+        <a href="#devlog">Devlog</a>
+        <a href="#upcoming">Upcoming</a>
+    </nav>
     <div class="topbar-end">
         <button aria-pressed="false" class="theme-button" id="themeButton" onclick="toggleTheme()" type="button">Light
             Mode
@@ -68,8 +71,12 @@
 <main class="wrap" id="main">
     <button id="scrollToBottom" onclick="scrollToBottom()" type="button">Jump to latest ↓</button>
 
-    <section class="card reveal" id="changelog">
+    <section class="card reveal" id="devlog">
         <div id="changelog-content"></div>
+    </section>
+
+    <section class="card reveal" id="upcoming">
+        <div id="upcoming-content"></div>
     </section>
 
     <button id="scrollToTop" onclick="scrollToTop()" type="button">Back to top ↑</button>
