@@ -816,7 +816,8 @@ const RELAXY_COMMANDS = {
         'c': 'music',
         'a': null,
         'u': '=bitrate <bitrate>',
-        'd': 'Set the bitrate of Relaxy!\'s music (the maximum depends on the server\'s boost level). This command is currently temporarily disabled.'
+        'dis': true,
+        'd': 'Set the bitrate of Relaxy!\'s music (the maximum depends on the server\'s boost level).'
     },
     'clear': {
         'c': 'music',
@@ -831,7 +832,8 @@ const RELAXY_COMMANDS = {
         'c': 'music',
         'a': null,
         'u': '=filter [filter]',
-        'd': 'Apply an audio filter to the currently playing song and everything queued after it. Run with no argument to see the active filters.\n**Available filters:** `Bassboost`, `8D`, `Vaporwave`, `Nightcore`, `Phaser`, `Tremolo`, `Vibrato`, `Reverse`, `Treble`, `Normalizer`, `Surrounding`, `Pulsator`, `Subboost`, `Karaoke`, `Flanger`, `Gate`, `Haas`, `Mcompand`, `Mono`, `Mstlr`, `Mstrr`, `compressor`, `Expander`, `Softlimiter`, `Chorus`, `Chorus2d`, `Chorus2d`, `Fadein`.\nThis feature is currently temporarily disabled.'
+        'dis': true,
+        'd': 'Apply an audio filter to the currently playing song and everything queued after it. Run with no argument to see the active filters.\n**Available filters:** `Bassboost`, `8D`, `Vaporwave`, `Nightcore`, `Phaser`, `Tremolo`, `Vibrato`, `Reverse`, `Treble`, `Normalizer`, `Surrounding`, `Pulsator`, `Subboost`, `Karaoke`, `Flanger`, `Gate`, `Haas`, `Mcompand`, `Mono`, `Mstlr`, `Mstrr`, `compressor`, `Expander`, `Softlimiter`, `Chorus`, `Chorus2d`, `Chorus2d`, `Fadein`.'
     },
     'goto': {
         'c': 'music',

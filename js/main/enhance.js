@@ -406,6 +406,10 @@
             {
                 html += field('NSFW', pill('18+ only', 'cmd-pill-warn'));
             }
+            if (info.dis)
+            {
+                html += field('Status', pill('DISABLED', 'cmd-pill-warn'));
+            }
             return html;
         };
 
